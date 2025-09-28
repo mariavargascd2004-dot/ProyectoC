@@ -1,0 +1,16 @@
+/*Galeria de fotos*/
+#galeriaFotos{
+    height: 600px;
+    box-shadow: 0 0 3px black;
+    border-radius: 5px;
+}
+
+.galeria__imagem{
+    height: 600px;
+    filter: brightness(0.7);
+    border-radius: 5px;
+}
+
+.carousel-indicators{
+    list-style: none;
+}

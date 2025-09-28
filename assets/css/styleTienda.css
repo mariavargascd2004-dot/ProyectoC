@@ -1,0 +1,52 @@
+
+/*Filtro*/
+
+/*Para el rango de costos de los productos*/
+.price-range{
+    position: relative;
+}
+
+/* Cambiar los colores por defecto y dejarlos un tono gris */
+.price-range input[type=range] {
+  -webkit-appearance: none;
+  width: calc(100% - 50px);
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+  outline: none;
+  margin: 0;
+}
+
+/* Chrome / Edge / Safari */
+.price-range input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #888;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px; /* centra el thumb en la barra */
+}
+
+/* Firefox */
+.price-range input[type=range]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #888;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+/* Produtos */
+
+/* Buscador */
+.tienda__buscador{
+    position: relative;
+}
+.tienda_buscador--icono{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-60%);
+}

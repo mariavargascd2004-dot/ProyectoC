@@ -1,0 +1,128 @@
+/*Variables internas*/
+:root {
+    /*Fontes*/
+    --fonte-principal: "Alegreya SC";
+    --fonte-subtitulo: "Lora";
+    --fonte-texto: "Work Sans";
+    /*Cores*/
+    --cor-amarela: #CA0707;
+    --cor-amarelaSuave: #FDCB29;
+    --cor-vermelho: #CA0707;
+}
+
+/* Menu Inicial - Legado(ejemplo de emprendimiento) */
+
+/*Barra de Navegacion*/
+.nav__titulo {
+    color: var(--cor-vermelho);
+}
+
+/* Portada Inicial */
+.portada__conteudo-principal {
+    padding: 0;
+    position: relative;
+}
+
+/*Dar efecto gradiente por encima de la foto(agregar un elemento semi-transparente por encima) */
+.portada__conteudo-principal::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.8) 20%,
+            rgba(17, 17, 17, 0) 50%,
+            rgba(0, 0, 0, 0.8) 75%);
+    transition: 1s ease all;
+}
+
+.portada_descResposavel {
+    max-height: 300px;
+}
+
+
+.portada__conteudo-secundario {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 22%;
+    min-width: 20rem;
+    margin: 20px;
+}
+
+.portada__imagem {
+    width: 100%;
+    height: 600px;
+
+}
+
+.portada__subTitulo {
+    color: var(--cor-vermelho);
+}
+
+.portada__parrafo {
+    color: white;
+}
+
+.portada__botao {
+    width: 150px;
+    position: absolute;
+    left: 0px;
+    bottom: -50px;
+}
+
+.portada__conteudo-terceario {
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    width: 22%;
+    min-width: 20rem;
+    margin: 20px;
+}
+
+/*fabricacao*/
+
+.fabricacao__conteudo--principal {
+    margin-top: 4rem;
+    position: relative;
+}
+
+/*Imagems*/
+.fabricacao__imagem {
+    width: 49%;
+    height: 12.188rem;
+    margin: 5px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+
+}
+
+.fabricacao__conteudo--secundario {
+    max-height: 500px;
+    overflow: auto;
+}
+
+/*Galeria de fotos*/
+#galeriaFotos{
+    height: 600px;
+    box-shadow: 0 0 3px black;
+    border-radius: 5px;
+}
+
+.galeria__imagem{
+    height: 600px;
+    filter: brightness(0.7);
+    border-radius: 5px;
+}
+
+.carousel-indicators{
+    list-style: none;
+}
+
+/*Produtos*/

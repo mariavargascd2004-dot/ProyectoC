@@ -1,0 +1,197 @@
+/*Variables internas*/
+:root {
+    /*Fontes*/
+    --fonte-principal: "Alegreya SC";
+    --fonte-subtitulo: "Lora";
+    --fonte-texto: "Work Sans";
+    /*Cores*/
+    --cor-amarela: #DCA700;
+    --cor-amarelaSuave: #FDCB29;
+    --cor-vermelho: #B2442E;
+}
+
+/* Resetear estilos predeterminados del navegador */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*ScrollBar*/
+/* ===== Firefox ===== */
+body {
+    scrollbar-width: thin;
+    /* grosor del scroll */
+    scrollbar-color: var(--cor-amarela) #fff;
+    /* thumb | track */
+}
+
+/* ===== Chrome / Brave / Edge / Safari ===== */
+body::-webkit-scrollbar {
+    width: 8px;
+    /* ancho de la barra */
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* fondo */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #4b0101;
+    /* color de la barra */
+    border-radius: 10px;
+    /* bordes redondeados */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* al pasar el mouse */
+}
+
+
+/*Barra de navegacion*/
+nav {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav__registrar{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav__registrar--botao{
+    padding-left: 0;
+}
+
+.nav__registrar--opcoes{
+    height:5px;
+    width: 180px;
+    position: absolute;
+    right: 0;
+    top: -50vh;
+    z-index: 2;
+    list-style: none;
+    padding: 0;
+    padding-left: 12px;
+}
+.nav__registrar--opcoes li{
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.nav__registrar--opcoes li:hover{
+    background-color: #3ca222;
+    cursor: pointer;
+    color: white;
+}
+
+
+/*Estilos Gerais*/
+
+/*Textos*/
+.titulo {
+    color: var(--cor-amarela);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: var(--fonte-principal);
+}
+
+.subTitulo {
+    font-family: var(--fonte-subtitulo);
+    color: var(--cor-amarela);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: bold;
+}
+
+.parrafo {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-family: var(--fonte-texto);
+}
+
+/* botones */
+.btn {
+    font-size: 1rem;
+    font-family: var(--fonte-texto);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+    scale: 1.1;
+}
+
+.btn--amarelo {
+    background-color: var(--cor-amarelaSuave);
+    color: #2F2F2F;
+}
+
+.btn--amarelo:hover {
+    background-color: var(--cor-vermelho);
+    color: white;
+}
+
+.btn--vermelho {
+    background-color: var(--cor-vermelho);
+    color: white;
+}
+
+.btn--vermelho:hover {
+    background-color: var(--cor-amarelaSuave);
+    color: #2F2F2F;
+}
+
+.btn--cinza {
+    background-color: #F5F5F5;
+    color: #2F2F2F;
+}
+
+.btn--cinza:hover {
+    background-color: #3ca222;
+    color: white;
+}
+
+/*Otros*/
+.contornoGris {
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+.transiccionSuave {
+    transition: 1s ease all;
+}
+
+
+/*Footer*/
+
+.footer {
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
+    padding-top: 25px;
+}
+
+.footer__titulo {
+    color: var(--cor-amarela);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-family: var(--fonte-principal);
+}
+
+.footer__subTitulo {
+    font-family: var(--fonte-texto);
+    font-size: 1.5rem;
+    color: var(--cor-vermelho);
+}
+
+.footer__texto {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer__texto--link {
+    font-family: var(--fonte-texto);
+    text-decoration: none;
+    font-size: 1rem;
+    color: #2F2F2F;
+}

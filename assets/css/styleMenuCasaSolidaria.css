@@ -1,0 +1,97 @@
+/* Menu Inicial - Casa Solidaria */
+
+/* Portada Inicial */
+.portada__conteudo-principal {
+    padding: 0;
+    position: relative;
+}
+
+/*Dar efecto gradiente por encima de la foto(agregar un elemento semi-transparente por encima) */
+.portada__conteudo-principal::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(220, 167, 0, .15), rgba(17, 47, 13, .65));
+    transition: 1s ease all;
+}
+
+.portada__conteudo-secundario {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 22%;
+    min-width: 20rem;
+    margin: 20px;
+}
+
+.portada__imagem {
+    width: 100%;
+    height: 600px;
+
+}
+
+.portada__parrafo {
+    color: white;
+}
+
+.portada__botao {
+    width: 150px;
+    position: absolute;
+    left: 0px;
+    bottom: -50px;
+}
+
+/*Missao*/
+.missao__conteudo--principal {
+    margin-top: 4rem;
+    position: relative;
+}
+
+/*Imagems*/
+.missao__imagem {
+    width: 49%;
+    height: 12.188rem;
+    margin: 5px 0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+
+}
+
+/* Bordear as imagems que representam a missão(os estilos da imagem 1 e 4 são iguais, tambem acontece com as imagems 2 e 3) */
+/*1 e 4*/
+.missao__imagem--curvaDireita {
+    border-radius: 0 150px 0 150px;
+}
+
+/*2 e 3*/
+.missao__imagem--curvaEsquerda {
+    border-radius: 150px 0 150px 0;
+}
+
+/*Para o circulo que representa a cabeça da borboleta*/
+.missao__circuloBorboleta {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: var(--cor-amarela);
+    border-radius: 100%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+
+/*Emprendimento*/
+.emprendimento {
+    text-align: center;
+}
+
+.emprendimento__imagem {
+    width: 150px;
+    margin: 20px auto;
+}
