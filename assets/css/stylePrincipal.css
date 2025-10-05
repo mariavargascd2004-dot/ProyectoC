@@ -27,7 +27,6 @@ body {
     scrollbar-color: var(--cor-amarela) #fff;
     /* thumb | track */
 }
-
 /* ===== Chrome / Brave / Edge / Safari ===== */
 body::-webkit-scrollbar {
     width: 8px;
@@ -154,6 +153,17 @@ nav {
     color: white;
 }
 
+/*color de fondos*/
+.fundoAmarelo{
+    background-color: var(--cor-amarela);
+}
+.fundoAmareloSuave{
+    background-color: var(--cor-amarelaSuavea);
+}
+.fundoVermelho{
+    background-color: var(--cor-vermelho);
+}
+
 /*Otros*/
 .contornoGris {
     border: 1px solid gainsboro;
@@ -164,9 +174,12 @@ nav {
     transition: 1s ease all;
 }
 
+.ocultarElemento{
+    display: none;
+}
+
 
 /*Footer*/
-
 .footer {
     box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
     padding-top: 25px;

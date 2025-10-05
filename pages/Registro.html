@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Pagina Inicial</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <!-- FontaWesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- SweetAlrt2 CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.min.css">
+
+    <!-- Agregar Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fonte Alegreya SC -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Fonte Works Sans -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Fonte Lora -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../assets/css/stylePrincipal.css">
+    <link rel="stylesheet" href="../assets/css/styleLoginRegistro.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand navbar-light">
+            <div class="container-fluid">
+                <!-- Logo y enlaces -->
+                <div class="navbar-nav d-flex align-items-center">
+                    <img src="../assets/img/imgLogo.png" alt="Logo de la Empresa" width="80px">
+                    <a class="nav-item nav-link titulo" href="../index.html">Loja Solidaria</a>
+                </div>
+
+                <!-- Botones alineados a la derecha -->
+                <div class="d-flex ms-auto gap-2">
+                    <a href="Login.html" class="btn btn--amarelo">Logar <i class="fa-solid fa-right-to-bracket"></i></a>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <div class="contornoGris container mt-5 p-4 shadow-sm">
+            <div class="row text-center mb-5">
+                <!-- Logo -->
+                <div class="col-12">
+                    <img src="../assets/img/imgLogo.png" width="120px" alt="Logo de Empresa">
+                    <h2 class="subTitulo text-uppercase">Cadastre-se</h2>
+                </div>
+                <div class="col-12">
+                    <h3 class="parrafo fs-6 text-uppercase">Registrar como</h3>
+                </div>
+                <div class="col-6">
+                    <div id="login_logarComo--usuario"
+                        class="login__logarComo transiccionSuave fundoAmarelo rounded p-2">
+                        <i class="fa-solid fa-user fs-4"></i><br>
+                        <span class="text-uppercase">Usuario</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div id="login_logarComo--emprendedor"
+                        class="login__logarComo transiccionSuave fundoAmarelo rounded p-2">
+                        <i class="fa-solid fa-user-tie fs-4"></i><br>
+                        <span class="text-uppercase">Emprendedor</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usuario -->
+            <div class="row login__usuario ocultarElemento transiccionSuave">
+                <form action="#" method="post">
+                    <span class="parrafo fs-6 mb-3">Dados do Usuario</span>
+                    <div class="col-12 mb-3"><input type="text" required class="form-control" placeholder="Nome"></div>
+                    <div class="col-12 mb-3"><input type="text" required class="form-control" placeholder="Email"></div>
+                    <div class="col-12 mb-3"><input type="password" required class="form-control" placeholder="Senha">
+                    </div>
+                    <div class="col-12 mb-3"><input type="password" required class="form-control"
+                            placeholder="Repetir Senha"></div>
+                    <div class="col-12 mb-3">
+                        <button type="submit" class="btn btn--amarelo text-uppercase w-100 p-2">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Emprendedor -->
+            <div class="row login__emprendedor ocultarElemento transiccionSuave">
+                <form id="formEmprendedor" action="#" method="post">
+
+                    <!-- MINI NAVBAR -->
+                    <ul class="nav nav-tabs justify-content-center mb-4" id="stepsNav">
+                        <li class="nav-item">
+                            <button class="nav-link active" type="button" data-step="0">1. Dados Pessoais</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" type="button" data-step="1">2. Conta</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" type="button" data-step="2">3. Emprendimento</button>
+                        </li>
+                    </ul>
+
+                    <!-- SECCION 1 -->
+                    <div class="step active">
+                        <span class="parrafo fs-6 mb-3">Dados Pessoais</span>
+                        <div class="col-12 mb-3"><input type="text" required class="form-control" placeholder="Nome">
+                        </div>
+                        <div class="col-12 mb-3"><input type="text" required class="form-control"
+                                placeholder="Sobrenome"></div>
+                        <div class="col-12 mb-3"><textarea class="form-control"
+                                placeholder="Descrisão (Opcional)"></textarea></div>
+                        <div class="col-12 mb-5">
+                            <label>Foto de Perfil:</label>
+                            <input type="file" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- SECCION 2 -->
+                    <div class="step">
+                        <span class="parrafo fs-6 mb-3">Dados da Conta</span>
+                        <div class="col-12 mb-3"><input type="email" required class="form-control" placeholder="Email"></div>
+                        <div class="col-12 mb-3"><input type="password" required class="form-control" placeholder="Senha"></div>
+                        <div class="col-12 mb-5"><input type="password" required class="form-control"
+                                placeholder="Repetir Senha"></div>
+                    </div>
+
+                    <!-- SECCION 3 -->
+                    <div class="step">
+                        <span class="parrafo fs-6 mb-3">Dados do Emprendimento</span>
+                        <div class="col-12 mb-3">
+                            <input type="text" class="form-control" required placeholder="Nome do Emprendimento">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label>Logo:</label>
+                            <input type="file" class="form-control">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <textarea class="form-control" required placeholder="Historia da Empresa"></textarea>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <textarea class="form-control" required placeholder="Processo de fabricação"></textarea>
+                        </div>
+
+                        <!-- Imagens de fabricação -->
+                        <div class="col-12 mb-3">
+                            <label>Imagens da fabricação</label>
+                            <input type="file" class="form-control" id="fabricacaoInput" multiple accept="image/*">
+                            <div id="fabricacaoPreview" class="image-preview-container mt-2 p-2 contornoGris"></div>
+                        </div>
+
+                        <!-- Imagens da galeria -->
+                        <div class="col-12 mb-3">
+                            <label>Imagens da Galeria</label>
+                            <input type="file" class="form-control" id="galeriaInput" multiple accept="image/*">
+                            <div id="galeriaPreview" class="image-preview-container mt-2 p-2 contornoGris"></div>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <input type="number" class="form-control" placeholder="Telefone (Opcional)">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="number" class="form-control" required placeholder="Celular/WhatsApp">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="text" class="form-control" required placeholder="Ubicação">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="text" class="form-control" placeholder="Instagram (Opcional)">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="text" class="form-control" placeholder="Facebook (Opcional)">
+                        </div>
+                    </div>
+
+
+                    <!-- BOTONES DE NAVEGACIÓN -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn--vermelho" id="prevBtn">← Anterior</button>
+                        <button type="button" class="btn btn--amarelo" id="nextBtn">Siguiente →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="mt-5 footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3 text-center">
+                    <img width="80px" src="../assets/img/imgLogo.png" alt="logo do da empresa/emprendimento">
+                    <h3 class="footer__titulo">Loja Solidaria</h3>
+                </div>
+                <div class="col-2">
+                    <h4 class="footer__subTitulo"> Legales </h4>
+                    <ul class="footer__texto">
+                        <li> <a href="#" class="footer__texto--link"> Politica de Calidade </li> </a>
+                        <li> <a href="#" class="footer__texto--link"> Politica de Privacidade</a> </li>
+                        <li> <a href="#" class="footer__texto--link"> Politica de Dados </a> </li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h4 class="footer__subTitulo"> informação </h4>
+                    <ul class="footer__texto">
+                        <li> Telefone: 462111 </li>
+                        <li> Horarios: X:XX AM - X:XX PM </li>
+                        <li> WhatsApp: 099999999 </li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h4 class="footer__subTitulo"> Direção: </h4>
+                    <ul class="footer__texto">
+                        <li> Sant´Ana do Livramento: <br> Rua Tal. Numero Tal. Av Tal. </li>
+                    </ul>
+                </div>
+                <div class="col-2 text-center">
+                    <h4 class="footer__subTitulo"> Redes Sociais: </h4>
+                    <button class="btn fs-2 m-0 p-0">
+                        <a href="#">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </button>
+                    <button class="btn fs-2 m-0 p-0">
+                        <a href="#">
+                            <i class="fa-brands fa-square-instagram text-danger"></i>
+                        </a>
+                    </button>
+                    <button class="btn fs-2 m-0 p-0">
+                        <a href="#">
+                            <i class="fa-brands fa-square-whatsapp text-success"></i>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <!-- FontaWesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js"
+        integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Sweet Alert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.all.min.js"></script>
+
+    <!-- My JS  -->
+    <script src="../assets/js/scriptLoginRegistro.js"></script>
+</body>
+
+</html>
