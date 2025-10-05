@@ -27,6 +27,7 @@ body {
     scrollbar-color: var(--cor-amarela) #fff;
     /* thumb | track */
 }
+
 /* ===== Chrome / Brave / Edge / Safari ===== */
 body::-webkit-scrollbar {
     width: 8px;
@@ -56,18 +57,18 @@ nav {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 
-.nav__registrar{
+.nav__registrar {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.nav__registrar--botao{
+.nav__registrar--botao {
     padding-left: 0;
 }
 
-.nav__registrar--opcoes{
-    height:5px;
+.nav__registrar--opcoes {
+    height: 5px;
     width: 180px;
     position: absolute;
     right: 0;
@@ -77,12 +78,14 @@ nav {
     padding: 0;
     padding-left: 12px;
 }
-.nav__registrar--opcoes li{
+
+.nav__registrar--opcoes li {
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;
 }
-.nav__registrar--opcoes li:hover{
+
+.nav__registrar--opcoes li:hover {
     background-color: #3ca222;
     cursor: pointer;
     color: white;
@@ -154,13 +157,15 @@ nav {
 }
 
 /*color de fondos*/
-.fundoAmarelo{
+.fundoAmarelo {
     background-color: var(--cor-amarela);
 }
-.fundoAmareloSuave{
+
+.fundoAmareloSuave {
     background-color: var(--cor-amarelaSuavea);
 }
-.fundoVermelho{
+
+.fundoVermelho {
     background-color: var(--cor-vermelho);
 }
 
@@ -174,7 +179,7 @@ nav {
     transition: 1s ease all;
 }
 
-.ocultarElemento{
+.ocultarElemento {
     display: none;
 }
 
@@ -207,4 +212,36 @@ nav {
     text-decoration: none;
     font-size: 1rem;
     color: #2F2F2F;
+}
+
+
+/* Animaciones */
+@keyframes moverCampana {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(15deg);
+    }
+
+    30% {
+        transform: rotate(-10deg);
+    }
+
+    45% {
+        transform: rotate(15deg);
+    }
+
+    60% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }

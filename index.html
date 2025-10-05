@@ -16,6 +16,10 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- SweetAlrt2 CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.min.css">
+
+
     <!-- Agregar Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,14 +57,146 @@
 
                 <!-- Botones alineados a la derecha -->
                 <div class="d-flex ms-auto gap-2">
-                    <a href="pages/Registro.html" class="btn btn--cinza">Registrarse <i class="fa-solid fa-user-plus"></i></a href="#">
-                    <a href="pages/Login.html" class="btn btn--amarelo">Logar <i class="fa-solid fa-right-to-bracket"></i></a>
+                    <a href="pages/Registro.html" class="btn btn--cinza">Registrarse <i
+                            class="fa-solid fa-user-plus"></i></a href="#">
+                    <a href="pages/Login.html" class="btn btn--amarelo">Logar <i
+                            class="fa-solid fa-right-to-bracket"></i></a>
                 </div>
             </div>
         </nav>
 
     </header>
     <main>
+
+        <button data-bs-toggle="modal" data-bs-target="#modalAprovacaoEmprendedores"
+            title="Alertas de Aprovação de Emprendedores" id="btnFlotante--LojaSolidaria" class="btn"> <i
+                class="fa-solid fa-bell"></i> </button>
+
+        <!-- Modal para el menu de Aceptar Registro de Emprendedores  -->
+        <div class="modal fade" id="modalAprovacaoEmprendedores" tabindex="-1" role="dialog"
+            aria-labelledby="modalTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitleId">
+                            Aprovação de Emprendedores
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="modal--NuevoEmprendedor row d-flex align-items-center mb-4">
+                                <div class="col-3">
+                                    <img src="assets/img/ImgEmprendimentos/logoLegado.png" width="80px"
+                                        alt="logo da empresa">
+                                </div>
+                                <div class="col-9">
+                                    <p>Tem um registro novo pendente de aprovação do Emprendimento <b>LEGADO</b></p>
+                                </div>
+                                <div class="col-12  text-end">
+                                    <button class="btn btn--amarelo modal--botonMostrarMas">Mostrar detalhes <i
+                                            class="fa-solid fa-angle-down"></i></button>
+                                </div>
+                                <div
+                                    class="modal--contenidoMasInfo contornoGris ocultarElemento col-12 mt-2 p-3 bg-light rounded shadow-sm">
+
+                                    <!-- Datos Personales -->
+                                    <div class="card mb-3">
+                                        <div class="card-header fundoVermelho text-white">
+                                            <h5 class="mb-0">Datos Personales</h5>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Nome:</strong> Exemplo</li>
+                                            <li class="list-group-item"><strong>Sobrenome:</strong> Exemplo</li>
+                                            <li class="list-group-item d-flex align-items-center">
+                                                <strong>Foto de Perfil:</strong>
+                                                <img src="assets/img/ImgEmprendimentos/imgProducto.png" alt="img"
+                                                    class="img-thumbnail ms-2" width="50">
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Datos de la Empresa -->
+                                    <div class="card">
+                                        <div class="card-header fundoVermelho text-white">
+                                            <h5 class="mb-0">Datos de la Empresa</h5>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Nome:</strong> Exemplo</li>
+                                            <li class="list-group-item"><strong>Historia:</strong> Exemplo</li>
+                                            <li class="list-group-item"><strong>Proceso de fabricação:</strong> Exemplo
+                                            </li>
+                                            <li class="list-group-item">
+                                                <strong>Imagens de fabricação:</strong>
+                                                <div class="mt-2">
+                                                    <img src="assets/img/ImgEmprendimentos/imgProducto.png"
+                                                        class="img-thumbnail me-1 mb-1" width="50" alt="img">
+                                                    <img src="assets/img/ImgEmprendimentos/imgProducto.png"
+                                                        class="img-thumbnail me-1 mb-1" width="50" alt="img">
+                                                    <img src="assets/img/ImgEmprendimentos/imgProducto.png"
+                                                        class="img-thumbnail me-1 mb-1" width="50" alt="img">
+                                                    <img src="assets/img/ImgEmprendimentos/imgProducto.png"
+                                                        class="img-thumbnail me-1 mb-1" width="50" alt="img">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <strong>imagens da galeria:</strong>
+                                                <div class="mt-2">
+                                                    <img src="assets/img/ImgEmprendimentos/imgProducto.png"
+                                                        class="img-thumbnail me-1 mb-1" width="50" alt="img">
+                                                    <img src="assets/img/ImgEmprendimentos/imgProducto.png"
+                                                        class="img-thumbnail me-1 mb-1" width="50" alt="img">
+                                                    <img src="assets/img/ImgEmprendimentos/imgProducto.png"
+                                                        class="img-thumbnail me-1 mb-1" width="50" alt="img">
+                                                    <img src="assets/img/ImgEmprendimentos/imgProducto.png"
+                                                        class="img-thumbnail me-1 mb-1" width="50" alt="img">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item"><strong>Telefone:</strong> Exemplo</li>
+                                            <li class="list-group-item"><strong>WhatsApp:</strong> Exemplo</li>
+                                            <li class="list-group-item"><strong>Instagram:</strong> Exemplo</li>
+                                            <li class="list-group-item"><strong>Facebook:</strong> Exemplo</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-12 text-end mt-3">
+                                        <button type="button" class="btn btn-danger modal__botonRechazar"> Rejeitar
+                                        </button>
+                                        <button type="button" class="btn btn-success modal__botonAceptar"> Aprovar
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class="row d-flex align-items-center">
+                                <div class="col-3">
+                                    <img src="assets/img/ImgEmprendimentos/logoTearesDoSul.png" width="80px"
+                                        alt="logo da empresa">
+                                </div>
+                                <div class="col-9">
+                                    <p>Tem um registro novo pendente de aprovação do Emprendimento <b>TEARES DO SUL</b>
+                                    </p>
+                                </div>
+                                <div class="col-12  text-end">
+                                    <button class="btn btn--amarelo modal--botonMostrarMas">Mostrar detalhes <i
+                                            class="fa-solid fa-angle-down"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Fechar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="container-fluid">
             <!-- Conteudo da Portada Principal -->
             <div class="row portada">
@@ -179,7 +315,8 @@
                         <div class="card-body">
                             <h4 class="card-title">Legado</h4>
                             <p class="card-text">pequena descripção</p>
-                            <a href="pages/Emprendimento.html"> <button class="btn btn--vermelho"> Ver Loja </button> </a>
+                            <a href="pages/Emprendimento.html"> <button class="btn btn--vermelho"> Ver Loja </button>
+                            </a>
                         </div>
                     </div>
 
@@ -252,6 +389,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js"
         integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Sweet Alert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.all.min.js"></script>
+
 
     <!-- My JS  -->
     <script src="assets/js/scriptMenuCasaSolidaria.js"></script>
