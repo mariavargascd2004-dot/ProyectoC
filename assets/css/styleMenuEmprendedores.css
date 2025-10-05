@@ -10,6 +10,18 @@
     --cor-vermelho: #CA0707;
 }
 
+/* Boton Flotante */
+#btnFlotante--ajustesGerais {
+    position: fixed;
+    z-index: 2;
+    font-size: 32px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    right: 25px;
+    bottom: 125px;
+    background: #006BF6;
+    color: white;
+
+}
 /* Menu Inicial - Legado(ejemplo de emprendimiento) */
 
 /*Barra de Navegacion*/
@@ -109,19 +121,19 @@
 }
 
 /*Galeria de fotos*/
-#galeriaFotos{
+#galeriaFotos {
     height: 600px;
     box-shadow: 0 0 3px black;
     border-radius: 5px;
 }
 
-.galeria__imagem{
+.galeria__imagem {
     height: 600px;
     filter: brightness(0.7);
     border-radius: 5px;
 }
 
-.carousel-indicators{
+.carousel-indicators {
     list-style: none;
 }
 

@@ -10,7 +10,6 @@ main {
     cursor: pointer;
 }
 
-.login__usuario,
 .login__emprendedor {
     opacity: 0.1;
 }

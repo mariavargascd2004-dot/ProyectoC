@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // Animar campana de notificaciones
-    const btnFlotante__LojaSolidaria = document.getElementById("btnFlotante--LojaSolidaria");
+    const btnFlotante__LojaSolidaria = document.getElementById("btnFlotante--aprovacaoEmprendimentos");
 
     setInterval(() => {
         btnFlotante__LojaSolidaria.style.animation = "moverCampana 0.6s ease";

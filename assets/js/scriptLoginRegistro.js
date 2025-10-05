@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Botones
         activo.classList.add("fundoVermelho", "text-white");
         inactivo.classList.remove("fundoVermelho", "text-white");
+        inactivo.classList.add("fundoAmarelo");
         // Formularios
         mostrar.style.display = "block";
         setTimeout(() => {

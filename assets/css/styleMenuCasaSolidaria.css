@@ -1,16 +1,25 @@
 /* Menu Inicial - Casa Solidaria */
 
 /* Boton Flotante */
-#btnFlotante--LojaSolidaria {
+#btnFlotante--aprovacaoEmprendimentos, #btnFlotante--ajustesGerais {
     position: fixed;
     z-index: 2;
+    font-size: 32px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    
+    
+}
+#btnFlotante--aprovacaoEmprendimentos {
     right: 25px;
     bottom: 50px;
-    font-size: 32px;
     background: linear-gradient(145deg, var(--cor-amarela), var(--cor-amarelaSuave));
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
 
-
+#btnFlotante--ajustesGerais{
+    right: 25px;
+    bottom: 125px;
+    background: #006BF6;
+    color: white;
 }
 
 /* Portada Inicial */
