@@ -16,6 +16,10 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- SweetAlrt2 CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.min.css">
+
+
     <!-- Agregar Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,6 +56,208 @@
                 </div>
             </div>
         </nav>
+
+        <!-- Botones Flotantes -->
+        <button id="btnAgregarProducto" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProduto">
+            <i class="fa-solid fa-cart-plus"></i> Produto
+        </button>
+        <button id="btnEditarProducto" class="btn btn--amarelo">
+            <i class="fa-solid fa-pen-to-square"></i> Produto
+        </button>
+
+        <!-- Modal de Agregar Produto -->
+        <div class="modal fade modal-produto" id="modalProduto" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg modal-produto-dialog">
+                <div class="modal-content modal-produto-content p-4">
+                    <div class="container-fluid">
+                        <!-- Título -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5 class="modal-title fw-bold">Agregar Producto</h5>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <!-- Columna izquierda -->
+                            <div class="col-md-5">
+                                <div class="card modal-produto-card p-3">
+                                    <div class="mb-3">
+                                        <input class="form-control modal-produto-input" type="file"
+                                            id="modalProdutoFile">
+                                    </div>
+                                    <div id="modalProdutoPreview"
+                                        class="modal-produto-preview border bg-light d-flex justify-content-center align-items-center text-muted">
+                                        Ninguna imagen seleccionada
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <button id="modalProdutoRemove"
+                                            class="btn modal-produto-btn-remove px-4">Remover imagen</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Columna derecha -->
+                            <div class="col-md-7">
+                                <div class="card modal-produto-card p-3">
+
+                                    <!-- Botones de acción -->
+                                    <div class="d-flex justify-content-end mb-3 gap-2">
+                                        <button class="btn modal-produto-btn-cancel"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button class="btn modal-produto-btn-confirm">Confirmar</button>
+                                    </div>
+
+                                    <!-- Título y categorías -->
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control modal-produto-input"
+                                                placeholder="Titulo">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-select modal-produto-select">
+                                                <option>Categoria</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-select modal-produto-select">
+                                                <option>Sub-Categoria</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Descripción -->
+                                    <div class="mb-3">
+                                        <textarea class="form-control modal-produto-textarea" rows="4"
+                                            placeholder="Descrição"></textarea>
+                                    </div>
+
+                                    <!-- Stock, tamaño y color -->
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control modal-produto-input"
+                                                placeholder="Tamanho">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control modal-produto-input"
+                                                placeholder="Cor">
+                                        </div>
+                                    </div>
+
+                                    <!-- Precio -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="text" class="form-control modal-produto-input"
+                                                placeholder="Preço">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Editar Produto -->
+        <div class="modal fade modal-produto" id="modalProdutoEditar" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg modal-produto-dialog">
+                <div class="modal-content modal-produto-content p-4">
+                    <div class="container-fluid">
+                        <!-- Título -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5 class="modal-title fw-bold">Editar Producto</h5>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <!-- Columna izquierda -->
+                            <div class="col-md-5">
+                                <div class="card modal-produto-card p-3">
+                                    <div class="mb-3">
+                                        <input class="form-control modal-produto-input" type="file"
+                                            id="modalProdutoFile">
+                                    </div>
+                                    <div id="modalProdutoPreview"
+                                        class="modal-produto-preview border bg-light d-flex justify-content-center align-items-center text-muted">
+                                        Ninguna imagen seleccionada
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <button id="modalProdutoRemove"
+                                            class="btn modal-produto-btn-remove px-4">Remover imagen</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Columna derecha -->
+                            <div class="col-md-7">
+                                <div class="card modal-produto-card p-3">
+
+                                    <!-- Botones de acción -->
+                                    <div class="d-flex justify-content-end mb-3 gap-2">
+                                        <button class="btn modal-produto-btn-cancel"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button class="btn modal-produto-btn-confirm">Confirmar</button>
+                                    </div>
+
+                                    <!-- Título y categorías -->
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control modal-produto-input"
+                                                placeholder="Novo titulo">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-select modal-produto-select">
+                                                <option>Nova categoria</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-select modal-produto-select">
+                                                <option>Nova sub-Categoria</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Descripción -->
+                                    <div class="mb-3">
+                                        <textarea class="form-control modal-produto-textarea" rows="4"
+                                            placeholder="Nova descrição..."></textarea>
+                                    </div>
+
+                                    <!-- Stock, tamaño y color -->
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control modal-produto-input"
+                                                placeholder="Novo tamanho">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control modal-produto-input"
+                                                placeholder="Nova cor">
+                                        </div>
+                                    </div>
+
+                                    <!-- Precio -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="text" class="form-control modal-produto-input"
+                                                placeholder="Novo preço">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </header>
     <main>
@@ -440,6 +646,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js"
         integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Sweet Alert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.all.min.js"></script>
+
 
     <!-- My JS  -->
     <script src="../assets/js/scriptTienda.js"></script>

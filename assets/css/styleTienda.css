@@ -1,9 +1,102 @@
+/* Para el modal de nuevo producto */
+
+#btnAgregarProducto, #btnEditarProducto {
+  position: fixed;
+  z-index: 2;
+  bottom: 50px;
+  right: 50px;
+  font-size: 24px;
+  box-shadow: 0 0 3px gray;
+}
+#btnAgregarProducto{
+  bottom: 110px;
+  right: 50px;
+}
+#btnEditarProducto {
+  bottom: 50px;
+  right: 50px;
+}
+
+.modal-produto-dialog {
+  max-width: 900px;
+  /* un poco más compacto */
+}
+
+.modal-produto-content {
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  border: none;
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.modal-produto-card {
+  border: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.modal-produto-input,
+.modal-produto-select,
+.modal-produto-textarea {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #333;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.modal-produto-input:focus,
+.modal-produto-select:focus,
+.modal-produto-textarea:focus {
+  border-color: #34a853;
+  box-shadow: 0 0 5px rgba(52, 168, 83, 0.3);
+  outline: none;
+}
+
+.modal-produto-preview {
+  height: 280px;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.modal-produto-btn-remove {
+  background-color: #f44336;
+}
+
+.modal-produto-btn-remove:hover {
+  background-color: #d32f2f;
+}
+
+.modal-produto-btn-cancel {
+  background-color: #f4b400;
+}
+
+.modal-produto-btn-cancel:hover {
+  background-color: #e0a800;
+}
+
+.modal-produto-btn-confirm {
+  background-color: #34a853;
+}
+
+.modal-produto-btn-confirm:hover {
+  background-color: #2c8c46;
+}
+
+/* Mejora de espaciado en botones */
+.d-flex.justify-content-end.gap-2>.btn {
+  min-width: 100px;
+}
 
 /*Filtro*/
 
 /*Para el rango de costos de los productos*/
-.price-range{
-    position: relative;
+.price-range {
+  position: relative;
 }
 
 /* Cambiar los colores por defecto y dejarlos un tono gris */
@@ -25,7 +118,8 @@
   background: #888;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -5px; /* centra el thumb en la barra */
+  margin-top: -5px;
+  /* centra el thumb en la barra */
 }
 
 /* Firefox */
@@ -41,12 +135,13 @@
 /* Produtos */
 
 /* Buscador */
-.tienda__buscador{
-    position: relative;
+.tienda__buscador {
+  position: relative;
 }
-.tienda_buscador--icono{
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-60%);
+
+.tienda_buscador--icono {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-60%);
 }
