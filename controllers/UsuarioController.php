@@ -1,0 +1,45 @@
+<?php
+session_start();
+require_once '../config/database.php';
+require_once '../models/UsuarioDAO.php';
+require_once '../models/Usuario.php';
+
+$db = (new Database())->getConnection();
+$usuarioDAO = new UsuarioDAO($db);
+
+$accion = $_POST['accion'] ?? '';
+
+switch ($accion) {
+    case 'registrar':
+        $nombre = $_POST['nombre'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $tipo = $_POST['tipo'];
+
+        if ($usuarioDAO->existeEmail($email)) {
+            echo json_encode(['status' => 'error', 'message' => 'Email ya registrado']);
+            exit;
+        }
+
+        $usuario = new Usuario($nombre, $email, $password, $tipo);
+        $usuarioDAO->registrar($usuario);
+        echo json_encode(['status' => 'ok', 'message' => 'Usuario registrado']);
+        break;
+
+    case 'login':
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $user = $usuarioDAO->login($email, $password);
+        if ($user) {
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['tipo'] = $user['tipo'];
+            echo json_encode(['status' => 'ok', 'tipo' => $user['tipo']]);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Credenciales incorrectas']);
+        }
+        break;
+
+    default:
+        echo json_encode(['status' => 'error', 'message' => 'Acción no válida']);
+}

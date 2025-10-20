@@ -89,13 +89,13 @@
 
             <!-- Usuario -->
             <div class="row login__usuario transiccionSuave">
-                <form action="#" method="post">
+                <form id="formRegistrar--usuario" action="#" method="post">
                     <span class="parrafo fs-6 mb-3">Dados do Usuario</span>
-                    <div class="col-12 mb-3"><input type="text" required class="form-control" placeholder="Nome"></div>
-                    <div class="col-12 mb-3"><input type="text" required class="form-control" placeholder="Email"></div>
-                    <div class="col-12 mb-3"><input type="password" required class="form-control" placeholder="Senha">
+                    <div class="col-12 mb-3"><input type="text" name="nombre" required class="form-control" placeholder="Nome"></div>
+                    <div class="col-12 mb-3"><input type="email" name="email" required class="form-control" placeholder="Email"></div>
+                    <div class="col-12 mb-3"><input type="password" name="password" required class="form-control" placeholder="Senha">
                     </div>
-                    <div class="col-12 mb-3"><input type="password" required class="form-control"
+                    <div class="col-12 mb-3"><input type="password" name="password2" required class="form-control"
                             placeholder="Repetir Senha"></div>
                     <div class="col-12 mb-3">
                         <button type="submit" class="btn btn--amarelo text-uppercase w-100 p-2">Cadastrar</button>
@@ -105,7 +105,7 @@
 
             <!-- Emprendedor -->
             <div class="row login__emprendedor ocultarElemento transiccionSuave">
-                <form id="formEmprendedor" action="#" method="post">
+                <form id="formRegistrar--emprendedor" action="#" method="post">
 
                     <!-- MINI NAVBAR -->
                     <ul class="nav nav-tabs justify-content-center mb-4" id="stepsNav">
@@ -123,24 +123,24 @@
                     <!-- SECCION 1 -->
                     <div class="step active">
                         <span class="parrafo fs-6 mb-3">Dados Pessoais</span>
-                        <div class="col-12 mb-3"><input type="text" required class="form-control" placeholder="Nome">
+                        <div class="col-12 mb-3"><input type="text" name="nombre" required class="form-control" placeholder="Nome">
                         </div>
-                        <div class="col-12 mb-3"><input type="text" required class="form-control"
+                        <div class="col-12 mb-3"><input type="text" name="apellido" required class="form-control"
                                 placeholder="Sobrenome"></div>
-                        <div class="col-12 mb-3"><textarea class="form-control"
+                        <div class="col-12 mb-3"><textarea class="form-control" name="descripcion"
                                 placeholder="Descrisão (Opcional)"></textarea></div>
                         <div class="col-12 mb-5">
                             <label>Foto de Perfil:</label>
-                            <input type="file" class="form-control">
+                            <input name="fotoPerfil" id="fotoPerfil" accept="image/*" type="file" class="form-control">
                         </div>
                     </div>
 
                     <!-- SECCION 2 -->
                     <div class="step">
                         <span class="parrafo fs-6 mb-3">Dados da Conta</span>
-                        <div class="col-12 mb-3"><input type="email" required class="form-control" placeholder="Email"></div>
-                        <div class="col-12 mb-3"><input type="password" required class="form-control" placeholder="Senha"></div>
-                        <div class="col-12 mb-5"><input type="password" required class="form-control"
+                        <div class="col-12 mb-3"><input type="email" name="email" required class="form-control" placeholder="Email"></div>
+                        <div class="col-12 mb-3"><input type="password" name="password" required class="form-control" placeholder="Senha"></div>
+                        <div class="col-12 mb-5"><input type="password" name="password2" required class="form-control"
                                 placeholder="Repetir Senha"></div>
                     </div>
 
@@ -277,6 +277,7 @@
 
     <!-- My JS  -->
     <script src="../assets/js/scriptLoginRegistro.js"></script>
+    <script src="../assets/ajax/ajaxRegistro.js"></script>
 </body>
 
 </html>
