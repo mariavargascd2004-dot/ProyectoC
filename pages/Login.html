@@ -16,6 +16,10 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- SweetAlrt2 CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.min.css">
+
+
     <!-- Agregar Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,13 +89,13 @@
             </div>
             <!-- Usuario -->
             <div class="row login__usuario transiccionSuave">
-                <form action="#" method="post">
+                <form id="formLogin--usuario" action="#" method="post">
                     <span class="parrafo fs-6 mb-3">Dados do Usuario</span>
                     <div class="col-12 mb-3">
-                        <input type="text" required class="form-control" placeholder="Usuario">
+                        <input type="text" name="email" required class="form-control" placeholder="Email">
                     </div>
                     <div class="col-12 mb-3">
-                        <input type="password" required class="form-control" placeholder="Senha">
+                        <input type="password" name="password" required class="form-control" placeholder="Senha">
                     </div>
                     <div class="col-12 mb-3">
                         <button type="submit" class="btn btn--amarelo text-uppercase w-100 p-2"> Entrar </button>
@@ -182,8 +186,13 @@
         integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <!-- Sweet Alert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.all.min.js"></script>
+
+
     <!-- My JS  -->
-    <script src="../assets/js/scriptLoginRegistro.js"></script>
+    <script src="../assets/js/scriptLogin.js"></script>
+    <script src="../assets/ajax/LoginRegistro.js"></script>
 </body>
 
 </html>

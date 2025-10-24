@@ -116,7 +116,7 @@ CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(500) NOT NULL,
   `tipo` enum('cliente','associado') NOT NULL DEFAULT 'cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

@@ -37,7 +37,9 @@ class UsuarioDAO
         if ($user && password_verify($password, $user['password'])) {
             return $user;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     public function existeEmail($email)

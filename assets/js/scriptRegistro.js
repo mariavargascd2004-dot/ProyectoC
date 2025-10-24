@@ -11,10 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     let currentStep = 0;
-    //Registro de Usuario
+    //Registro
     const formRegistrarUsuario = document.getElementById("formRegistrar--usuario");
     const formRegistrarEmprendedor = document.getElementById("formRegistrar--emprendedor");
-
 
     // ------------------------------------------------------------------------------//
     //                                       Inicio
