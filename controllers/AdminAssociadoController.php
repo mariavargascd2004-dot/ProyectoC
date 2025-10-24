@@ -27,7 +27,7 @@ switch ($accion) {
 
         $fotoPerfil = '';
         if (isset($_FILES['fotoPerfil']) && $_FILES['fotoPerfil']['error'] === 0) {
-            $uploadDir = '../uploads/';
+            $uploadDir = '../assets/img/perfil/';
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
             }
@@ -37,7 +37,7 @@ switch ($accion) {
             $rutaCompleta = $uploadDir . $nuevoNombre;
 
             if (move_uploaded_file($_FILES['fotoPerfil']['tmp_name'], $rutaCompleta)) {
-                $fotoPerfil = '/uploads/' . $nuevoNombre;
+                $fotoPerfil = '../assets/img/perfil/' . $nuevoNombre;
             } else {
                 echo json_encode(['status' => 'error', 'message' => 'Error al subir la imagen']);
                 exit;
@@ -68,7 +68,7 @@ switch ($accion) {
 
         if ($idUsuario) {
             error_log("Admin registrado exitosamente. ID: " . $idUsuario);
-            echo json_encode(['status' => 'ok', 'message' => 'Admin registrado correctamente']);
+            echo json_encode(['status' => 'ok', 'idUsuario' => $idUsuario, 'message' => 'Admin registrado correctamente']);
         } else {
             error_log("Error al registrar admin. ID Usuario: " . $idUsuario);
             echo json_encode(['status' => 'error', 'message' => 'Error al registrar admin']);

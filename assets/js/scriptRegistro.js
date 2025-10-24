@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const formRegistrarUsuario = document.getElementById("formRegistrar--usuario");
     const formRegistrarEmprendedor = document.getElementById("formRegistrar--emprendedor");
 
+    //Imagenes
+    let filesArrayFabricacao = [];
+    let filesArrayGaleria = [];
+
+
     // ------------------------------------------------------------------------------//
     //                                       Inicio
     // ------------------------------------------------------------------------------//
@@ -87,15 +92,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
     showStep(currentStep);
+
     function handleMultipleImages(inputId, previewId, limit = null) {
         const input = document.getElementById(inputId);
         const previewContainer = document.getElementById(previewId);
-        let filesArray = [];
+
+        // Determinar qué array global usar
+        let filesArray = inputId === 'fabricacaoInput' ? filesArrayFabricacao : filesArrayGaleria;
 
         input.addEventListener('change', (event) => {
             const newFiles = Array.from(event.target.files);
 
-            // Si hay límite, verificar cuántas hay actualmente
+            // Validar límite
             if (limit && filesArray.length + newFiles.length > limit) {
                 const remaining = limit - filesArray.length;
                 Swal.fire({
@@ -107,14 +115,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     confirmButtonColor: '#ffc107',
                     confirmButtonText: 'Entendido',
                 });
-
                 input.value = "";
                 return;
             }
 
-            filesArray = filesArray.concat(newFiles);
+            // Agregar nuevos archivos al array global
+            filesArray.push(...newFiles);
             renderPreviews();
-            input.value = "";
+            input.value = ""; // Limpiar input
+
         });
 
         function renderPreviews() {
@@ -130,7 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     const div = document.createElement('div');
                     div.classList.add('image-preview');
                     div.innerHTML = `
-                    <img src="${e.target.result}" alt="Imagem">
+                    <img src="${e.target.result}" alt="Imagem" style="max-width: 100px; max-height: 100px;">
+                    <span>${file.name}</span>
                     <button type="button" data-index="${index}">&times;</button>
                 `;
                     previewContainer.appendChild(div);
@@ -142,17 +152,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // Eliminar imagen
         previewContainer.addEventListener('click', (e) => {
             if (e.target.tagName === 'BUTTON') {
-                const index = e.target.dataset.index;
+                const index = parseInt(e.target.dataset.index);
                 filesArray.splice(index, 1);
                 renderPreviews();
             }
         });
 
+        // Inicializar
         renderPreviews();
     }
-
-    handleMultipleImages('fabricacaoInput', 'fabricacaoPreview', 4); // límite de 4 imágenes
-    handleMultipleImages('galeriaInput', 'galeriaPreview');
+    handleMultipleImages('fabricacaoInput', 'fabricacaoPreview', 4);
+    handleMultipleImages('galeriaInput', 'galeriaPreview', 10);
 
 
     //Registro de Usuario
@@ -167,48 +177,283 @@ document.addEventListener("DOMContentLoaded", () => {
         let tipo = "cliente";
 
         if (password !== password2) {
-            alert("contraseñas no coinciden")
-            return;
+            Swal.fire({
+                title: 'Senhas não coincidem',
+                text: 'Por favor, verifique se as senhas são iguais em ambos os campos.',
+                icon: 'error',
+                confirmButtonText: 'Entendido',
+                background: '#B2442E',
+                color: '#FFFFFF',
+                confirmButtonColor: '#FDCB29',
+                iconColor: '#FDCB29'
+            }); return;
         }
 
-        //Llamar funcion registrar(/ajax)
-        registrarUsuario(nombre, email, password, tipo);
+        //Registrar Usuario
+        fetch("../controllers/UsuarioController.php", {
+            method: "POST",
+            body: new URLSearchParams({
+                accion: "registrar",
+                nombre: nombre,
+                email: email,
+                password: password,
+                tipo: tipo
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'error') {
+                    Swal.fire({
+                        title: 'Erro no registro',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'Tentar novamente',
+                        background: '#B2442E',
+                        color: '#FFFFFF',
+                        confirmButtonColor: '#FDCB29',
+                        iconColor: '#FDCB29'
+                    });
+                } else {
+                    Swal.fire({
+                        title: '¡Registro realizado com sucesso!',
+                        html: data.message + "<br><br>Redirecionando...",
+                        icon: 'success',
+                        showConfirmButton: false,
+                        background: '#DCA700',
+                        color: '#000000',
+                        confirmButtonColor: '#B2442E',
+                        iconColor: '#FFFFFF',
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
 
+                    setTimeout(() => {
+                        window.location.href = "../";
+                    }, 2980);
+                }
+            })
+            .catch(err => {
+                console.error("Erro na requisição:", err);
+                Swal.fire({
+                    title: 'Erro de conexão',
+                    text: 'Não foi possível conectar ao servidor. Por favor, tente novamente.',
+                    icon: 'error',
+                    confirmButtonText: 'Tentar novamente',
+                    confirmButtonColor: '#d33'
+                });
+            });
     });
-    //Registro de Emprendedor
     function irARegistrarAdminAssociado() {
-
         const inputFoto = document.getElementById("fotoPerfil");
-        const formData = new FormData(formRegistrarEmprendedor);
+        const form = document.getElementById("formRegistrar--emprendedor");
 
-        let nombre = formData.get("nombre");
-        let apellido = formData.get("apellido");
-        let descripcion = formData.get("descripcion");
-        let email = formData.get("email");
-        let password = formData.get("password");
-        let password2 = formData.get("password2");
+        let nombre = form.querySelector('input[name="nombre"]').value;
+        let apellido = form.querySelector('input[name="apellido"]').value;
+        let descripcion = form.querySelector('textarea[name="descripcion"]').value;
+        let email = form.querySelector('input[name="email"]').value;
+        let password = form.querySelector('input[name="password"]').value;
+        let password2 = form.querySelector('input[name="password2"]').value;
         let tipo = "associado";
 
         if (password !== password2) {
-            Swal.fire({ title: 'Error', text: 'Las contraseñas no coinciden', icon: 'error' });
-            return;
+            Swal.fire({
+                title: 'Senhas não coincidem',
+                text: 'As senhas digitadas não são iguais. Por favor, verifique.',
+                icon: 'warning',
+                confirmButtonText: 'Corrigir',
+                confirmButtonColor: '#ffc107',
+                background: '#fff',
+                color: '#333'
+            }); return;
         }
 
-
-        //Validar la foto del usuario
+        // Validar la foto del usuario
         const file = inputFoto.files[0];
         if (file) {
-            const maxBytes = 2 * 1024 * 1024; // 2MB por ejemplo
+            const maxBytes = 2 * 1024 * 1024;
             if (file.size > maxBytes) {
-                Swal.fire({ title: 'Archivo muy grande', text: 'Máx 2MB', icon: 'warning' });
+                Swal.fire({
+                    title: 'Arquivo muito grande',
+                    text: 'A imagem de perfil não deve ultrapassar 2MB.',
+                    icon: 'warning',
+                    confirmButtonText: 'Selecionar outra',
+                    confirmButtonColor: '#ffc107'
+                });
                 return;
             }
         }
 
+        const formData = new FormData();
+        formData.append("accion", "registrarAdmin");
+        formData.append("nombre", nombre);
+        formData.append("apellido", apellido);
+        formData.append("descripcion", descripcion);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("tipo", tipo);
 
-        //Llamar funcion registrar(/ajax)
-        registrarAdminAssociado(nombre, apellido, descripcion, file, email, password, tipo);
+        if (file) {
+            formData.append("fotoPerfil", file);
+        }
 
-    };
+        // Mostrar loading
+        Swal.fire({
+            title: 'Processando registro...',
+            text: 'Aguarde enquanto cadastramos suas informações.',
+            icon: 'info',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
+        fetch("../controllers/AdminAssociadoController.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'error') {
+                    Swal.fire({
+                        title: 'Erro no cadastro',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'Tentar novamente',
+                        background: '#B2442E',
+                        color: '#FFFFFF',
+                        confirmButtonColor: '#FDCB29',
+                        iconColor: '#FDCB29'
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Administrador cadastrado!',
+                        text: 'Prosseguindo para o cadastro do empreendimento...',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        iconColor: '#28a745'
+                    });
+                    registrarEmprendimento(data.idUsuario);
+                }
+            })
+            .catch(err => {
+                Swal.fire({
+                    title: 'Erro de conexão',
+                    text: 'Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.',
+                    icon: 'error',
+                    confirmButtonText: 'Tentar novamente',
+                    confirmButtonColor: '#d33'
+                });
+            });
+    }
+
+    //Registrar Emprendimiento
+    function registrarEmprendimento(adminId) {
+
+        const form = document.getElementById("formRegistrar--emprendedor");
+        const formData = new FormData();
+
+        // Datos básicos del emprendimiento
+        formData.append("accion", "registrar");
+        formData.append("adminAssociado_idUsuario", adminId);
+        formData.append("nome", form.querySelector('input[name="nombreEmprendimento"]').value);
+        formData.append("historia", form.querySelector('textarea[name="historia"]').value);
+        formData.append("processoFabricacao", form.querySelector('textarea[name="processoFabricacao"]').value);
+        formData.append("telefone", form.querySelector('input[name="telefone"]').value || '');
+        formData.append("celular", form.querySelector('input[name="celular"]').value);
+        formData.append("ubicacao", form.querySelector('input[name="ubicacao"]').value);
+        formData.append("instagram", form.querySelector('input[name="instragram"]').value || '');
+        formData.append("facebook", form.querySelector('input[name="facebook"]').value || '');
+
+        // Logo
+        const logoFile = form.querySelector('input[name="logoEmprendimento"]').files[0];
+        if (logoFile) {
+            formData.append("logoEmprendimento", logoFile);
+        }
+
+        filesArrayFabricacao.forEach((file, index) => {
+            formData.append("imagemsFabricacao[]", file);
+        });
+
+        filesArrayGaleria.forEach((file, index) => {
+            formData.append("imagemsGaleria[]", file);
+        });
+
+        // Validaciones
+        if (!formData.get("nome") || !formData.get("historia") || !formData.get("processoFabricacao") ||
+            !formData.get("celular") || !formData.get("ubicacao")) {
+            Swal.fire({
+                title: 'Campos obrigatórios',
+                text: 'Por favor, preencha todos os campos obrigatórios do empreendimento.',
+                icon: 'warning',
+                confirmButtonText: 'Completar dados',
+                confirmButtonColor: '#ffc107'
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: 'Cadastrando empreendimento...',
+            text: 'Estamos processando suas informações. Isso pode levar alguns instantes.',
+            icon: 'info',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
+
+        // Enviar al servidor
+        fetch("../controllers/EmprendimentoController.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(async res => {
+                const text = await res.text();
+                try {
+                    return JSON.parse(text);
+                } catch (e) {
+                    console.error("❌ Respuesta no JSON:", e);
+                    throw new Error("Respuesta no JSON: " + text.substring(0, 200));
+                }
+            })
+            .then(data => {
+                if (data.status === 'ok') {
+                    filesArrayFabricacao = [];
+                    filesArrayGaleria = [];
+
+                    Swal.fire({
+                        title: 'Cadastro concluído!',
+                        text: 'Seu empreendimento foi registrado com sucesso!',
+                        icon: 'success',
+                        confirmButtonText: 'Aceitar'
+                    }).then(() => {
+                        window.location.href = "../";
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Erro no cadastro',
+                        text: data.message || 'Ocorreu um erro inesperado durante o cadastro.',
+                        icon: 'error',
+                        confirmButtonText: 'Tentar novamente',
+                        confirmButtonColor: '#d33'
+                    });
+                }
+            })
+            .catch(err => {
+                Swal.fire({
+                    title: 'Erro de conexão',
+                    text: 'Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.',
+                    icon: 'error',
+                    confirmButtonText: 'Tentar novamente',
+                    confirmButtonColor: '#d33'
+                });
+            });
+    }
+
+
 
 });

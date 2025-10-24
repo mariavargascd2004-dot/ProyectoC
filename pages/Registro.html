@@ -148,50 +148,50 @@
                     <div class="step">
                         <span class="parrafo fs-6 mb-3">Dados do Emprendimento</span>
                         <div class="col-12 mb-3">
-                            <input type="text" class="form-control" required placeholder="Nome do Emprendimento">
+                            <input type="text" name="nombreEmprendimento" class="form-control" required placeholder="Nome do Emprendimento">
                         </div>
 
                         <div class="col-12 mb-3">
                             <label>Logo:</label>
-                            <input type="file" class="form-control">
+                            <input type="file" name="logoEmprendimento" class="form-control">
                         </div>
 
                         <div class="col-12 mb-3">
-                            <textarea class="form-control" required placeholder="Historia da Empresa"></textarea>
+                            <textarea class="form-control" name="historia" required placeholder="Historia da Empresa"></textarea>
                         </div>
 
                         <div class="col-12 mb-3">
-                            <textarea class="form-control" required placeholder="Processo de fabricação"></textarea>
+                            <textarea class="form-control" name="processoFabricacao" required placeholder="Processo de fabricação"></textarea>
                         </div>
 
                         <!-- Imagens de fabricação -->
                         <div class="col-12 mb-3">
-                            <label>Imagens da fabricação</label>
-                            <input type="file" class="form-control" id="fabricacaoInput" multiple accept="image/*">
+                            <label>Imagens da fabricação (4 imagems)</label>
+                            <input type="file" name="imagemsFabricacao" class="form-control" id="fabricacaoInput" multiple accept="image/*">
                             <div id="fabricacaoPreview" class="image-preview-container mt-2 p-2 contornoGris"></div>
                         </div>
 
                         <!-- Imagens da galeria -->
                         <div class="col-12 mb-3">
-                            <label>Imagens da Galeria</label>
-                            <input type="file" class="form-control" id="galeriaInput" multiple accept="image/*">
+                            <label>Imagens da Galeria (máximo 10 imágems)</label>
+                            <input type="file" name="imagemsGaleria" class="form-control" id="galeriaInput" multiple accept="image/*">
                             <div id="galeriaPreview" class="image-preview-container mt-2 p-2 contornoGris"></div>
                         </div>
 
                         <div class="col-12 mb-3">
-                            <input type="number" class="form-control" placeholder="Telefone (Opcional)">
+                            <input type="number" name="telefone" class="form-control" placeholder="Telefone (Opcional)">
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="number" class="form-control" required placeholder="Celular/WhatsApp">
+                            <input type="number" name="celular" class="form-control" required placeholder="Celular/WhatsApp">
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="text" class="form-control" required placeholder="Ubicação">
+                            <input type="text" name="ubicacao" class="form-control" required placeholder="Ubicação">
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="text" class="form-control" placeholder="Instagram (Opcional)">
+                            <input type="text" name="instragram" class="form-control" placeholder="Instagram (Opcional)">
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="text" class="form-control" placeholder="Facebook (Opcional)">
+                            <input type="text" name="facebook" class="form-control" placeholder="Facebook (Opcional)">
                         </div>
                     </div>
 
@@ -277,7 +277,6 @@
 
     <!-- My JS  -->
     <script src="../assets/js/scriptRegistro.js"></script>
-    <script src="../assets/ajax/LoginRegistro.js"></script>
 </body>
 
 </html>

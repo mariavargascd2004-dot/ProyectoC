@@ -48,8 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let email = formData.get("email");
         let password = formData.get("password");
 
-        console.log(email + " " + password);
-
         loginUsuario(email, password);
 
     })
