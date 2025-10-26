@@ -303,6 +303,8 @@ document.addEventListener("DOMContentLoaded", () => {
             icon: 'info',
             showConfirmButton: false,
             allowOutsideClick: false,
+            background: '#DCA700',
+            color: '#000000',
             didOpen: () => {
                 Swal.showLoading();
             }
@@ -333,9 +335,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         showConfirmButton: false,
                         timer: 2000,
                         timerProgressBar: true,
-                        iconColor: '#28a745'
+                        background: '#DCA700',
+                        color: '#000000',
+                        iconColor: '#FFFFFF'
                     });
-                    registrarEmprendimento(data.idUsuario);
+                    setTimeout(() => {
+                        registrarEmprendimento(data.idUsuario);
+                    }, 2000);
                 }
             })
             .catch(err => {
@@ -344,7 +350,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     text: 'Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.',
                     icon: 'error',
                     confirmButtonText: 'Tentar novamente',
-                    confirmButtonColor: '#d33'
+                    background: '#B2442E',
+                    color: '#FFFFFF',
+                    confirmButtonColor: '#FDCB29',
+                    iconColor: '#FDCB29'
                 });
             });
     }
@@ -387,9 +396,12 @@ document.addEventListener("DOMContentLoaded", () => {
             Swal.fire({
                 title: 'Campos obrigatórios',
                 text: 'Por favor, preencha todos os campos obrigatórios do empreendimento.',
-                icon: 'warning',
+                icon: 'error',
                 confirmButtonText: 'Completar dados',
-                confirmButtonColor: '#ffc107'
+                background: '#B2442E',
+                color: '#FFFFFF',
+                confirmButtonColor: '#FDCB29',
+                iconColor: '#FDCB29'
             });
             return;
         }
@@ -400,6 +412,8 @@ document.addEventListener("DOMContentLoaded", () => {
             icon: 'info',
             showConfirmButton: false,
             allowOutsideClick: false,
+            background: '#DCA700',
+            color: '#000000',
             didOpen: () => {
                 Swal.showLoading();
             }
@@ -429,7 +443,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: 'Cadastro concluído!',
                         text: 'Seu empreendimento foi registrado com sucesso!',
                         icon: 'success',
-                        confirmButtonText: 'Aceitar'
+                        confirmButtonText: 'Aceitar',
+                        background: '#DCA700',
+                        color: '#000000',
+                        confirmButtonColor: '#B2442E',
+                        iconColor: '#FFFFFF'
                     }).then(() => {
                         window.location.href = "../";
                     });
@@ -439,7 +457,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         text: data.message || 'Ocorreu um erro inesperado durante o cadastro.',
                         icon: 'error',
                         confirmButtonText: 'Tentar novamente',
-                        confirmButtonColor: '#d33'
+                        background: '#B2442E',
+                        color: '#FFFFFF',
+                        confirmButtonColor: '#FDCB29',
+                        iconColor: '#FDCB29'
                     });
                 }
             })
@@ -449,7 +470,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     text: 'Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.',
                     icon: 'error',
                     confirmButtonText: 'Tentar novamente',
-                    confirmButtonColor: '#d33'
+                    background: '#B2442E',
+                    color: '#FFFFFF',
+                    confirmButtonColor: '#FDCB29',
+                    iconColor: '#FDCB29'
                 });
             });
     }

@@ -1,10 +1,12 @@
 <?php
+session_start();
 require_once "../config/database.php";
 require_once "../models/AdminGeneral.php";
 require_once "../models/AdminGeneralDAO.php";
 
 $db  = (new Database())->getConnection();
 $adminGeneralDAO = new AdminGeneralDAO($db);
+$adminTipo = "adminGeneral";
 
 $accion = $_POST["accion"] ?? "";
 
@@ -15,11 +17,13 @@ switch ($accion) {
 
         $user = $adminGeneralDAO->login($usuario, $password);
         if ($user) {
-            $_SESSION['user'] = [
+            $_SESSION["user"] = [
                 "id" => $user['idAdminGeneral'],
-                "tipo" => "adminGeneral"
+                "nome" => $user['nombre'],
+                "tipo" => $adminTipo,
+                "alerta" => true,
             ];
-            echo json_encode(['status' => 'ok', "message" => "Bem vindo/a de novo Administrador!"]);
+            echo json_encode(['status' => 'ok', "message" => "Bem vindo/a de novo Administrador!", "tipo" => $adminTipo]);
         } else {
 
             echo json_encode(['status' => 'error', 'message' => 'Credenciales incorrectas']);

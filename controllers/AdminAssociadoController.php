@@ -67,7 +67,12 @@ switch ($accion) {
         $idUsuario = $adminDAO->registrar($admin);
 
         if ($idUsuario) {
-            error_log("Admin registrado exitosamente. ID: " . $idUsuario);
+            $_SESSION['user'] = [
+                "id" => $idUsuario,
+                "tipo" => $tipo,
+                "nome" => $nombre,
+                "alerta" => true
+            ];
             echo json_encode(['status' => 'ok', 'idUsuario' => $idUsuario, 'message' => 'Admin registrado correctamente']);
         } else {
             error_log("Error al registrar admin. ID Usuario: " . $idUsuario);

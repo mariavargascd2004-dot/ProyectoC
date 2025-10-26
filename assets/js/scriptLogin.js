@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     })
                         .then(res => res.json())
                         .then(data => {
+                            console.log(data)
                             if (data.status === "ok") {
                                 Swal.fire({
                                     title: 'Sucesso!',

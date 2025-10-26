@@ -27,7 +27,9 @@ switch ($accion) {
 
         $_SESSION['user'] = [
             "id" => $idUsuario,
-            "tipo" => $tipo
+            "tipo" => $tipo,
+            "nome" => $nombre,
+            "alerta" => true
         ];
 
 
@@ -41,7 +43,10 @@ switch ($accion) {
         if ($user) {
             $_SESSION['user'] = [
                 "id" => $user['idUsuario'],
-                "tipo" => $user['tipo']
+                "tipo" => $user['tipo'],
+                "nome" => $user['nombre'],
+                "alerta" => true
+
             ];
             echo json_encode(['status' => 'ok', "message" => "Bem vindo/a de novo!"]);
         } else {
