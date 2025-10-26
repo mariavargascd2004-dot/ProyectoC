@@ -56,7 +56,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 password: password,
             })
         })
-            .then(res => res.json())
+            .then(res => {
+                console.log("Estado de la respuesta HTTP:", res.status);
+                if (!res.ok) {
+                    // Intenta leer el cuerpo como texto para ver el error del servidor (HTML/texto)
+                    return res.text().then(text => {
+                        console.error("Error en la respuesta del servidor (HTTP " + res.status + "):", text);
+                        // Lanza un error para caer en el catch final
+                        throw new Error("Error del servidor (HTTP " + res.status + "). Verifique la consola para más detalles.");
+                    });
+                }
+                return res.json();
+            })
             .then(data => {
                 if (data.status === "ok") {
                     Swal.fire({
@@ -138,8 +149,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
             })
-            .catch(err => console.error("Error en la petición:", err));
-
+            .catch(err => {
+                console.error("Error en la petición:", err);
+                Swal.fire({
+                    title: '¡Error de Conexión!',
+                    text: err.message || 'Ocurrió un error de red o el servidor no devolvió una respuesta válida.',
+                    icon: 'error'
+                });
+            });
 
     });
 

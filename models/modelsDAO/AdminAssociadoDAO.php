@@ -1,6 +1,6 @@
 <?php
 
-require_once "UsuarioDAO.php";
+require_once "../models/modelsDAO/UsuarioDAO.php";
 
 class AdminAssociadoDAO
 {

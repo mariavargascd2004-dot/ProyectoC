@@ -2,7 +2,7 @@
 session_start();
 require_once "../config/database.php";
 require_once "../models/AdminGeneral.php";
-require_once "../models/AdminGeneralDAO.php";
+require_once "../models/modelsDAO/AdminGeneralDAO.php";
 
 $db  = (new Database())->getConnection();
 $adminGeneralDAO = new AdminGeneralDAO($db);

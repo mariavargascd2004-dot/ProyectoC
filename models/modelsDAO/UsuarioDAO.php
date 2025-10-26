@@ -1,5 +1,5 @@
 <?php
-require_once "Usuario.php";
+require_once "../models/Usuario.php";
 
 class UsuarioDAO
 {
@@ -36,17 +36,31 @@ class UsuarioDAO
 
         if ($user && password_verify($password, $user['password'])) {
             return $user;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
+    //Verificar si existe el Email
     public function existeEmail($email)
     {
         $sql = "SELECT idUsuario FROM usuario WHERE email = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$email]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+    }
+
+    public function eliminarUsuario($id)
+    {
+        $sql = "DELETE FROM usuario WHERE idUsuario = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+
+        // Verifica si alguna fila fue eliminada
+        if ($stmt->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

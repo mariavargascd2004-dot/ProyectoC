@@ -1,5 +1,5 @@
 <?php
-require_once "AdminGeneral.php";
+require_once "../models/AdminGeneral.php";
 
 class AdminGeneralDAO
 {

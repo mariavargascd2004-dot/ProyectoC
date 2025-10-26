@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once '../config/database.php';
-require_once '../models/UsuarioDAO.php';
+require_once '../models/modelsDAO/UsuarioDAO.php';
 require_once '../models/AdminAssociado.php';
-require_once '../models/AdminAssociadoDAO.php';
+require_once '../models/modelsDAO/AdminAssociadoDAO.php';
 
 $db = (new Database())->getConnection();
 $adminDAO = new AdminAssociadoDAO($db);

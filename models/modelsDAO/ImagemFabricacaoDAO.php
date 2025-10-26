@@ -1,5 +1,5 @@
 <?php
-require_once "ImagemFabricacao.php";
+require_once "../models/ImagemFabricacao.php";
 
 class ImagemFabricacaoDAO
 {

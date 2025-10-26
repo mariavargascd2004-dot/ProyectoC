@@ -1,12 +1,12 @@
 <?php
 session_start();
 require_once '../config/database.php';
-require_once '../models/UsuarioDAO.php';
-require_once '../models/EmprendimentoDAO.php';
+require_once '../models/modelsDAO/UsuarioDAO.php';
+require_once '../models/modelsDAO/EmprendimentoDAO.php';
+require_once '../models/modelsDAO/AdminAssociadoDAO.php';
+require_once '../models/modelsDAO/ImagemFabricacaoDAO.php';
+require_once '../models/modelsDAO/ImagemGaleriaDAO.php';
 require_once '../models/Emprendimento.php';
-require_once '../models/AdminAssociadoDAO.php';
-require_once '../models/ImagemFabricacaoDAO.php';
-require_once '../models/ImagemGaleriaDAO.php';
 require_once '../models/ImagemFabricacao.php';
 require_once '../models/ImagemGaleria.php';
 
@@ -19,6 +19,15 @@ $imagemGaleriaDAO = new ImagemGaleriaDAO($db);
 $accion = $_POST['accion'] ?? '';
 
 switch ($accion) {
+    case "buscar":
+
+        $data = $emprendimentoDAO->listarTodosComAdmin();
+        if ($data === null) {
+            echo json_encode(["data" => null, "mensaje" => "No se encontraron registros"]);
+        } else {
+            echo json_encode(["data" => $data]);
+        }
+        break;
     case 'registrar':
 
         // Validar datos básicos

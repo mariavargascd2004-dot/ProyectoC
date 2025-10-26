@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../config/database.php';
-require_once '../models/UsuarioDAO.php';
+require_once '../models/modelsDAO/UsuarioDAO.php';
 require_once '../models/Usuario.php';
 
 $db = (new Database())->getConnection();
@@ -53,7 +53,23 @@ switch ($accion) {
             echo json_encode(['status' => 'incorrect_Credencial', 'message' => 'Credenciales incorrectas']);
         }
         break;
+    case 'eliminar':
+        $id = $_POST['id'];
 
+        $user = $usuarioDAO->eliminarUsuario($id);
+
+        if ($user) {
+            echo json_encode([
+                'status' => 'ok',
+                'message' => 'O empreendedor e todos os seus registros foram eliminados com sucesso.'
+            ]);
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Não foi possível eliminar o registro.'
+            ]);
+        }
+        break;
     default:
         echo json_encode(['status' => 'error', 'message' => 'Acción no válida']);
 }

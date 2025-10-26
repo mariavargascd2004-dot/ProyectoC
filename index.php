@@ -1,7 +1,5 @@
 <?php
 session_start();
-require "config/database.php";
-
 if (isset($_SESSION["user"])) {
     $idUsuario = $_SESSION["user"]['id'];
     $tipoUsuario = $_SESSION["user"]['tipo'];
@@ -127,7 +125,7 @@ if (isset($_SESSION["user"])) {
                     class="fa-solid fa-bell"></i> </button>
 
             <!-- Boton Flotante para Ajustes -->
-            <a href="pages/AjustesCasaSolidaria.html" title="Ajustes Gerais" class="btn" id="btnFlotante--ajustesGerais"><i class="fa-solid fa-gear"></i></a>
+            <a href="pages/AjustesCasaSolidaria.php" title="Ajustes Gerais" class="btn" id="btnFlotante--ajustesGerais"><i class="fa-solid fa-gear"></i></a>
 
             <!-- Modal para el menu de Aceptar Registro de Emprendedores  -->
             <div class="modal fade" id="modalAprovacaoEmprendedores" tabindex="-1" role="dialog"
@@ -452,7 +450,7 @@ if (isset($_SESSION["user"])) {
 
 
     <!-- My JS  -->
-    <script src="assets/js/scriptMenuCasaSolidaria.js"></script>
+    <script src="assets/js/MenuCasaSolidaria.js"></script>
 
     <!-- Alerta de Bienvenida -- cuando no hay nadie logueado -->
     <?php
@@ -536,7 +534,7 @@ if (isset($_SESSION["user"])) {
 
     <!-- SCRIPT para manejar el contenido del Administrador General (Solo se va mostrar si existe la sesion del admin) -->
     <?php if ($idUsuario != null && $tipoUsuario == "adminGeneral") { ?>
-        <script src="assets/js/scriptMenuCasaSolidariaAdmin.js"></script>
+        <script src="assets/js/MenuCasaSolidariaAdmin.js"></script>
     <?php } ?>
 
 </body>

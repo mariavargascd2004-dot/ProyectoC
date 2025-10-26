@@ -216,6 +216,8 @@ nav {
 
 
 /* Animaciones */
+
+/* Para notificacion del Admin (menu de aceptar asociados) */
 @keyframes moverCampana {
     0% {
         transform: rotate(0deg);
@@ -245,3 +247,18 @@ nav {
         transform: rotate(0deg);
     }
 }
+
+/* borde rojo parpadeando */
+
+@keyframes parpadeoBordeRojo{
+    0%{
+        border: 2px solid #86b7fe;
+    }
+    50%{
+        border: 2px solid red;
+    }
+    100%{
+        border: 2px solid #86b7fe;
+    }
+}
+

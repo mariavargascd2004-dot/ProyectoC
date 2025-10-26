@@ -33,14 +33,6 @@ class EmprendimentoDAO
         return $this->conn->lastInsertId();
     }
 
-    public function obterPorAdmin($adminAssociado_idUsuario)
-    {
-        $sql = "SELECT * FROM emprendimento WHERE adminAssociado_idUsuario = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$adminAssociado_idUsuario]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
     public function existeNome($nome)
     {
         $sql = "SELECT COUNT(*) FROM emprendimento WHERE nome = ?";
@@ -57,12 +49,30 @@ class EmprendimentoDAO
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function listarAprovados()
+    public function listarTodosComAdmin()
     {
-        $sql = "SELECT e.*, u.nome as nomeAdmin 
+        $sql = "SELECT e.*, 
+                   u.idUsuario AS idAdmin, 
+                   u.nombre AS nomeAdmin, 
+                   u.email AS emailAdmin
+            FROM emprendimento e
+            INNER JOIN usuario u 
+                ON e.adminAssociado_idUsuario = u.idUsuario
+            ORDER BY e.idEmprendimento DESC";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados ?: null;
+    }
+
+    public function listarNoAprovados()
+    {
+        $sql = "SELECT e.*, u.nombre as nomeAdmin 
                 FROM emprendimento e 
                 INNER JOIN usuario u ON e.adminAssociado_idUsuario = u.idUsuario 
-                WHERE e.aprovado = 1";
+                WHERE e.aprovado = 0";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -1,0 +1,1707 @@
+[2025-10-26 21:12:47] === NUEVA REQUEST ===
+[26-Oct-2025 21:12:47 Europe/Berlin] === NUEVA REQUEST ===
+[2025-10-26 21:12:47] POST: Array
+(
+)
+
+[26-Oct-2025 21:12:47 Europe/Berlin] POST: Array
+(
+)
+
+[2025-10-26 21:12:47] FILES: Array
+(
+)
+
+[26-Oct-2025 21:12:47 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:12:53] === NUEVA REQUEST ===
+[26-Oct-2025 21:12:53 Europe/Berlin] === NUEVA REQUEST ===
+[2025-10-26 21:12:53] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:12:53 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:12:53] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpE68.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[26-Oct-2025 21:12:53 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpE68.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[2025-10-26 21:12:53] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:12:53 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:12:53] Ruta anterior de portada: ../assets/img/CasaSolidaria/portada_1761509354_68fe7feaedd3a.png
+[26-Oct-2025 21:12:53 Europe/Berlin] Ruta anterior de portada: ../assets/img/CasaSolidaria/portada_1761509354_68fe7feaedd3a.png
+[2025-10-26 21:12:53] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:12:53 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:12:53] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509354_68fe7feaedd3a.png
+[26-Oct-2025 21:12:53 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509354_68fe7feaedd3a.png
+[2025-10-26 21:12:53] Ruta absoluta construida: C:\xampp\htdocs\ProyectoC\controllers/../../assets/img/CasaSolidaria/portada_1761509354_68fe7feaedd3a.png
+[26-Oct-2025 21:12:53 Europe/Berlin] Ruta absoluta construida: C:\xampp\htdocs\ProyectoC\controllers/../../assets/img/CasaSolidaria/portada_1761509354_68fe7feaedd3a.png
+[2025-10-26 21:12:53] Ruta default: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\defaultLogo.png
+[26-Oct-2025 21:12:53 Europe/Berlin] Ruta default: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\defaultLogo.png
+[2025-10-26 21:12:53] ✅ Archivo anterior NO EXISTE (ya fue eliminado) - considerado éxito
+[26-Oct-2025 21:12:53 Europe/Berlin] ✅ Archivo anterior NO EXISTE (ya fue eliminado) - considerado éxito
+[26-Oct-2025 21:12:53 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:12:53 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:12:53 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-05 161942.png
+    [full_path] => Captura de pantalla 2025-10-05 161942.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\phpE68.tmp
+    [error] => 0
+    [size] => 20077
+)
+
+[26-Oct-2025 21:12:53 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:12:53 Europe/Berlin] Nombre archivo final: portada_1761509573_68fe80c524bf2.png
+[26-Oct-2025 21:12:53 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[26-Oct-2025 21:12:53 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:12:53] Nueva ruta de archivo subido: ../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[26-Oct-2025 21:12:53 Europe/Berlin] Nueva ruta de archivo subido: ../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[2025-10-26 21:12:53] ✅ Portada actualizada en BD correctamente
+[26-Oct-2025 21:12:53 Europe/Berlin] ✅ Portada actualizada en BD correctamente
+[2025-10-26 21:12:53] === RESPONSE ===
+[26-Oct-2025 21:12:53 Europe/Berlin] === RESPONSE ===
+[2025-10-26 21:12:53] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:12:53 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:13:07] === NUEVA REQUEST ===
+[26-Oct-2025 21:13:07 Europe/Berlin] === NUEVA REQUEST ===
+[2025-10-26 21:13:07] POST: Array
+(
+)
+
+[26-Oct-2025 21:13:07 Europe/Berlin] POST: Array
+(
+)
+
+[2025-10-26 21:13:07] FILES: Array
+(
+)
+
+[26-Oct-2025 21:13:07 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:13:08] === NUEVA REQUEST ===
+[26-Oct-2025 21:13:08 Europe/Berlin] === NUEVA REQUEST ===
+[2025-10-26 21:13:08] POST: Array
+(
+)
+
+[26-Oct-2025 21:13:08 Europe/Berlin] POST: Array
+(
+)
+
+[2025-10-26 21:13:08] FILES: Array
+(
+)
+
+[26-Oct-2025 21:13:08 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:13:17] === NUEVA REQUEST ===
+[26-Oct-2025 21:13:17 Europe/Berlin] === NUEVA REQUEST ===
+[2025-10-26 21:13:17] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:13:17 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:13:17] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php6DDE.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[26-Oct-2025 21:13:17 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php6DDE.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[2025-10-26 21:13:17] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:13:17 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:13:17] Ruta anterior de portada: ../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[26-Oct-2025 21:13:17 Europe/Berlin] Ruta anterior de portada: ../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[2025-10-26 21:13:17] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:13:17 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:13:17] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[26-Oct-2025 21:13:17 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[2025-10-26 21:13:17] Ruta absoluta construida: C:\xampp\htdocs\ProyectoC\controllers/../../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[26-Oct-2025 21:13:17 Europe/Berlin] Ruta absoluta construida: C:\xampp\htdocs\ProyectoC\controllers/../../assets/img/CasaSolidaria/portada_1761509573_68fe80c524bf2.png
+[2025-10-26 21:13:17] Ruta default: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\defaultLogo.png
+[26-Oct-2025 21:13:17 Europe/Berlin] Ruta default: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\defaultLogo.png
+[2025-10-26 21:13:17] ✅ Archivo anterior NO EXISTE (ya fue eliminado) - considerado éxito
+[26-Oct-2025 21:13:17 Europe/Berlin] ✅ Archivo anterior NO EXISTE (ya fue eliminado) - considerado éxito
+[26-Oct-2025 21:13:17 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:13:17 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:13:17 Europe/Berlin] Datos archivo: Array
+(
+    [name] => ejemplo.png
+    [full_path] => ejemplo.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php6DDE.tmp
+    [error] => 0
+    [size] => 51605
+)
+
+[26-Oct-2025 21:13:17 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:13:17 Europe/Berlin] Nombre archivo final: portada_1761509597_68fe80dd9dbc1.png
+[26-Oct-2025 21:13:17 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[26-Oct-2025 21:13:17 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:13:17] Nueva ruta de archivo subido: ../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[26-Oct-2025 21:13:17 Europe/Berlin] Nueva ruta de archivo subido: ../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[2025-10-26 21:13:17] ✅ Portada actualizada en BD correctamente
+[26-Oct-2025 21:13:17 Europe/Berlin] ✅ Portada actualizada en BD correctamente
+[2025-10-26 21:13:17] === RESPONSE ===
+[26-Oct-2025 21:13:17 Europe/Berlin] === RESPONSE ===
+[2025-10-26 21:13:17] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:13:17 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:13:22] === NUEVA REQUEST ===
+[26-Oct-2025 21:13:22 Europe/Berlin] === NUEVA REQUEST ===
+[2025-10-26 21:13:22] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:13:22 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:13:22] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php8000.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[26-Oct-2025 21:13:22 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php8000.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[2025-10-26 21:13:22] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:13:22 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:13:22] Ruta anterior de portada: ../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[26-Oct-2025 21:13:22 Europe/Berlin] Ruta anterior de portada: ../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[2025-10-26 21:13:22] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:13:22 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:13:22] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[26-Oct-2025 21:13:22 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[2025-10-26 21:13:22] Ruta absoluta construida: C:\xampp\htdocs\ProyectoC\controllers/../../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[26-Oct-2025 21:13:22 Europe/Berlin] Ruta absoluta construida: C:\xampp\htdocs\ProyectoC\controllers/../../assets/img/CasaSolidaria/portada_1761509597_68fe80dd9dbc1.png
+[2025-10-26 21:13:22] Ruta default: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\defaultLogo.png
+[26-Oct-2025 21:13:22 Europe/Berlin] Ruta default: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\defaultLogo.png
+[2025-10-26 21:13:22] ✅ Archivo anterior NO EXISTE (ya fue eliminado) - considerado éxito
+[26-Oct-2025 21:13:22 Europe/Berlin] ✅ Archivo anterior NO EXISTE (ya fue eliminado) - considerado éxito
+[26-Oct-2025 21:13:22 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:13:22 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:13:22 Europe/Berlin] Datos archivo: Array
+(
+    [name] => ejemplo.png
+    [full_path] => ejemplo.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php8000.tmp
+    [error] => 0
+    [size] => 51605
+)
+
+[26-Oct-2025 21:13:22 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:13:22 Europe/Berlin] Nombre archivo final: portada_1761509602_68fe80e235c39.png
+[26-Oct-2025 21:13:22 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[26-Oct-2025 21:13:22 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:13:22] Nueva ruta de archivo subido: ../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[26-Oct-2025 21:13:22 Europe/Berlin] Nueva ruta de archivo subido: ../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[2025-10-26 21:13:22] ✅ Portada actualizada en BD correctamente
+[26-Oct-2025 21:13:22 Europe/Berlin] ✅ Portada actualizada en BD correctamente
+[2025-10-26 21:13:22] === RESPONSE ===
+[26-Oct-2025 21:13:22 Europe/Berlin] === RESPONSE ===
+[2025-10-26 21:13:22] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:13:22 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:13:26] === NUEVA REQUEST ===
+[26-Oct-2025 21:13:26 Europe/Berlin] === NUEVA REQUEST ===
+[2025-10-26 21:13:26] POST: Array
+(
+)
+
+[26-Oct-2025 21:13:26 Europe/Berlin] POST: Array
+(
+)
+
+[2025-10-26 21:13:26] FILES: Array
+(
+)
+
+[26-Oct-2025 21:13:26 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:13:30] === NUEVA REQUEST ===
+[26-Oct-2025 21:13:30 Europe/Berlin] === NUEVA REQUEST ===
+[2025-10-26 21:13:30] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:13:30 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:13:30] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-19 182005.png
+            [full_path] => Captura de pantalla 2025-10-19 182005.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php9F02.tmp
+            [error] => 0
+            [size] => 100144
+        )
+
+)
+
+[26-Oct-2025 21:13:30 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-19 182005.png
+            [full_path] => Captura de pantalla 2025-10-19 182005.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php9F02.tmp
+            [error] => 0
+            [size] => 100144
+        )
+
+)
+
+[2025-10-26 21:13:30] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:13:30 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:13:30] Ruta anterior de portada: ../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[26-Oct-2025 21:13:30 Europe/Berlin] Ruta anterior de portada: ../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[2025-10-26 21:13:30] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:13:30 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:13:30] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[26-Oct-2025 21:13:30 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[2025-10-26 21:13:30] Ruta absoluta construida: C:\xampp\htdocs\ProyectoC\controllers/../../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[26-Oct-2025 21:13:30 Europe/Berlin] Ruta absoluta construida: C:\xampp\htdocs\ProyectoC\controllers/../../assets/img/CasaSolidaria/portada_1761509602_68fe80e235c39.png
+[2025-10-26 21:13:30] Ruta default: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\defaultLogo.png
+[26-Oct-2025 21:13:30 Europe/Berlin] Ruta default: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\defaultLogo.png
+[2025-10-26 21:13:30] ✅ Archivo anterior NO EXISTE (ya fue eliminado) - considerado éxito
+[26-Oct-2025 21:13:30 Europe/Berlin] ✅ Archivo anterior NO EXISTE (ya fue eliminado) - considerado éxito
+[26-Oct-2025 21:13:30 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:13:30 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:13:30 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-19 182005.png
+    [full_path] => Captura de pantalla 2025-10-19 182005.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php9F02.tmp
+    [error] => 0
+    [size] => 100144
+)
+
+[26-Oct-2025 21:13:30 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:13:30 Europe/Berlin] Nombre archivo final: portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:13:30 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:13:30 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:13:30] Nueva ruta de archivo subido: ../assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:13:30 Europe/Berlin] Nueva ruta de archivo subido: ../assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[2025-10-26 21:13:30] ✅ Portada actualizada en BD correctamente
+[26-Oct-2025 21:13:30 Europe/Berlin] ✅ Portada actualizada en BD correctamente
+[2025-10-26 21:13:30] === RESPONSE ===
+[26-Oct-2025 21:13:30 Europe/Berlin] === RESPONSE ===
+[2025-10-26 21:13:30] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:13:30 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:19:08] === NOVA REQUEST ===
+[26-Oct-2025 21:19:08 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:19:08] POST: Array
+(
+)
+
+[26-Oct-2025 21:19:08 Europe/Berlin] POST: Array
+(
+)
+
+[2025-10-26 21:19:08] FILES: Array
+(
+)
+
+[26-Oct-2025 21:19:08 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:19:23] === NOVA REQUEST ===
+[26-Oct-2025 21:19:23 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:19:23] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:19:23 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:19:23] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php20A.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[26-Oct-2025 21:19:23 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php20A.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[2025-10-26 21:19:23] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:19:23 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:19:23] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:19:23 Europe/Berlin] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:19:23 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:19:23 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:19:23 Europe/Berlin] Datos archivo: Array
+(
+    [name] => ejemplo.png
+    [full_path] => ejemplo.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php20A.tmp
+    [error] => 0
+    [size] => 51605
+)
+
+[26-Oct-2025 21:19:23 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:19:23 Europe/Berlin] Nombre archivo final: portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:19:23 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:19:23 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:19:23] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:19:23 Europe/Berlin] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[2025-10-26 21:19:23] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:19:23 Europe/Berlin] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:19:23] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:19:23 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:19:23] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:19:23 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:19:23 Europe/Berlin] PHP Warning:  ltrim(): Invalid '..'-range, no character to the left of '..' in C:\xampp\htdocs\ProyectoC\controllers\PaginaPrincipalController.php on line 235
+[2025-10-26 21:19:23] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:19:23 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761509610_68fe80ea21708.png
+[2025-10-26 21:19:23] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:19:23 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761509610_68fe80ea21708.png
+[2025-10-26 21:19:23] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761509610_68fe80ea21708.png
+[26-Oct-2025 21:19:23 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761509610_68fe80ea21708.png
+[2025-10-26 21:19:23] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:19:23 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:19:23] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:19:23 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:21:14] === NOVA REQUEST ===
+[26-Oct-2025 21:21:14 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:21:14] POST: Array
+(
+)
+
+[26-Oct-2025 21:21:14 Europe/Berlin] POST: Array
+(
+)
+
+[2025-10-26 21:21:14] FILES: Array
+(
+)
+
+[26-Oct-2025 21:21:14 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:21:19] === NOVA REQUEST ===
+[26-Oct-2025 21:21:19 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:21:19] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:21:19 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:21:19] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpC6ED.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[26-Oct-2025 21:21:19 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpC6ED.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[2025-10-26 21:21:19] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:21:19 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:21:19] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:21:19 Europe/Berlin] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:21:19 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:21:19 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:21:19 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-05 161942.png
+    [full_path] => Captura de pantalla 2025-10-05 161942.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\phpC6ED.tmp
+    [error] => 0
+    [size] => 20077
+)
+
+[26-Oct-2025 21:21:19 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:21:19 Europe/Berlin] Nombre archivo final: portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:19 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:19 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:21:19] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:19 Europe/Berlin] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[2025-10-26 21:21:19] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:21:19 Europe/Berlin] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:21:19] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:21:19 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:21:19] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:21:19 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[2025-10-26 21:21:19] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:21:19 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761509963_68fe824b2a3e4.png
+[2025-10-26 21:21:19] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:21:19 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761509963_68fe824b2a3e4.png
+[2025-10-26 21:21:19] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761509963_68fe824b2a3e4.png
+[26-Oct-2025 21:21:19 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761509963_68fe824b2a3e4.png
+[2025-10-26 21:21:19] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:21:19 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:21:19] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:21:19 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:21:25] === NOVA REQUEST ===
+[26-Oct-2025 21:21:25 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:21:25] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:21:25 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:21:25] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpE1C9.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[26-Oct-2025 21:21:25 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpE1C9.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[2025-10-26 21:21:25] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:21:25 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:21:25] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:25 Europe/Berlin] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:25 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:21:26 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:21:26 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-05 161942.png
+    [full_path] => Captura de pantalla 2025-10-05 161942.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\phpE1C9.tmp
+    [error] => 0
+    [size] => 20077
+)
+
+[26-Oct-2025 21:21:26 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:21:26 Europe/Berlin] Nombre archivo final: portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:26 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:26 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:21:26] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:26 Europe/Berlin] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[2025-10-26 21:21:26] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:21:26 Europe/Berlin] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:21:26] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:21:26 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:21:26] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:26 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[2025-10-26 21:21:26] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:26 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510079_68fe82bf1a7f5.png
+[2025-10-26 21:21:26] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:26 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510079_68fe82bf1a7f5.png
+[2025-10-26 21:21:26] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510079_68fe82bf1a7f5.png
+[26-Oct-2025 21:21:26 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510079_68fe82bf1a7f5.png
+[2025-10-26 21:21:26] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:21:26 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:21:26] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:21:26 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:21:31] === NOVA REQUEST ===
+[26-Oct-2025 21:21:31 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:21:31] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:21:31 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:21:31] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpF6E8.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[26-Oct-2025 21:21:31 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpF6E8.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[2025-10-26 21:21:31] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:21:31 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:21:31] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:31 Europe/Berlin] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:31 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:21:31 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:21:31 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-05 161942.png
+    [full_path] => Captura de pantalla 2025-10-05 161942.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\phpF6E8.tmp
+    [error] => 0
+    [size] => 20077
+)
+
+[26-Oct-2025 21:21:31 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:21:31 Europe/Berlin] Nombre archivo final: portada_1761510091_68fe82cb60397.png
+[26-Oct-2025 21:21:31 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[26-Oct-2025 21:21:31 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:21:31] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[26-Oct-2025 21:21:31 Europe/Berlin] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[2025-10-26 21:21:31] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:21:31 Europe/Berlin] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:21:31] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:21:31 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:21:31] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:31 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[2025-10-26 21:21:31] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:31 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510086_68fe82c60314a.png
+[2025-10-26 21:21:31] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:31 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510086_68fe82c60314a.png
+[2025-10-26 21:21:31] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510086_68fe82c60314a.png
+[26-Oct-2025 21:21:31 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510086_68fe82c60314a.png
+[2025-10-26 21:21:31] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:21:31 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:21:31] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:21:31 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:21:45] === NOVA REQUEST ===
+[26-Oct-2025 21:21:45 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:21:45] POST: Array
+(
+)
+
+[26-Oct-2025 21:21:45 Europe/Berlin] POST: Array
+(
+)
+
+[2025-10-26 21:21:45] FILES: Array
+(
+)
+
+[26-Oct-2025 21:21:45 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:21:53] === NOVA REQUEST ===
+[26-Oct-2025 21:21:53 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:21:53] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:21:53 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:21:53] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php4ECD.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[26-Oct-2025 21:21:53 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php4ECD.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[2025-10-26 21:21:53] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:21:53 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:21:53] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[26-Oct-2025 21:21:53 Europe/Berlin] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[26-Oct-2025 21:21:53 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:21:53 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:21:53 Europe/Berlin] Datos archivo: Array
+(
+    [name] => ejemplo.png
+    [full_path] => ejemplo.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php4ECD.tmp
+    [error] => 0
+    [size] => 51605
+)
+
+[26-Oct-2025 21:21:53 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:21:53 Europe/Berlin] Nombre archivo final: portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:21:53 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:21:53 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:21:53] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:21:53 Europe/Berlin] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[2025-10-26 21:21:53] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:21:53 Europe/Berlin] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:21:53] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:21:53 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:21:53] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[26-Oct-2025 21:21:53 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[2025-10-26 21:21:53] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[26-Oct-2025 21:21:53 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[2025-10-26 21:21:53] ❌ realpath falhou ou arquivo não existe em: 
+[26-Oct-2025 21:21:53 Europe/Berlin] ❌ realpath falhou ou arquivo não existe em: 
+[2025-10-26 21:21:53] Usando rota absoluta manual: C:\xampp\htdocs\ProyectoC\controllers/../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[26-Oct-2025 21:21:53 Europe/Berlin] Usando rota absoluta manual: C:\xampp\htdocs\ProyectoC\controllers/../assets/img/CasaSolidaria/portada_1761510091_68fe82cb60397.png
+[2025-10-26 21:21:53] ✅ Arquivo anterior NÃO EXISTE (já foi eliminado) - considerado sucesso
+[26-Oct-2025 21:21:53 Europe/Berlin] ✅ Arquivo anterior NÃO EXISTE (já foi eliminado) - considerado sucesso
+[2025-10-26 21:21:53] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:21:53 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:21:53] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:21:53 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:22:02] === NOVA REQUEST ===
+[26-Oct-2025 21:22:02 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:22:02] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:22:02 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:22:02] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php6EBA.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[26-Oct-2025 21:22:02 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php6EBA.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[2025-10-26 21:22:02] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:22:02 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:22:02] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:22:02 Europe/Berlin] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:22:02 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:22:02 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:22:02 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-05 161942.png
+    [full_path] => Captura de pantalla 2025-10-05 161942.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php6EBA.tmp
+    [error] => 0
+    [size] => 20077
+)
+
+[26-Oct-2025 21:22:02 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:22:02 Europe/Berlin] Nombre archivo final: portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:02 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:02 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:22:02] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:02 Europe/Berlin] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[2025-10-26 21:22:02] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:22:02 Europe/Berlin] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:22:02] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:22:02 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:22:02] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:22:02 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[2025-10-26 21:22:02] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:22:02 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510113_68fe82e1e2af6.png
+[2025-10-26 21:22:02] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:22:02 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510113_68fe82e1e2af6.png
+[2025-10-26 21:22:02] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510113_68fe82e1e2af6.png
+[26-Oct-2025 21:22:02 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510113_68fe82e1e2af6.png
+[2025-10-26 21:22:02] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:22:02 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:22:02] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:22:02 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:22:08] === NOVA REQUEST ===
+[26-Oct-2025 21:22:08 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:22:08] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[26-Oct-2025 21:22:08 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_portada
+)
+
+[2025-10-26 21:22:08] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-19 182005.png
+            [full_path] => Captura de pantalla 2025-10-19 182005.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php89A6.tmp
+            [error] => 0
+            [size] => 100144
+        )
+
+)
+
+[26-Oct-2025 21:22:08 Europe/Berlin] FILES: Array
+(
+    [portada] => Array
+        (
+            [name] => Captura de pantalla 2025-10-19 182005.png
+            [full_path] => Captura de pantalla 2025-10-19 182005.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php89A6.tmp
+            [error] => 0
+            [size] => 100144
+        )
+
+)
+
+[2025-10-26 21:22:08] === INICIANDO actualizarPortada ===
+[26-Oct-2025 21:22:08 Europe/Berlin] === INICIANDO actualizarPortada ===
+[2025-10-26 21:22:08] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:08 Europe/Berlin] Campo: portada, Ruta anterior: ../assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:08 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:22:08 Europe/Berlin] Nombre campo: portada
+[26-Oct-2025 21:22:08 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-19 182005.png
+    [full_path] => Captura de pantalla 2025-10-19 182005.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php89A6.tmp
+    [error] => 0
+    [size] => 100144
+)
+
+[26-Oct-2025 21:22:08 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:22:08 Europe/Berlin] Nombre archivo final: portada_1761510128_68fe82f0ef015.png
+[26-Oct-2025 21:22:08 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/portada_1761510128_68fe82f0ef015.png
+[26-Oct-2025 21:22:08 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:22:08] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510128_68fe82f0ef015.png
+[26-Oct-2025 21:22:08 Europe/Berlin] Nova rota de arquivo subido: ../assets/img/CasaSolidaria/portada_1761510128_68fe82f0ef015.png
+[2025-10-26 21:22:09] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:22:09 Europe/Berlin] ✅ Portada actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:22:09] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:22:09 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:22:09] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:09 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[2025-10-26 21:22:09] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:09 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/portada_1761510122_68fe82ea13ed2.png
+[2025-10-26 21:22:09] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:09 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510122_68fe82ea13ed2.png
+[2025-10-26 21:22:09] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510122_68fe82ea13ed2.png
+[26-Oct-2025 21:22:09 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\portada_1761510122_68fe82ea13ed2.png
+[2025-10-26 21:22:09] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:22:09 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:22:09] {"success":true,"message":"Portada actualizada correctamente"}
+[26-Oct-2025 21:22:09 Europe/Berlin] {"success":true,"message":"Portada actualizada correctamente"}
+[2025-10-26 21:22:18] === NOVA REQUEST ===
+[26-Oct-2025 21:22:18 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:22:18] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 1
+)
+
+[26-Oct-2025 21:22:18 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 1
+)
+
+[2025-10-26 21:22:18] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpAE75.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[26-Oct-2025 21:22:18 Europe/Berlin] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpAE75.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[2025-10-26 21:22:18] === INICIANDO actualizarFotoGaleria - Foto 1 ===
+[26-Oct-2025 21:22:18 Europe/Berlin] === INICIANDO actualizarFotoGaleria - Foto 1 ===
+[2025-10-26 21:22:18] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:18 Europe/Berlin] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:18 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:22:18 Europe/Berlin] Nombre campo: foto_galeria_1
+[26-Oct-2025 21:22:18 Europe/Berlin] Datos archivo: Array
+(
+    [name] => ejemplo.png
+    [full_path] => ejemplo.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\phpAE75.tmp
+    [error] => 0
+    [size] => 51605
+)
+
+[26-Oct-2025 21:22:18 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:22:18 Europe/Berlin] Nombre archivo final: foto_galeria_1_1761510138_68fe82fa6b41c.png
+[26-Oct-2025 21:22:18 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[26-Oct-2025 21:22:18 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:22:18] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[26-Oct-2025 21:22:18 Europe/Berlin] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[2025-10-26 21:22:18] Resultado de actualizar campo: TRUE
+[26-Oct-2025 21:22:18 Europe/Berlin] Resultado de actualizar campo: TRUE
+[2025-10-26 21:22:18] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:22:18 Europe/Berlin] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:22:18] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:22:18 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:22:18] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:18 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[2025-10-26 21:22:18] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[26-Oct-2025 21:22:18 Europe/Berlin] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[2025-10-26 21:22:18] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:22:18 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:22:18] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[26-Oct-2025 21:22:18 Europe/Berlin] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[2025-10-26 21:22:23] === NOVA REQUEST ===
+[26-Oct-2025 21:22:23 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:22:23] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 1
+)
+
+[26-Oct-2025 21:22:23 Europe/Berlin] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 1
+)
+
+[2025-10-26 21:22:23] FILES: Array
+(
+)
+
+[26-Oct-2025 21:22:23 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:22:23] === INICIANDO eliminarFotoGaleria - Foto 1 ===
+[26-Oct-2025 21:22:23 Europe/Berlin] === INICIANDO eliminarFotoGaleria - Foto 1 ===
+[2025-10-26 21:22:23] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[26-Oct-2025 21:22:23 Europe/Berlin] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[2025-10-26 21:22:23] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:22:23 Europe/Berlin] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[2025-10-26 21:22:23] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:22:23 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:22:23] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[26-Oct-2025 21:22:23 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[2025-10-26 21:22:23] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[26-Oct-2025 21:22:23 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_1_1761510138_68fe82fa6b41c.png
+[2025-10-26 21:22:23] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510138_68fe82fa6b41c.png
+[26-Oct-2025 21:22:23 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510138_68fe82fa6b41c.png
+[2025-10-26 21:22:23] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510138_68fe82fa6b41c.png
+[26-Oct-2025 21:22:23 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510138_68fe82fa6b41c.png
+[2025-10-26 21:22:23] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:22:23 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:22:23] {"success":true,"message":"Foto eliminada correctamente"}
+[26-Oct-2025 21:22:23 Europe/Berlin] {"success":true,"message":"Foto eliminada correctamente"}
+[2025-10-26 21:22:35] === NOVA REQUEST ===
+[26-Oct-2025 21:22:35 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:22:35] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 1
+)
+
+[26-Oct-2025 21:22:35 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 1
+)
+
+[2025-10-26 21:22:35] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpF206.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[26-Oct-2025 21:22:35 Europe/Berlin] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\phpF206.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[2025-10-26 21:22:35] === INICIANDO actualizarFotoGaleria - Foto 1 ===
+[26-Oct-2025 21:22:35 Europe/Berlin] === INICIANDO actualizarFotoGaleria - Foto 1 ===
+[2025-10-26 21:22:35] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:35 Europe/Berlin] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:35 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:22:35 Europe/Berlin] Nombre campo: foto_galeria_1
+[26-Oct-2025 21:22:35 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-05 161942.png
+    [full_path] => Captura de pantalla 2025-10-05 161942.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\phpF206.tmp
+    [error] => 0
+    [size] => 20077
+)
+
+[26-Oct-2025 21:22:35 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:22:35 Europe/Berlin] Nombre archivo final: foto_galeria_1_1761510155_68fe830bb088a.png
+[26-Oct-2025 21:22:35 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[26-Oct-2025 21:22:35 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:22:35] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[26-Oct-2025 21:22:35 Europe/Berlin] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[2025-10-26 21:22:35] Resultado de actualizar campo: TRUE
+[26-Oct-2025 21:22:35 Europe/Berlin] Resultado de actualizar campo: TRUE
+[2025-10-26 21:22:35] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:22:35 Europe/Berlin] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:22:35] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:22:35 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:22:35] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:35 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[2025-10-26 21:22:35] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[26-Oct-2025 21:22:35 Europe/Berlin] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[2025-10-26 21:22:35] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:22:35 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:22:35] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[26-Oct-2025 21:22:35 Europe/Berlin] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[2025-10-26 21:22:44] === NOVA REQUEST ===
+[26-Oct-2025 21:22:44 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:22:44] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 1
+)
+
+[26-Oct-2025 21:22:44 Europe/Berlin] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 1
+)
+
+[2025-10-26 21:22:44] FILES: Array
+(
+)
+
+[26-Oct-2025 21:22:44 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:22:44] === INICIANDO eliminarFotoGaleria - Foto 1 ===
+[26-Oct-2025 21:22:44 Europe/Berlin] === INICIANDO eliminarFotoGaleria - Foto 1 ===
+[2025-10-26 21:22:44] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[26-Oct-2025 21:22:44 Europe/Berlin] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[2025-10-26 21:22:44] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:22:44 Europe/Berlin] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[2025-10-26 21:22:44] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:22:44 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:22:44] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[26-Oct-2025 21:22:44 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[2025-10-26 21:22:44] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[26-Oct-2025 21:22:44 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_1_1761510155_68fe830bb088a.png
+[2025-10-26 21:22:44] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510155_68fe830bb088a.png
+[26-Oct-2025 21:22:44 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510155_68fe830bb088a.png
+[2025-10-26 21:22:44] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510155_68fe830bb088a.png
+[26-Oct-2025 21:22:44 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510155_68fe830bb088a.png
+[2025-10-26 21:22:44] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:22:44 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:22:44] {"success":true,"message":"Foto eliminada correctamente"}
+[26-Oct-2025 21:22:44 Europe/Berlin] {"success":true,"message":"Foto eliminada correctamente"}
+[2025-10-26 21:22:47] === NOVA REQUEST ===
+[26-Oct-2025 21:22:47 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:22:47] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 1
+)
+
+[26-Oct-2025 21:22:47 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 1
+)
+
+[2025-10-26 21:22:47] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php1F90.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[26-Oct-2025 21:22:47 Europe/Berlin] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php1F90.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[2025-10-26 21:22:47] === INICIANDO actualizarFotoGaleria - Foto 1 ===
+[26-Oct-2025 21:22:47 Europe/Berlin] === INICIANDO actualizarFotoGaleria - Foto 1 ===
+[2025-10-26 21:22:47] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:47 Europe/Berlin] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:47 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:22:47 Europe/Berlin] Nombre campo: foto_galeria_1
+[26-Oct-2025 21:22:47 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-05 161942.png
+    [full_path] => Captura de pantalla 2025-10-05 161942.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php1F90.tmp
+    [error] => 0
+    [size] => 20077
+)
+
+[26-Oct-2025 21:22:47 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:22:47 Europe/Berlin] Nombre archivo final: foto_galeria_1_1761510167_68fe83175a5d1.png
+[26-Oct-2025 21:22:47 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[26-Oct-2025 21:22:47 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:22:47] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[26-Oct-2025 21:22:47 Europe/Berlin] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[2025-10-26 21:22:47] Resultado de actualizar campo: TRUE
+[26-Oct-2025 21:22:47 Europe/Berlin] Resultado de actualizar campo: TRUE
+[2025-10-26 21:22:47] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:22:47 Europe/Berlin] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:22:47] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:22:47 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:22:47] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:47 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[2025-10-26 21:22:47] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[26-Oct-2025 21:22:47 Europe/Berlin] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[2025-10-26 21:22:47] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:22:47 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:22:47] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[26-Oct-2025 21:22:47 Europe/Berlin] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[2025-10-26 21:22:57] === NOVA REQUEST ===
+[26-Oct-2025 21:22:57 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:22:57] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 2
+)
+
+[26-Oct-2025 21:22:57 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 2
+)
+
+[2025-10-26 21:22:57] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php48C4.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[26-Oct-2025 21:22:57 Europe/Berlin] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php48C4.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[2025-10-26 21:22:57] === INICIANDO actualizarFotoGaleria - Foto 2 ===
+[26-Oct-2025 21:22:57 Europe/Berlin] === INICIANDO actualizarFotoGaleria - Foto 2 ===
+[2025-10-26 21:22:57] Campo: segundafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:57 Europe/Berlin] Campo: segundafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:57 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:22:57 Europe/Berlin] Nombre campo: foto_galeria_2
+[26-Oct-2025 21:22:57 Europe/Berlin] Datos archivo: Array
+(
+    [name] => ejemplo.png
+    [full_path] => ejemplo.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php48C4.tmp
+    [error] => 0
+    [size] => 51605
+)
+
+[26-Oct-2025 21:22:57 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:22:57 Europe/Berlin] Nombre archivo final: foto_galeria_2_1761510177_68fe8321d607d.png
+[26-Oct-2025 21:22:57 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[26-Oct-2025 21:22:57 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:22:57] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[26-Oct-2025 21:22:57 Europe/Berlin] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[2025-10-26 21:22:57] Resultado de actualizar campo: TRUE
+[26-Oct-2025 21:22:57 Europe/Berlin] Resultado de actualizar campo: TRUE
+[2025-10-26 21:22:57] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:22:57 Europe/Berlin] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:22:57] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:22:57 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:22:57] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:22:57 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[2025-10-26 21:22:57] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[26-Oct-2025 21:22:57 Europe/Berlin] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[2025-10-26 21:22:57] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:22:57 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:22:57] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[26-Oct-2025 21:22:57 Europe/Berlin] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[2025-10-26 21:23:03] === NOVA REQUEST ===
+[26-Oct-2025 21:23:03 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:23:03] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 3
+)
+
+[26-Oct-2025 21:23:03 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 3
+)
+
+[2025-10-26 21:23:03] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php60B2.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[26-Oct-2025 21:23:03 Europe/Berlin] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => ejemplo.png
+            [full_path] => ejemplo.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php60B2.tmp
+            [error] => 0
+            [size] => 51605
+        )
+
+)
+
+[2025-10-26 21:23:04] === INICIANDO actualizarFotoGaleria - Foto 3 ===
+[26-Oct-2025 21:23:04 Europe/Berlin] === INICIANDO actualizarFotoGaleria - Foto 3 ===
+[2025-10-26 21:23:04] Campo: tercerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:23:04 Europe/Berlin] Campo: tercerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:23:04 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:23:04 Europe/Berlin] Nombre campo: foto_galeria_3
+[26-Oct-2025 21:23:04 Europe/Berlin] Datos archivo: Array
+(
+    [name] => ejemplo.png
+    [full_path] => ejemplo.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php60B2.tmp
+    [error] => 0
+    [size] => 51605
+)
+
+[26-Oct-2025 21:23:04 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:23:04 Europe/Berlin] Nombre archivo final: foto_galeria_3_1761510184_68fe83280a0df.png
+[26-Oct-2025 21:23:04 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[26-Oct-2025 21:23:04 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:23:04] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[26-Oct-2025 21:23:04 Europe/Berlin] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[2025-10-26 21:23:04] Resultado de actualizar campo: TRUE
+[26-Oct-2025 21:23:04 Europe/Berlin] Resultado de actualizar campo: TRUE
+[2025-10-26 21:23:04] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:23:04 Europe/Berlin] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:23:04] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:23:04 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:23:04] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:23:04 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[2025-10-26 21:23:04] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[26-Oct-2025 21:23:04 Europe/Berlin] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[2025-10-26 21:23:04] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:23:04 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:23:04] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[26-Oct-2025 21:23:04 Europe/Berlin] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[2025-10-26 21:23:08] === NOVA REQUEST ===
+[26-Oct-2025 21:23:08 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:23:08] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 4
+)
+
+[26-Oct-2025 21:23:08 Europe/Berlin] POST: Array
+(
+    [action] => actualizar_foto_galeria
+    [numero_foto] => 4
+)
+
+[2025-10-26 21:23:08] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php7341.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[26-Oct-2025 21:23:08 Europe/Berlin] FILES: Array
+(
+    [foto] => Array
+        (
+            [name] => Captura de pantalla 2025-10-05 161942.png
+            [full_path] => Captura de pantalla 2025-10-05 161942.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php7341.tmp
+            [error] => 0
+            [size] => 20077
+        )
+
+)
+
+[2025-10-26 21:23:08] === INICIANDO actualizarFotoGaleria - Foto 4 ===
+[26-Oct-2025 21:23:08 Europe/Berlin] === INICIANDO actualizarFotoGaleria - Foto 4 ===
+[2025-10-26 21:23:08] Campo: cuartafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:23:08 Europe/Berlin] Campo: cuartafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:23:08 Europe/Berlin] === SUBIR ARCHIVO ===
+[26-Oct-2025 21:23:08 Europe/Berlin] Nombre campo: foto_galeria_4
+[26-Oct-2025 21:23:08 Europe/Berlin] Datos archivo: Array
+(
+    [name] => Captura de pantalla 2025-10-05 161942.png
+    [full_path] => Captura de pantalla 2025-10-05 161942.png
+    [type] => image/png
+    [tmp_name] => C:\xampp\tmp\php7341.tmp
+    [error] => 0
+    [size] => 20077
+)
+
+[26-Oct-2025 21:23:08 Europe/Berlin] Directorio destino: ../assets/img/CasaSolidaria/
+[26-Oct-2025 21:23:08 Europe/Berlin] Nombre archivo final: foto_galeria_4_1761510188_68fe832cb7c56.png
+[26-Oct-2025 21:23:08 Europe/Berlin] Ruta archivo final: ../assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[26-Oct-2025 21:23:08 Europe/Berlin] ✅ Archivo movido exitosamente
+[2025-10-26 21:23:08] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[26-Oct-2025 21:23:08 Europe/Berlin] Nova rota de arquivo: ../assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[2025-10-26 21:23:08] Resultado de actualizar campo: TRUE
+[26-Oct-2025 21:23:08 Europe/Berlin] Resultado de actualizar campo: TRUE
+[2025-10-26 21:23:08] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:23:08 Europe/Berlin] ✅ Galeria actualizada en BD correctamente. Tentando eliminar arquivo anterior...
+[2025-10-26 21:23:08] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:23:08 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:23:08] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[26-Oct-2025 21:23:08 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/defaultLogo.png
+[2025-10-26 21:23:08] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[26-Oct-2025 21:23:08 Europe/Berlin] ✅ Não há arquivo anterior para eliminar ou é default - considerado sucesso
+[2025-10-26 21:23:08] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:23:08 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:23:08] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[26-Oct-2025 21:23:08 Europe/Berlin] {"success":true,"message":"Foto de galer\u00eda actualizada correctamente"}
+[2025-10-26 21:23:15] === NOVA REQUEST ===
+[26-Oct-2025 21:23:15 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:23:15] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 1
+)
+
+[26-Oct-2025 21:23:15 Europe/Berlin] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 1
+)
+
+[2025-10-26 21:23:15] FILES: Array
+(
+)
+
+[26-Oct-2025 21:23:15 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:23:15] === INICIANDO eliminarFotoGaleria - Foto 1 ===
+[26-Oct-2025 21:23:15 Europe/Berlin] === INICIANDO eliminarFotoGaleria - Foto 1 ===
+[2025-10-26 21:23:15] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[26-Oct-2025 21:23:15 Europe/Berlin] Campo: primerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[2025-10-26 21:23:15] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:23:15 Europe/Berlin] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[2025-10-26 21:23:15] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:23:15 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:23:15] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[26-Oct-2025 21:23:15 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[2025-10-26 21:23:15] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[26-Oct-2025 21:23:15 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_1_1761510167_68fe83175a5d1.png
+[2025-10-26 21:23:15] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510167_68fe83175a5d1.png
+[26-Oct-2025 21:23:15 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510167_68fe83175a5d1.png
+[2025-10-26 21:23:15] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510167_68fe83175a5d1.png
+[26-Oct-2025 21:23:15 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_1_1761510167_68fe83175a5d1.png
+[2025-10-26 21:23:15] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:23:15 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:23:15] {"success":true,"message":"Foto eliminada correctamente"}
+[26-Oct-2025 21:23:15 Europe/Berlin] {"success":true,"message":"Foto eliminada correctamente"}
+[2025-10-26 21:23:20] === NOVA REQUEST ===
+[26-Oct-2025 21:23:20 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:23:20] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 4
+)
+
+[26-Oct-2025 21:23:20 Europe/Berlin] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 4
+)
+
+[2025-10-26 21:23:20] FILES: Array
+(
+)
+
+[26-Oct-2025 21:23:20 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:23:20] === INICIANDO eliminarFotoGaleria - Foto 4 ===
+[26-Oct-2025 21:23:20 Europe/Berlin] === INICIANDO eliminarFotoGaleria - Foto 4 ===
+[2025-10-26 21:23:20] Campo: cuartafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[26-Oct-2025 21:23:20 Europe/Berlin] Campo: cuartafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[2025-10-26 21:23:20] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:23:20 Europe/Berlin] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[2025-10-26 21:23:20] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:23:20 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:23:20] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[26-Oct-2025 21:23:20 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[2025-10-26 21:23:20] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[26-Oct-2025 21:23:20 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_4_1761510188_68fe832cb7c56.png
+[2025-10-26 21:23:20] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_4_1761510188_68fe832cb7c56.png
+[26-Oct-2025 21:23:20 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_4_1761510188_68fe832cb7c56.png
+[2025-10-26 21:23:20] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_4_1761510188_68fe832cb7c56.png
+[26-Oct-2025 21:23:20 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_4_1761510188_68fe832cb7c56.png
+[2025-10-26 21:23:20] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:23:20 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:23:20] {"success":true,"message":"Foto eliminada correctamente"}
+[26-Oct-2025 21:23:20 Europe/Berlin] {"success":true,"message":"Foto eliminada correctamente"}
+[2025-10-26 21:23:24] === NOVA REQUEST ===
+[26-Oct-2025 21:23:24 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:23:24] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 3
+)
+
+[26-Oct-2025 21:23:24 Europe/Berlin] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 3
+)
+
+[2025-10-26 21:23:24] FILES: Array
+(
+)
+
+[26-Oct-2025 21:23:24 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:23:24] === INICIANDO eliminarFotoGaleria - Foto 3 ===
+[26-Oct-2025 21:23:24 Europe/Berlin] === INICIANDO eliminarFotoGaleria - Foto 3 ===
+[2025-10-26 21:23:24] Campo: tercerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[26-Oct-2025 21:23:24 Europe/Berlin] Campo: tercerafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[2025-10-26 21:23:24] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:23:24 Europe/Berlin] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[2025-10-26 21:23:24] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:23:24 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:23:24] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[26-Oct-2025 21:23:24 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[2025-10-26 21:23:24] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[26-Oct-2025 21:23:24 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_3_1761510184_68fe83280a0df.png
+[2025-10-26 21:23:24] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_3_1761510184_68fe83280a0df.png
+[26-Oct-2025 21:23:24 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_3_1761510184_68fe83280a0df.png
+[2025-10-26 21:23:24] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_3_1761510184_68fe83280a0df.png
+[26-Oct-2025 21:23:24 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_3_1761510184_68fe83280a0df.png
+[2025-10-26 21:23:24] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:23:24 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:23:24] {"success":true,"message":"Foto eliminada correctamente"}
+[26-Oct-2025 21:23:24 Europe/Berlin] {"success":true,"message":"Foto eliminada correctamente"}
+[2025-10-26 21:23:27] === NOVA REQUEST ===
+[26-Oct-2025 21:23:27 Europe/Berlin] === NOVA REQUEST ===
+[2025-10-26 21:23:27] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 2
+)
+
+[26-Oct-2025 21:23:27 Europe/Berlin] POST: Array
+(
+    [action] => eliminar_foto_galeria
+    [numero_foto] => 2
+)
+
+[2025-10-26 21:23:27] FILES: Array
+(
+)
+
+[26-Oct-2025 21:23:27 Europe/Berlin] FILES: Array
+(
+)
+
+[2025-10-26 21:23:27] === INICIANDO eliminarFotoGaleria - Foto 2 ===
+[26-Oct-2025 21:23:27 Europe/Berlin] === INICIANDO eliminarFotoGaleria - Foto 2 ===
+[2025-10-26 21:23:27] Campo: segundafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[26-Oct-2025 21:23:27 Europe/Berlin] Campo: segundafotogaleria, Ruta anterior: ../assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[2025-10-26 21:23:27] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[26-Oct-2025 21:23:27 Europe/Berlin] ✅ BD atualizada para default. Tentando eliminar arquivo anterior...
+[2025-10-26 21:23:27] === ELIMINAR ARCHIVO ANTERIOR ===
+[26-Oct-2025 21:23:27 Europe/Berlin] === ELIMINAR ARCHIVO ANTERIOR ===
+[2025-10-26 21:23:27] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[26-Oct-2025 21:23:27 Europe/Berlin] Ruta relativa recibida: ../assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[2025-10-26 21:23:27] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[26-Oct-2025 21:23:27 Europe/Berlin] Ruta corrigida (sem '../' inicial): assets/img/CasaSolidaria/foto_galeria_2_1761510177_68fe8321d607d.png
+[2025-10-26 21:23:27] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_2_1761510177_68fe8321d607d.png
+[26-Oct-2025 21:23:27 Europe/Berlin] Ruta absoluta final: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_2_1761510177_68fe8321d607d.png
+[2025-10-26 21:23:27] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_2_1761510177_68fe8321d607d.png
+[26-Oct-2025 21:23:27 Europe/Berlin] ✅ Archivo anterior ELIMINADO: C:\xampp\htdocs\ProyectoC\assets\img\CasaSolidaria\foto_galeria_2_1761510177_68fe8321d607d.png
+[2025-10-26 21:23:27] === RESPONSE ENVIADO ===
+[26-Oct-2025 21:23:27 Europe/Berlin] === RESPONSE ENVIADO ===
+[2025-10-26 21:23:27] {"success":true,"message":"Foto eliminada correctamente"}
+[26-Oct-2025 21:23:27 Europe/Berlin] {"success":true,"message":"Foto eliminada correctamente"}

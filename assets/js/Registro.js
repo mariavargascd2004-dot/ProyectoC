@@ -233,7 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             .catch(err => {
-                console.error("Erro na requisição:", err);
                 Swal.fire({
                     title: 'Erro de conexão',
                     text: 'Não foi possível conectar ao servidor. Por favor, tente novamente.',
@@ -430,7 +429,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 try {
                     return JSON.parse(text);
                 } catch (e) {
-                    console.error("❌ Respuesta no JSON:", e);
                     throw new Error("Respuesta no JSON: " + text.substring(0, 200));
                 }
             })
