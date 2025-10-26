@@ -1,6 +1,11 @@
 <?php
-
+session_start();
 require "config/database.php";
+
+if (isset($_SESSION["user"])) {
+   $idUsuario = $_SESSION['id'];
+   $tipoUsuario = $_SESSION['tipo'];
+}
 
 ?>
 <!doctype html>
@@ -53,7 +58,7 @@ require "config/database.php";
             <div class="container-fluid">
                 <!-- Logo y enlaces -->
                 <div class="navbar-nav d-flex align-items-center">
-                    <img src="assets/img/imgLogo.png" alt="Logo de la Empresa" width="80px">
+                    <img src="assets/img//CasaSolidaria/defaultLogo.png" alt="Logo de la Empresa" width="80px">
                     <a class="nav-item nav-link titulo" href="index.html">Loja Solidaria</a>
                     <a class="nav-item nav-link" href="pages/Eventos.html">Eventos</a>
                     <a class="nav-item nav-link" href="#Emprendimentos">Emprendimentos <i
@@ -210,7 +215,7 @@ require "config/database.php";
             <!-- Conteudo da Portada Principal -->
             <div class="row portada">
                 <div class="col-12 portada__conteudo-principal">
-                    <img class="portada__imagem transiccionSuave" src="assets/img/imgPrincipal.png"
+                    <img class="portada__imagem transiccionSuave" src="assets/img/CasaSolidaria/defaultPooster.png"
                         alt="Foto de portada da loja solidaria">
                     <div class="portada__conteudo-secundario mt-5 transiccionSuave">
                         <h1 class="subTitulo portada__subTitulo transiccionSuave">Historia</h1>
@@ -234,13 +239,13 @@ require "config/database.php";
             <div class="row mt-5 missao">
                 <!-- conteudo onde estam as imagems da missão -->
                 <div class="col-6 missao__conteudo--principal">
-                    <img class="missao__imagem missao__imagem--curvaDireita" src="assets/img/imgMision1.jpg"
+                    <img class="missao__imagem missao__imagem--curvaDireita" src="assets/img/CasaSolidaria/defaultProduct.png"
                         alt="imagem referente a missao da loja solidaria">
-                    <img class="missao__imagem missao__imagem--curvaEsquerda" src="assets/img/imgMision2.jpg"
+                    <img class="missao__imagem missao__imagem--curvaEsquerda" src="assets/img/CasaSolidaria/defaultProduct.png"
                         alt="imagem referente a missao da loja solidaria">
-                    <img class="missao__imagem missao__imagem--curvaEsquerda" src="assets/img/imgMision3.jpg"
+                    <img class="missao__imagem missao__imagem--curvaEsquerda" src="assets/img/CasaSolidaria/defaultProduct.png"
                         alt="imagem referente a missao da loja solidaria">
-                    <img class="missao__imagem missao__imagem--curvaDireita" src="assets/img/imgMision4.jpg"
+                    <img class="missao__imagem missao__imagem--curvaDireita" src="assets/img/CasaSolidaria/defaultProduct.png"
                         alt="imagem referente a missao da loja solidaria">
                     <div class="missao__circuloBorboleta"></div>
                 </div>
@@ -283,7 +288,7 @@ require "config/database.php";
                 <div class="col-3">
                     <div class="card">
                         <img class="card-img-top emprendimento__imagem"
-                            src="assets/img/ImgEmprendimentos/eclipseEjemplo.png" alt="logo do Emprendimento" />
+                            src="assets/img/CasaSolidaria/defaultProduct.png" alt="logo do Emprendimento" />
                         <div class="card-body">
                             <h4 class="card-title">Nome</h4>
                             <p class="card-text">pequena descripção</p>
@@ -296,7 +301,7 @@ require "config/database.php";
                 <div class="col-3">
                     <div class="card">
                         <img class="card-img-top emprendimento__imagem"
-                            src="assets/img/ImgEmprendimentos/eclipseEjemplo.png" alt="logo do Emprendimento" />
+                            src="assets/img/CasaSolidaria/defaultProduct.png" alt="logo do Emprendimento" />
                         <div class="card-body">
                             <h4 class="card-title">Nome</h4>
                             <p class="card-text">pequena descripção</p>
@@ -307,7 +312,7 @@ require "config/database.php";
                 <div class="col-3">
                     <div class="card">
                         <img class="card-img-top emprendimento__imagem"
-                            src="assets/img/ImgEmprendimentos/eclipseEjemplo.png" alt="logo do Emprendimento" />
+                            src="assets/img/CasaSolidaria/defaultProduct.png" alt="logo do Emprendimento" />
                         <div class="card-body">
                             <h4 class="card-title">Nome</h4>
                             <p class="card-text">pequena descripção</p>
@@ -320,7 +325,7 @@ require "config/database.php";
                 <div class="col-3">
                     <div class="card">
                         <img class="card-img-top emprendimento__imagem"
-                            src="assets/img/ImgEmprendimentos/logoLegado.png" alt="logo do Emprendimento" />
+                            src="assets/img/CasaSolidaria/defaultProduct.png" alt="logo do Emprendimento" />
                         <div class="card-body">
                             <h4 class="card-title">Legado</h4>
                             <p class="card-text">pequena descripção</p>

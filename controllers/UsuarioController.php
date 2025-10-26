@@ -25,8 +25,10 @@ switch ($accion) {
         $idUsuario = $usuarioDAO->registrar($usuario);
         echo json_encode(['status' => 'ok', 'message' => 'Usuario registrado']);
 
-        $_SESSION['id'] = $idUsuario;
-        $_SESSION['tipo'] = $tipo;
+        $_SESSION['user'] = [
+            "id" => $idUsuario,
+            "tipo" => $tipo
+        ];
 
 
         break;
@@ -37,11 +39,13 @@ switch ($accion) {
 
         $user = $usuarioDAO->login($email, $password);
         if ($user) {
-            $_SESSION['id'] = $user['idUsuario'];
-            $_SESSION['tipo'] = $user['tipo'];
-            echo json_encode(['status' => 'ok', "message" => "Bem vindo/a de novo!", 'tipo' => $user['tipo']]);
+            $_SESSION['user'] = [
+                "id" => $user['idUsuario'],
+                "tipo" => $user['tipo']
+            ];
+            echo json_encode(['status' => 'ok', "message" => "Bem vindo/a de novo!"]);
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Credenciales incorrectas']);
+            echo json_encode(['status' => 'incorrect_Credencial', 'message' => 'Credenciales incorrectas']);
         }
         break;
 
