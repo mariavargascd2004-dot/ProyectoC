@@ -11,19 +11,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 3000);
 
     /* Modal Aceptar Registros de Emprendedores  */
-    const modal__botonMostrarMas = document.querySelector(".modal--botonMostrarMas");
     const modal__NuevoEmprendedor = document.querySelector(".modal--NuevoEmprendedor");
-    const modal__contenidoMasInfo = document.querySelector(".modal--contenidoMasInfo");
-    modal__botonMostrarMas.addEventListener("click", function () {
-        if (modal__contenidoMasInfo.style.display != "block") {
-            this.innerHTML = "Mostrar detalhes <i class='fa-solid fa-angle-up'></i>";
-            modal__contenidoMasInfo.style.display = "block";
-        }
-        else {
-            this.innerHTML = "Mostrar detalhes <i class='fa-solid fa-angle-down'></i>";
-            modal__contenidoMasInfo.style.display = "none";
-        }
-    })
+    const botonesMostrarMas = document.querySelectorAll(".modal--botonMostrarMas");
+    const contenidosMasInfo = document.querySelectorAll(".modal--contenidoMasInfo");
+
+    // Iteramos sobre cada botón
+    botonesMostrarMas.forEach((boton, index) => {
+        boton.addEventListener("click", function () {
+            const contenido = contenidosMasInfo[index]; // contenido correspondiente al botón
+
+            if (contenido.style.display !== "block") {
+                boton.innerHTML = "Mostrar detalhes <i class='fa-solid fa-angle-up'></i>";
+                contenido.style.display = "block";
+            } else {
+                boton.innerHTML = "Mostrar detalhes <i class='fa-solid fa-angle-down'></i>";
+                contenido.style.display = "none";
+            }
+        });
+    });
 
 
     const modal__botonRechazar = document.querySelector(".modal__botonRechazar");

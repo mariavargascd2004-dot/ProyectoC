@@ -1,15 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    /* Cambiar el Pooster Inicial - Mostrar más infomración de la historia */
+    //Variables Globales
+
     let portada__botao = document.getElementById("portada__botao");
     let portada__imagem = document.querySelector(".portada__imagem");
     let portada__conteudo_secundario = document.querySelector(".portada__conteudo-secundario");
     let portada__subTitulo = document.querySelector(".portada__subTitulo");
     let portada__parrafo = document.querySelector(".portada__parrafo");
 
+
+
+    /////////////////////////////////////////////////
+    ///                    INICIO                  //
+    /////////////////////////////////////////////////
+
+    // Cambiar el Pooster Inicial - Mostrar más infomración de la historia
     portada__botao.addEventListener("click", function () {
         //Extender o Reducir Historia
-        if (this.style.left == "") {//vetifica si el boton esta del lado izquierdo
+        if (this.style.left == "") {
             portada__imagem.style.filter = "brightness(0.1)";
             portada__conteudo_secundario.style.width = "95vw";
             portada__subTitulo.style["text-align"] = "center";
@@ -31,5 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
     })
+
+
 
 });

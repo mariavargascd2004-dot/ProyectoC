@@ -12,13 +12,12 @@ class ImagemGaleriaDAO
 
     public function inserir(ImagemGaleria $imagem)
     {
-        $sql = "INSERT INTO imagem_galeria (emprendimento_id, caminho_imagem, ordem, legenda) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO imagem_galeria (emprendimento_id, caminho_imagem, ordem) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([
             $imagem->getEmprendimentoId(),
             $imagem->getCaminhoImagem(),
             $imagem->getOrdem(),
-            $imagem->getLegenda()
         ]);
     }
 

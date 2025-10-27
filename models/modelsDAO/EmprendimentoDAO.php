@@ -69,13 +69,46 @@ class EmprendimentoDAO
 
     public function listarNoAprovados()
     {
-        $sql = "SELECT e.*, u.nombre as nomeAdmin 
-                FROM emprendimento e 
-                INNER JOIN usuario u ON e.adminAssociado_idUsuario = u.idUsuario 
-                WHERE e.aprovado = 0";
+        // Primero obtenemos los emprendimientos sin imágenes
+        $sql = "SELECT 
+            e.*,
+            u.idUsuario AS idAdmin, 
+            u.nombre AS nomeAdmin, 
+            u.email AS emailAdmin,
+            a.apellido AS adminApellido, 
+            a.descripcion AS adminDescripcion
+        FROM emprendimento e
+        INNER JOIN usuario u 
+            ON e.adminAssociado_idUsuario = u.idUsuario
+        INNER JOIN adminassociado a
+            ON a.adminAssociado_idUsuario = u.idUsuario
+        WHERE e.aprovado = 0
+        ORDER BY e.idEmprendimento DESC";
+
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $emprendimientos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Luego obtenemos las imágenes por separado
+        if (!empty($emprendimientos)) {
+            foreach ($emprendimientos as &$emp) {
+                // Imágenes de galería
+                $sqlGaleria = "SELECT caminho_imagem FROM imagem_galeria 
+                          WHERE emprendimento_id = ? ORDER BY ordem";
+                $stmtGaleria = $this->conn->prepare($sqlGaleria);
+                $stmtGaleria->execute([$emp['idEmprendimento']]);
+                $emp['galeria_imagens'] = $stmtGaleria->fetchAll(PDO::FETCH_COLUMN, 0);
+
+                // Imágenes de fabricación
+                $sqlFabricacao = "SELECT caminho_imagem FROM imagem_fabricacao 
+                             WHERE emprendimento_id = ? ORDER BY ordem";
+                $stmtFabricacao = $this->conn->prepare($sqlFabricacao);
+                $stmtFabricacao->execute([$emp['idEmprendimento']]);
+                $emp['fabricacao_imagens'] = $stmtFabricacao->fetchAll(PDO::FETCH_COLUMN, 0);
+            }
+        }
+
+        return $emprendimientos;
     }
 
     public function atualizarAprovacao($idEmprendimento, $aprovado)

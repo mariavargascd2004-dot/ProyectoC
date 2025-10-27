@@ -43,7 +43,6 @@ switch ($accion) {
                 exit;
             }
         }
-        $aprobado = 0;
 
         // Validar Correo
         if ($usuarioDAO->existeEmail($email)) {
@@ -60,7 +59,6 @@ switch ($accion) {
             $apellido,
             $descripcion,
             $fotoPerfil,
-            $aprobado
         );
 
         // Registrar admin (inserta en usuarios y adminAssociado)

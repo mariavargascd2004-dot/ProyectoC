@@ -17,14 +17,13 @@ class AdminAssociadoDAO
     {
         $idUsuario = $this->usuarioDAO->registrar($admin);
 
-        $sql = "INSERT INTO adminassociado(adminAssociado_idUsuario, apellido, descripcion, fotoPerfil, aprobado)VALUES(?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO adminassociado(adminAssociado_idUsuario, apellido, descripcion, fotoPerfil)VALUES(?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             $idUsuario,
             $admin->getApellido(),
             $admin->getDescripcion(),
             $admin->getFotoPerfil(),
-            $admin->getAprobado()
         ]);
 
         return $idUsuario;

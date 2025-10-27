@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
         .then(response => response.json())
         .then(data => {
+            console.log(data.data)
             const container = document.getElementById("emprendimentosContainer");
 
             if (!data.data || data.data.length === 0) {
