@@ -101,7 +101,19 @@ switch ($accion) {
             echo json_encode(['status' => 'error', 'message' => 'Erro ao registrar o empreendimento']);
         }
         break;
+    case "aprovar":
+        $idEmprendimento = $_POST['id'];
+        $data = $emprendimentoDAO->atualizarAprovacao($idEmprendimento, true);
 
+        if ($data) {
+            echo json_encode(["status" => "ok", "message" => "Empreendedor ativado com sucesso!"]);
+        }
+        else{
+            echo json_encode(["status" => "error", "message" => "Houve um problema ao processar a ativação."]);
+        }
+
+
+        break;
     default:
         echo json_encode(['status' => 'error', 'message' => 'Ação não válida']);
 }

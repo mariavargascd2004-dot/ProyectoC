@@ -61,7 +61,7 @@ switch ($accion) {
         if ($user) {
             echo json_encode([
                 'status' => 'ok',
-                'message' => 'O empreendedor e todos os seus registros foram eliminados com sucesso.'
+                'message' => 'O empreendedor e todos os seus registros foram excluídos com sucesso.'
             ]);
         } else {
             echo json_encode([
@@ -71,5 +71,5 @@ switch ($accion) {
         }
         break;
     default:
-        echo json_encode(['status' => 'error', 'message' => 'Acción no válida']);
+        echo json_encode(['status' => 'error', 'message' => 'A ação não é valida']);
 }

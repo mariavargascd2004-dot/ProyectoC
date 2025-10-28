@@ -19,34 +19,39 @@ if ($tipoUsuario == "adminGeneral") {
     require_once '../helpers/emprendimientosHelper.php';
     $emprendimentosAprobados = obtenerEmprendimientosAprobados();
     $emprendimentosPendientes = obtenerEmprendimientosPendientes();
-    
+
     // ------------------------------------
     // Procesar emprendimientos pendientes
     // ------------------------------------
     $emprendimentos = [];
-}
+    foreach ($emprendimentosPendientes as $emp) {
+        $id = $emp['idEmprendimento'];
 
-foreach ($emprendimentosPendientes as $emp) {
-    $id = $emp['idEmprendimento'];
-
-    // Solo inicializar una vez por emprendimiento
-    if (!isset($emprendimentos[$id])) {
-        $emprendimentos[$id] = [
-            'info' => [
-                'idEmprendimento' => $emp['idEmprendimento'],
-                'nome' => $emp['nome'],
-                'logo' => $emp['logo'],
-                'historia' => $emp['historia'],
-                'processoFabricacao' => $emp['processoFabricacao'],
-                'nomeAdmin' => $emp['nomeAdmin'],
-                'adminApellido' => $emp['adminApellido'],
-                'adminDescripcion' => $emp['adminDescripcion']
-            ],
-            'galeria' => $emp['galeria_imagens'] ?? [],
-            'fabricacao' => $emp['fabricacao_imagens'] ?? []
-        ];
+        // Solo inicializar una vez por emprendimiento
+        if (!isset($emprendimentos[$id])) {
+            $emprendimentos[$id] = [
+                'info' => [
+                    'idAdmin' => $emp['idAdmin'],
+                    'idEmprendimento' => $emp['idEmprendimento'],
+                    'nome' => $emp['nome'],
+                    'logo' => $emp['logo'],
+                    'historia' => $emp['historia'],
+                    'processoFabricacao' => $emp['processoFabricacao'],
+                    'nomeAdmin' => $emp['nomeAdmin'],
+                    'adminApellido' => $emp['adminApellido'],
+                    'adminDescripcion' => $emp['adminDescripcion']
+                ],
+                'galeria' => $emp['galeria_imagens'] ?? [],
+                'fabricacao' => $emp['fabricacao_imagens'] ?? []
+            ];
+        }
     }
+} else {
+    // Cargar emprendimientos usando el helper
+    require_once '../helpers/emprendimientosHelper.php';
+    $emprendimentosAprobados = obtenerEmprendimientosAprobados();
 }
+
 ?>
 <!doctype html>
 <html lang="br">
@@ -106,7 +111,7 @@ foreach ($emprendimentosPendientes as $emp) {
                             <?php } ?>
 
                     </div>
-                    <a class="nav-item nav-link" href="pages/Eventos.html">Eventos</a>
+                    <a class="nav-item nav-link" href="Eventos.html">Eventos</a>
                     <a class="nav-item nav-link" href="#Emprendimentos">Emprendimentos <i
                             class="fa-solid fa-arrow-down"></i></a>
 
@@ -169,23 +174,23 @@ foreach ($emprendimentosPendientes as $emp) {
 
             <!-- Modal para el menu de Aceptar Registro de Emprendedores  -->
             <div class="modal fade" id="modalAprovacaoEmprendedores" tabindex="-1" role="dialog"
-                aria-labelledby="modalTitleId" aria-hidden="true">
+                aria-labelledby="modalTitleId">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalTitleId">
-                                Aprovação de Emprendedores (<?php echo count($emprendimentosPendientes); ?>)
+                                Aprovação de Emprendedores [<label id="count_emprendimentos_pendentes"><?php echo count($emprendimentosPendientes); ?></label>]
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="modalAdminBody">
                             <div class="container-fluid">
                                 <?php if (!empty($emprendimentosPendientes)): ?>
                                     <?php if (!empty($emprendimentos)): ?>
                                         <?php foreach ($emprendimentos as $id => $emp): ?>
                                             <?php $pendiente = $emp['info']; ?>
 
-                                            <div class="modal--NuevoEmprendedor row d-flex align-items-center mb-4">
+                                            <div id="empr_<?= $id ?>" class="modal--NuevoEmprendedor row d-flex align-items-center mb-4">
                                                 <div class="col-3">
                                                     <img src="<?php echo !empty($pendiente['logo']) ? '../' . $pendiente['logo'] : '../assets/img/CasaSolidaria/defaultProduct.png'; ?>"
                                                         width="80px" alt="logo da empresa">
@@ -241,10 +246,10 @@ foreach ($emprendimentosPendientes as $emp) {
                                                     </div>
 
                                                     <div class="col-12 text-end mt-3">
-                                                        <button type="button" class="btn btn-danger modal__botonRechazar" data-id="<?= $id ?>">
+                                                        <button type="button" class="btn btn-danger modal__botonRechazar" data-id="<?= $id ?>" data-nome="<?= $pendiente['nome'] ?>" data-idAdmin="<?= $pendiente['idAdmin'] ?>">
                                                             Rejeitar
                                                         </button>
-                                                        <button type="button" class="btn btn-success modal__botonAceptar" data-id="<?= $id ?>">
+                                                        <button type="button" class="btn btn-success modal__botonAceptar" data-id="<?= $id ?>" data-idadmin="<?= $pendiente['idAdmin'] ?>">
                                                             Aprovar
                                                         </button>
                                                     </div>
@@ -282,7 +287,7 @@ foreach ($emprendimentosPendientes as $emp) {
                         alt="Foto de portada da loja solidaria">
                     <div class="portada__conteudo-secundario mt-5 transiccionSuave">
                         <h1 class="subTitulo portada__subTitulo transiccionSuave">Historia</h1>
-                        <p class="parrafo portada__parrafo transiccionSuave">
+                        <p class="parrafo portada__parrafo parrafo-truncado transiccionSuave">
                             <?php
                             echo $datos ? $datos->getHistoria() : 'Sem historia';
                             ?>
@@ -353,8 +358,10 @@ foreach ($emprendimentosPendientes as $emp) {
                                                                 ? substr($emprendimento['historia'], 0, 100) . '...'
                                                                 : $emprendimento['historia'];
                                                             ?></p>
-                                    <a href="../pages/Emprendimento.php?id=<?php echo $emprendimento['idEmprendimento']; ?>"
+                                    <a href="Emprendimento.html"
                                         class="btn btn--vermelho mt-auto">Ver Loja</a>
+                                    <!-- <a href="../pages/Emprendimento.php?id=<?php echo $emprendimento['idEmprendimento']; ?>"
+                                        class="btn btn--vermelho mt-auto">Ver Loja</a> -->
                                 </div>
                             </div>
                         </div>
@@ -384,7 +391,7 @@ foreach ($emprendimentosPendientes as $emp) {
                 <div class="col-2">
                     <h4 class="footer__subTitulo"> informação </h4>
                     <ul class="footer__texto">
-                        <li> Telefone:  <?php echo $datos ? $datos->getTelefono() : '-'; ?> </li>
+                        <li> Telefone: <?php echo $datos ? $datos->getTelefono() : '-'; ?> </li>
                         <li> Horarios: <?php echo $datos ? $datos->getHorarios() : '-'; ?> </li>
                         <li> WhatsApp: <?php echo $datos ? $datos->getCelular() : '-'; ?> </li>
                     </ul>
