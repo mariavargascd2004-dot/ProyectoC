@@ -26,6 +26,7 @@ body {
     /* grosor del scroll */
     scrollbar-color: var(--cor-amarela) #fff;
     /* thumb | track */
+    word-break: break-all;
 }
 
 /* ===== Chrome / Brave / Edge / Safari ===== */
