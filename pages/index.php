@@ -283,7 +283,7 @@ if ($tipoUsuario == "adminGeneral") {
             <!-- Conteudo da Portada Principal -->
             <div class="row portada">
                 <div class="col-12 portada__conteudo-principal">
-                    <img class="portada__imagem transiccionSuave" src="<?php echo $datos ? $datos->getPortada() : '../assets/img/CasaSolidaria/defaultPortada.png'; ?>"
+                    <img class="portada__imagem transiccionSuave" src="<?php echo $datos ? $datos->getPortada() : '../assets/img/CasaSolidaria/defaultPooster.png'; ?>"
                         alt="Foto de portada da loja solidaria">
                     <div class="portada__conteudo-secundario mt-5 transiccionSuave">
                         <h1 class="subTitulo portada__subTitulo transiccionSuave">Historia</h1>
