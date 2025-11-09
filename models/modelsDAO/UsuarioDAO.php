@@ -41,6 +41,14 @@ class UsuarioDAO
         }
     }
 
+    public function obterTipoPorId($idUsuario)
+    {
+        $sql = "SELECT tipo FROM usuario WHERE idUsuario = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$idUsuario]);
+        return $stmt->fetchColumn();
+    }
+
     //Verificar si existe el Email
     public function existeEmail($email)
     {
@@ -56,10 +64,21 @@ class UsuarioDAO
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
 
-        // Verifica si alguna fila fue eliminada
         if ($stmt->rowCount() > 0) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    public function atualizarNome($idUsuario, $nombre)
+    {
+        try {
+            $sql = "UPDATE usuario SET nombre = ? WHERE idUsuario = ?";
+            $stmt = $this->conn->prepare($sql);
+            return $stmt->execute([$nombre, $idUsuario]);
+        } catch (PDOException $e) {
+            error_log("Erro em UsuarioDAO::atualizarNome: " . $e->getMessage());
             return false;
         }
     }

@@ -5,9 +5,8 @@
     --fonte-subtitulo: "Lora";
     --fonte-texto: "Work Sans";
     /*Cores*/
-    --cor-amarela: #CA0707;
-    --cor-amarelaSuave: #FDCB29;
-    --cor-vermelho: #CA0707;
+    --cor-primaria: none;
+    --cor-secundaria: none;
 }
 
 /* Boton Flotante */
@@ -22,11 +21,29 @@
     color: white;
 
 }
-/* Menu Inicial - Legado(ejemplo de emprendimiento) */
+/* Menu Inicial -*/
+
+
+
+.subTitulo, .titulo{
+    color: var(--cor-primaria);
+}
+.subTitulo:hover, .titulo:hover{
+    color: var(--cor-secundaria);
+}
+
+button{
+    background-color: var(--cor-primaria) !important;
+    color: var(--cor-secundaria) !important;
+}
+button:hover{
+    background-color: var(--cor-secundaria) !important;
+    color: var(--cor-primaria) !important;
+}
 
 /*Barra de Navegacion*/
 .nav__titulo {
-    color: var(--cor-vermelho);
+    color: var(--cor-primaria);
 }
 
 /* Portada Inicial */
@@ -73,7 +90,7 @@
 }
 
 .portada__subTitulo {
-    color: var(--cor-vermelho);
+    color: var(--cor-primaria);
 }
 
 .portada__parrafo {
@@ -85,6 +102,13 @@
     position: absolute;
     left: 0px;
     bottom: -50px;
+    background-color: var(--cor-primaria) !important;
+    color: var(--cor-secundaria) !important;
+}
+
+.portada__botao:hover{
+    background-color: var(--cor-secundaria) !important;
+    color: var(--cor-primaria) !important;
 }
 
 .portada__conteudo-terceario {
@@ -138,3 +162,11 @@
 }
 
 /*Produtos*/
+
+/*Footer*/
+.footer__titulo{
+    color: var(--cor-primaria);
+}
+.footer__subTitulo{
+    color: var(--cor-secundaria);
+}

@@ -184,6 +184,28 @@ nav {
     display: none;
 }
 
+.img-preview-container {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.img-preview-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.contornoGris {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    background-color: #fff;
+}
+
 
 /*Footer*/
 .footer {
@@ -251,15 +273,16 @@ nav {
 
 /* borde rojo parpadeando */
 
-@keyframes parpadeoBordeRojo{
-    0%{
+@keyframes parpadeoBordeRojo {
+    0% {
         border: 2px solid #86b7fe;
     }
-    50%{
+
+    50% {
         border: 2px solid red;
     }
-    100%{
+
+    100% {
         border: 2px solid #86b7fe;
     }
 }
-

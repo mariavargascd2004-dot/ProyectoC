@@ -37,8 +37,55 @@ class PaginaPrincipalDAO
                 $row['facebook'],
                 $row['instagram']
             );
+        } else {
+            $defaultData = [
+                'portada' => '../assets/img/CasaSolidaria/defaultPooster.png',
+                'historia' => 'Historia predefinida...',
+                'mision' => 'Missão predefinida...',
+                'vision' => 'Visão predefinida...',
+                'primerafotogaleria' => '../assets/img/CasaSolidaria/defaultProduct.png',
+                'segundafotogaleria' => '../assets/img/CasaSolidaria/defaultProduct.png',
+                'tercerafotogaleria' => '../assets/img/CasaSolidaria/defaultProduct.png',
+                'cuartafotogaleria' => '../assets/img/CasaSolidaria/defaultProduct.png',
+                'telefono' => '000-0000',
+                'direccion' => 'Direção predefinida',
+                'horarios' => 'Sem horarios',
+                'celular' => '000-000-0000',
+                'facebook' => '#',
+                'instagram' => '#'
+            ];
+
+            $insertQuery = "INSERT INTO pagina_principal (portada, historia, mision, vision, primerafotogaleria, segundafotogaleria, tercerafotogaleria, cuartafotogaleria, telefono, direccion, horarios, celular, facebook, instagram) VALUES (:portada, :historia, :mision, :vision, :primerafotogaleria, :segundafotogaleria, :tercerafotogaleria, :cuartafotogaleria, :telefono, :direccion, :horarios, :celular, :facebook, :instagram)";
+
+            $insertStmt = $this->conn->prepare($insertQuery);
+
+            // Vincular parámetros
+            foreach ($defaultData as $key => &$value) {
+                $insertStmt->bindParam(':' . $key, $value);
+            }
+
+            if ($insertStmt->execute()) {
+                return new PaginaPrincipal(
+                    $defaultData['portada'],
+                    $defaultData['historia'],
+                    $defaultData['mision'],
+                    $defaultData['vision'],
+                    $defaultData['primerafotogaleria'],
+                    $defaultData['segundafotogaleria'],
+                    $defaultData['tercerafotogaleria'],
+                    $defaultData['cuartafotogaleria'],
+                    $defaultData['telefono'],
+                    $defaultData['direccion'],
+                    $defaultData['horarios'],
+                    $defaultData['celular'],
+                    $defaultData['facebook'],
+                    $defaultData['instagram']
+                );
+            } else {
+                error_log("Error al insertar datos por defecto en pagina_principal: " . implode(" ", $insertStmt->errorInfo()));
+                return null;
+            }
         }
-        return null;
     }
 
     // Actualizar datos de la página principal

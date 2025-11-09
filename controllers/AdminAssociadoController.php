@@ -11,10 +11,11 @@ $usuarioDAO = new UsuarioDAO($db);
 
 $accion = $_POST['accion'] ?? '';
 
+$idUsuarioLogado = $_SESSION['user']['id'] ?? null;
+
 switch ($accion) {
     case 'registrarAdmin':
-        error_log("Tipo de usuario recibido: " . ($_POST['tipo'] ?? 'NO RECIBIDO'));
-        error_log("Datos completos POST: " . print_r($_POST, true));
+
 
         $nombre = $_POST['nombre'] ?? '';
         $email = $_POST['email'] ?? '';
@@ -65,12 +66,6 @@ switch ($accion) {
         $idUsuario = $adminDAO->registrar($admin);
 
         if ($idUsuario) {
-            $_SESSION['user'] = [
-                "id" => $idUsuario,
-                "tipo" => $tipo,
-                "nome" => $nombre,
-                "alerta" => true
-            ];
             echo json_encode(['status' => 'ok', 'idUsuario' => $idUsuario, 'message' => 'Admin registrado correctamente']);
         } else {
             error_log("Error al registrar admin. ID Usuario: " . $idUsuario);
@@ -78,6 +73,80 @@ switch ($accion) {
         }
         break;
 
+    case "actualizarPerfil":
+        header('Content-Type: application/json');
+
+        $idUsuarioForm = $_POST['idUsuario'] ?? 0;
+
+        if (!$idUsuarioLogado || $idUsuarioLogado != $idUsuarioForm) {
+            echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
+            exit;
+        }
+
+        $nome = $_POST['nombre'] ?? '';
+        $dadosAdmin = [
+            'apellido' => $_POST['apellido'] ?? '',
+            'descripcion' => $_POST['descripcion'] ?? ''
+        ];
+        $newFotoPath = null;
+
+        if (empty($nome) || empty($dadosAdmin['apellido']) || empty($dadosAdmin['descripcion'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Nome, Sobrenome e Biografia são obrigatórios.']);
+            exit;
+        }
+
+        if (isset($_FILES['fotoPerfil']) && $_FILES['fotoPerfil']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = '../assets/img/perfil/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+
+            $ext = pathinfo($_FILES['fotoPerfil']['name'], PATHINFO_EXTENSION);
+            $novoNombre = uniqid('admin_') . '.' . $ext;
+            $rutaCompleta = $uploadDir . $novoNombre;
+
+            if (move_uploaded_file($_FILES['fotoPerfil']['tmp_name'], $rutaCompleta)) {
+                $newFotoPath = '../assets/img/perfil/' . $novoNombre;
+                $dadosAdmin['fotoPerfil'] = $newFotoPath;
+
+                $infoAntiga = $adminDAO->obtenerPorId($idUsuarioLogado);
+
+                if ($infoAntiga && !empty($infoAntiga['FotoPerfilAssociado']) && file_exists($infoAntiga['FotoPerfilAssociado'])) {
+                    if (basename($infoAntiga['FotoPerfilAssociado']) != 'default.png') {
+                        unlink($infoAntiga['FotoPerfilAssociado']);
+                    }
+                }
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Erro ao mover a nova imagem de perfil.']);
+                exit;
+            }
+        }
+
+        $db->beginTransaction();
+        try {
+            $successUsuario = $usuarioDAO->atualizarNome($idUsuarioLogado, $nome);
+
+            $successAdmin = $adminDAO->atualizarPerfil($idUsuarioLogado, $dadosAdmin);
+
+            if ($successUsuario && $successAdmin) {
+                $db->commit();
+                $_SESSION['user']['nome'] = $nome;
+
+                echo json_encode([
+                    'status' => 'ok',
+                    'message' => 'Perfil atualizado com sucesso!',
+                    'newFotoPath' => $newFotoPath
+                ]);
+            } else {
+                $db->rollBack();
+                echo json_encode(['status' => 'error', 'message' => 'Não foi possível atualizar o perfil.']);
+            }
+        } catch (Exception $e) {
+            $db->rollBack();
+            error_log("Erro na transação de atualizarPerfil: " . $e->getMessage());
+            echo json_encode(['status' => 'error', 'message' => 'Erro fatal no servidor.']);
+        }
+        break;
     default:
         echo json_encode(['status' => 'error', 'message' => 'Acción no válida']);
         break;

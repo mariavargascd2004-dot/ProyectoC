@@ -12,18 +12,22 @@ class EmprendimentoDAO
     public function registrar(Emprendimento $emprendimento)
     {
         $sql = "INSERT INTO emprendimento 
-                (adminAssociado_idUsuario, nome, logo, historia, processoFabricacao, telefone, celular, ubicacao, instagram, facebook, aprovado) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                (adminAssociado_idUsuario, nome, logo, pooster, corPrincipal, corSecundaria, historia, processoFabricacao, telefone, celular, horarios, ubicacao, instagram, facebook, aprovado) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             $emprendimento->getAdminAssociadoIdUsuario(),
             $emprendimento->getNome(),
             $emprendimento->getLogo(),
+            $emprendimento->getPooster(),
+            $emprendimento->getCorPrincipal(),
+            $emprendimento->getCorSecundaria(),
             $emprendimento->getHistoria(),
             $emprendimento->getProcessoFabricacao(),
             $emprendimento->getTelefone(),
             $emprendimento->getCelular(),
+            $emprendimento->getHorarios(),
             $emprendimento->getUbicacao(),
             $emprendimento->getInstagram(),
             $emprendimento->getFacebook(),
@@ -46,6 +50,13 @@ class EmprendimentoDAO
         $sql = "SELECT * FROM emprendimento WHERE idEmprendimento = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$idEmprendimento]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function obterPorIdAssociado($idAssociado)
+    {
+        $sql = "SELECT * FROM emprendimento WHERE adminAssociado_idUsuario = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$idAssociado]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -116,5 +127,81 @@ class EmprendimentoDAO
         $sql = "UPDATE emprendimento SET aprovado = ? WHERE idEmprendimento = ?";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([$aprovado, $idEmprendimento]);
+    }
+
+    public function atualizarHistoria($idEmprendimento, $historia)
+    {
+        try {
+            $sql = "UPDATE emprendimento SET historia = ? WHERE idEmprendimento = ?";
+            $stmt = $this->conn->prepare($sql);
+
+            return $stmt->execute([$historia, $idEmprendimento]);
+        } catch (PDOException $e) {
+            error_log("Erro em EmprendimentoDAO::atualizarHistoria: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function atualizarProcesso($idEmprendimento, $processo)
+    {
+        try {
+            $sql = "UPDATE emprendimento SET processoFabricacao = ? WHERE idEmprendimento = ?";
+            $stmt = $this->conn->prepare($sql);
+
+            return $stmt->execute([$processo, $idEmprendimento]);
+        } catch (PDOException $e) {
+            error_log("Erro em EmprendimentoDAO::atualizarProcesso: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function atualizarInfoEmprendimento($idEmprendimento, $dados)
+    {
+        try {
+            $sql = "UPDATE emprendimento SET 
+                        telefone = ?,
+                        celular = ?,
+                        ubicacao = ?,
+                        horarios = ?,
+                        facebook = ?,
+                        instagram = ?
+                    WHERE idEmprendimento = ?";
+
+            $stmt = $this->conn->prepare($sql);
+
+            return $stmt->execute([
+                $dados['telefone'],
+                $dados['celular'],
+                $dados['ubicacao'],
+                $dados['horarios'],
+                $dados['facebook'],
+                $dados['instagram'],
+                $idEmprendimento
+            ]);
+        } catch (PDOException $e) {
+            error_log("Erro em EmprendimentoDAO::atualizarInfoEmprendimento: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function atualizarCores($idEmprendimento, $corPrincipal, $corSecundaria)
+    {
+        try {
+            $sql = "UPDATE emprendimento SET 
+                        corPrincipal = ?,
+                        corSecundaria = ?
+                    WHERE idEmprendimento = ?";
+
+            $stmt = $this->conn->prepare($sql);
+
+            return $stmt->execute([
+                $corPrincipal,
+                $corSecundaria,
+                $idEmprendimento
+            ]);
+        } catch (PDOException $e) {
+            error_log("Erro em EmprendimentoDAO::atualizarCores: " . $e->getMessage());
+            return false;
+        }
     }
 }

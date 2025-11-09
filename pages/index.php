@@ -17,8 +17,9 @@ $datos = $controller->obtenerDatos();
 if ($tipoUsuario == "adminGeneral") {
     // Cargar emprendimientos usando el helper
     require_once '../helpers/emprendimientosHelper.php';
-    $emprendimentosAprobados = obtenerEmprendimientosAprobados();
-    $emprendimentosPendientes = obtenerEmprendimientosPendientes();
+    $empHelper = new EmprendimientosHelper();
+    $emprendimentosAprobados = $empHelper->obtenerEmprendimientosAprobados();
+    $emprendimentosPendientes = $empHelper->obtenerEmprendimientosPendientes();
 
     // ------------------------------------
     // Procesar emprendimientos pendientes
@@ -49,7 +50,8 @@ if ($tipoUsuario == "adminGeneral") {
 } else {
     // Cargar emprendimientos usando el helper
     require_once '../helpers/emprendimientosHelper.php';
-    $emprendimentosAprobados = obtenerEmprendimientosAprobados();
+    $empHelper = new EmprendimientosHelper();
+    $emprendimentosAprobados = $empHelper->obtenerEmprendimientosAprobados();
 }
 
 ?>
@@ -303,13 +305,13 @@ if ($tipoUsuario == "adminGeneral") {
             <div class="row mt-5 missao">
                 <!-- conteudo onde estam as imagems da missão -->
                 <div class="col-6 missao__conteudo--principal">
-                    <img class="missao__imagem missao__imagem--curvaDireita" src="<?php echo $datos ? $datos->getPrimerafotogaleria() : "../assets/img/CasaSolidaria/defaultPreduct.png" ?>"
+                    <img class="missao__imagem missao__imagem--curvaDireita" src="<?php echo $datos ? $datos->getPrimerafotogaleria() : "../assets/img/CasaSolidaria/defaultProduct.png" ?>"
                         alt="imagem referente a missao da loja solidaria">
-                    <img class="missao__imagem missao__imagem--curvaEsquerda" src="<?php echo $datos ? $datos->getSegundafotogaleria() : "../assets/img/CasaSolidaria/defaultPreduct.png" ?>"
+                    <img class="missao__imagem missao__imagem--curvaEsquerda" src="<?php echo $datos ? $datos->getSegundafotogaleria() : "../assets/img/CasaSolidaria/defaultProduct.png" ?>"
                         alt="imagem referente a missao da loja solidaria">
-                    <img class="missao__imagem missao__imagem--curvaEsquerda" src="<?php echo $datos ? $datos->getTercerafotogaleria() : "../assets/img/CasaSolidaria/defaultPreduct.png" ?>"
+                    <img class="missao__imagem missao__imagem--curvaEsquerda" src="<?php echo $datos ? $datos->getTercerafotogaleria() : "../assets/img/CasaSolidaria/defaultProduct.png" ?>"
                         alt="imagem referente a missao da loja solidaria">
-                    <img class="missao__imagem missao__imagem--curvaDireita" src="<?php echo $datos ? $datos->getCuartafotogaleria() : "../assets/img/CasaSolidaria/defaultPreduct.png" ?>"
+                    <img class="missao__imagem missao__imagem--curvaDireita" src="<?php echo $datos ? $datos->getCuartafotogaleria() : "../assets/img/CasaSolidaria/defaultProduct.png" ?>"
                         alt="imagem referente a missao da loja solidaria">
                     <div class="missao__circuloBorboleta"></div>
                 </div>
@@ -358,10 +360,8 @@ if ($tipoUsuario == "adminGeneral") {
                                                                 ? substr($emprendimento['historia'], 0, 100) . '...'
                                                                 : $emprendimento['historia'];
                                                             ?></p>
-                                    <a href="Emprendimento.html"
+                                    <a href="../pages/Emprendimento.php?token=<?php echo base64_encode($emprendimento['idEmprendimento']); ?>"
                                         class="btn btn--vermelho mt-auto">Ver Loja</a>
-                                    <!-- <a href="../pages/Emprendimento.php?id=<?php echo $emprendimento['idEmprendimento']; ?>"
-                                        class="btn btn--vermelho mt-auto">Ver Loja</a> -->
                                 </div>
                             </div>
                         </div>
@@ -483,21 +483,6 @@ if ($tipoUsuario == "adminGeneral") {
                 html: 'Obrigado por estar conosco.<br><br>Desfrute da sua experiência!',
                 icon: 'success',
                 confirmButtonText: 'Começar',
-                background: '#DCA700',
-                color: '#000000',
-                confirmButtonColor: '#B2442E',
-                iconColor: '#FFFFFF'
-            });
-        </script>
-        ";
-        } else if ($_SESSION["user"]['tipo'] === "associado") {
-            echo "
-        <script>
-            Swal.fire({
-                title: 'Bem-vindo, Empreendedor!',
-                html: 'Prepare-se para gerenciar seus produtos e vendas de forma eficiente.<br><br>Vamos crescer juntos!',
-                icon: 'success',
-                confirmButtonText: 'Vamos lá!',
                 background: '#DCA700',
                 color: '#000000',
                 confirmButtonColor: '#B2442E',

@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data.data)
             const container = document.getElementById("emprendimentosContainer");
 
             if (!data.data || data.data.length === 0) {
@@ -132,8 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         fetch("../controllers/UsuarioController.php", {
                             method: "POST",
                             body: new URLSearchParams({
-                                accion: "eliminar",
-                                id: id,
+                                accion: "eliminarConta",
+                                idUsuario: id,
                             })
                         })
                             .then(res => {
@@ -149,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 return res.json();
                             })
                             .then(data => {
-                                console.log(data);
                                 if (data.status === "ok") {
                                     Swal.fire({
                                         title: 'Sucesso!',
@@ -197,10 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 })
 
-//mostra más detalles del emprendedor
-function verDetalles(id) {
-    alert(id);
-}
 
 //////////////////////////////////////////////////////
 //                        INICIO                    //

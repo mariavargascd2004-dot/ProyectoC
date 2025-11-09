@@ -367,10 +367,13 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.append("accion", "registrar");
         formData.append("adminAssociado_idUsuario", adminId);
         formData.append("nome", form.querySelector('input[name="nombreEmprendimento"]').value);
+        formData.append("corPrincipal", form.querySelector('input[name="corPrincipal"]').value);
+        formData.append("corSecundaria", form.querySelector('input[name="corSecundaria"]').value);
         formData.append("historia", form.querySelector('textarea[name="historia"]').value);
         formData.append("processoFabricacao", form.querySelector('textarea[name="processoFabricacao"]').value);
         formData.append("telefone", form.querySelector('input[name="telefone"]').value || '');
         formData.append("celular", form.querySelector('input[name="celular"]').value);
+        formData.append("horarios", form.querySelector('input[name="horarios"]').value);
         formData.append("ubicacao", form.querySelector('input[name="ubicacao"]').value);
         formData.append("instagram", form.querySelector('input[name="instragram"]').value || '');
         formData.append("facebook", form.querySelector('input[name="facebook"]').value || '');
@@ -379,6 +382,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const logoFile = form.querySelector('input[name="logoEmprendimento"]').files[0];
         if (logoFile) {
             formData.append("logoEmprendimento", logoFile);
+        }
+
+        // Pooster
+        const poosterFile = form.querySelector('input[name="poosterEmprendimento"]').files[0];
+        if (poosterFile) {
+            formData.append("poosterEmprendimento", poosterFile);
         }
 
         filesArrayFabricacao.forEach((file, index) => {
@@ -439,16 +448,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     Swal.fire({
                         title: 'Cadastro concluído!',
-                        text: 'Seu empreendimento foi registrado com sucesso!',
+                        text: 'Seu empreendimento foi registrado com sucesso! Agora, aguarde a ativação da sua conta pelo administrador antes de realizar o login.',
                         icon: 'success',
-                        confirmButtonText: 'Aceitar',
+                        confirmButtonText: 'Entendido',
                         background: '#DCA700',
                         color: '#000000',
                         confirmButtonColor: '#B2442E',
                         iconColor: '#FFFFFF'
                     }).then(() => {
-                        window.location.href = "../";
+                        window.location.href = "Login.html";
                     });
+
                 } else {
                     Swal.fire({
                         title: 'Erro no cadastro',

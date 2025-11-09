@@ -1,40 +1,58 @@
 <?php
-function obtenerEmprendimientosAprobados()
+require_once '../config/database.php';
+require_once '../models/modelsDAO/EmprendimentoDAO.php';
+
+class EmprendimientosHelper
 {
-    require_once '../config/database.php';
-    require_once '../models/modelsDAO/EmprendimentoDAO.php';
+    private $emprendimentoDAO;
 
-    try {
-        $db = (new Database())->getConnection();
-        $emprendimentoDAO = new EmprendimentoDAO($db);
-        $emprendimentos = $emprendimentoDAO->listarTodosComAdmin();
-
-        $aprobados = [];
-        if ($emprendimentos) {
-            foreach ($emprendimentos as $emp) {
-                if ($emp['aprovado'] == 1) {
-                    $aprobados[] = $emp;
-                }
-            }
+    public function __construct()
+    {
+        try {
+            $db = (new Database())->getConnection();
+            $this->emprendimentoDAO = new EmprendimentoDAO($db);
+        } catch (Exception $e) {
+            error_log("Error fatal en EmprendimientosHelper al conectar a BD: " . $e->getMessage());
         }
-        return $aprobados;
-    } catch (Exception $e) {
-        error_log("Error obteniendo emprendimientos: " . $e->getMessage());
-        return [];
     }
-}
 
-function obtenerEmprendimientosPendientes()
-{
-    require_once '../config/database.php';
-    require_once '../models/modelsDAO/EmprendimentoDAO.php';
+    public function obtenerEmprendimientosAprobados()
+    {
+        try {
+            $emprendimentos = $this->emprendimentoDAO->listarTodosComAdmin();
 
-    try {
-        $db = (new Database())->getConnection();
-        $emprendimentoDAO = new EmprendimentoDAO($db);
-        return $emprendimentoDAO->listarNoAprovados();
-    } catch (Exception $e) {
-        error_log("Error obteniendo emprendimientos pendientes: " . $e->getMessage());
-        return [];
+            if (!$emprendimentos) {
+                return [];
+            }
+
+            $aprobados = array_filter($emprendimentos, function ($emp) {
+                return $emp['aprovado'] == 1;
+            });
+
+            return array_values($aprobados);
+        } catch (Exception $e) {
+            error_log("Error obteniendo emprendimientos aprobados: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function obtenerEmprendimientosPendientes()
+    {
+        try {
+            return $this->emprendimentoDAO->listarNoAprovados();
+        } catch (Exception $e) {
+            error_log("Error obteniendo emprendimientos pendientes: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function obtenerEmprendimientoPorId($id)
+    {
+        try {
+            return $this->emprendimentoDAO->obterPorId($id);
+        } catch (Exception $e) {
+            error_log("Error buscando emprendimiento $id: " . $e->getMessage());
+            return null;
+        }
     }
 }
