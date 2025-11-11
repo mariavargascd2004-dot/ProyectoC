@@ -1,9 +1,5 @@
 let eventosCargados = [];
 
-//////////////////////////////////////////////////////
-//                 INICIO / CARGA                    //
-//////////////////////////////////////////////////////
-
 document.addEventListener("DOMContentLoaded", () => {
     //Variables Globales
     const formEvento = document.getElementById("formEvento");
@@ -19,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btnSubmitEvento.disabled = false;
 
 
-    // Cargar todos los eventos
     function cargarEventos() {
         eventosContainer.innerHTML = '<p>Carregando eventos...</p>';
         fetch("../controllers/EventoController.php", {
@@ -40,15 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 eventosContainer.innerHTML = '';
 
                 data.data.forEach(evento => {
-                    // ==============================================
-                    //     CORREGIDO: Usando nuevas funciones de formato
-                    // ==============================================
+
                     const dataInicioFormatada = formatarDataLegivelJS(evento.fechaInicio);
                     const horaInicioFormatada = formatarHoraJS(evento.fechaInicio);
 
-                    // ==============================================
-                    //     CORREGIDO: HTML de la lista actualizado
-                    // ==============================================
                     const html = `
                 <div class="row contornoGris p-3 mb-3">
                     <div class="col-md-3">
@@ -84,12 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    //////////////////////////////////////////////////////
-    //                FORMULARIOS / AÇÕES                //
-    //////////////////////////////////////////////////////
-
     eventosContainer.addEventListener("click", (e) => {
-        // ... (código de eliminar no cambia) ...
         const btnEliminar = e.target.closest(".eliminar-evento");
         if (btnEliminar) {
             const id = btnEliminar.dataset.id;
@@ -106,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     formEvento.addEventListener("submit", function (e) {
-        // ... (código de submit no cambia) ...
         e.preventDefault();
         const titulo = formEvento.querySelector("[name='titulo']").value.trim();
         const fechaInicio = formEvento.querySelector("[name='fechaInicio']").value;
@@ -132,9 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         formEvento.querySelector("[name='titulo']").value = evento.titulo;
         formEvento.querySelector("[name='descripcion']").value = evento.descripcion;
 
-        // ==============================================
-        //     CORREGIDO: Formato para datetime-local
-        // ==============================================
         formEvento.querySelector("[name='fechaInicio']").value = formatDBtoInputDatetime(evento.fechaInicio);
         formEvento.querySelector("[name='fechaFinal']").value = formatDBtoInputDatetime(evento.fechaFinal);
         formEvento.querySelector("[name='estado']").value = evento.estado;
@@ -151,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleEliminar(id) {
-        // ... (código de eliminar no cambia) ...
         Swal.fire({
             title: "Tem certeza?",
             text: "Esta ação não pode ser desfeita.",
@@ -188,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function resetarFormulario() {
-        // ... (código de resetar no cambia) ...
         formEvento.reset();
         formEventoTitulo.innerText = "Criar Novo Evento";
         eventoAction.value = "crear";
@@ -198,12 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
         btnCancelarEdicion.style.display = "none";
     }
 
-    //////////////////////////////////////////////////////
-    //                FUNCIONES AUXILIARES              //
-    //////////////////////////////////////////////////////
 
     function enviarFormulario(formulario) {
-        // ... (código de enviar no cambia) ...
         const formData = new FormData(formulario);
         btnSubmitEvento.disabled = true;
         btnSubmitEvento.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
@@ -236,7 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.querySelectorAll('.foto-input').forEach(input => {
-        // ... (código de vista previa de imagen no cambia) ...
         input.addEventListener('change', function (e) {
             const previewId = this.getAttribute('data-preview');
             const previewImg = document.getElementById(previewId);
@@ -254,7 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function formularioVacio(elemento, mensajePersonalizado = null) {
-        // ... (código de formulario vacío no cambia) ...
         const mensaje = mensajePersonalizado || 'O formulário não pode estar vazio. Por favor, preencha todos os campos obrigatórios.';
         Swal.fire('Atenção!', mensaje, 'warning');
         if (elemento) {
@@ -262,30 +235,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // ===================================================================
-    //     CORREGIDO: Funciones de formato de fecha/hora actualizadas
-    // ===================================================================
-
-    /**
-     * Convierte 'YYYY-MM-DD HH:MM:SS' a 'YYYY-MM-DDTHH:MM'
-     * para el input datetime-local.
-     */
     function formatDBtoInputDatetime(dataStr) {
         if (!dataStr || dataStr.startsWith('0000-00-00')) return "";
-        // Reemplaza el espacio por 'T' y corta los segundos
         return dataStr.replace(' ', 'T').substring(0, 16);
     }
 
-    /**
-     * Formatea una fecha a "DD de Mês de YYYY"
-     */
     function formatarDataLegivelJS(dataStr) {
         if (!dataStr || dataStr.startsWith('0000-00-00')) return "N/A";
         const meses = [
             'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
             'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'
         ];
-        // Usar 'T' para asegurar zona horaria correcta
         const data = new Date(dataStr.replace(' ', 'T'));
         const dia = data.getDate().toString().padStart(2, '0');
         const mesIndex = data.getMonth();
@@ -293,9 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${dia} de ${meses[mesIndex]} de ${ano}`;
     }
 
-    /**
-     * Extrae la hora "HH:MM" si no es "00:00"
-     */
     function formatarHoraJS(dataStr) {
         if (!dataStr || dataStr.startsWith('0000-00-00')) return null;
         const data = new Date(dataStr.replace(' ', 'T'));
