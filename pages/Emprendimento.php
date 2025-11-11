@@ -27,12 +27,20 @@ require_once '../helpers/emprendimientosHelper.php';
 require_once '../helpers/adminsAssociadoHelper.php';
 require_once '../helpers/imagemFabricacaoHelper.php';
 require_once '../helpers/imagemGaleriaHelper.php';
+require_once '../helpers/produtoHelper.php';
+require_once '../helpers/imagemProdutoHelper.php';
+require_once '../helpers/categoriaHelper.php';
+require_once '../helpers/subcategoriaHelper.php';
 
 try {
     $empHelper = new EmprendimientosHelper();
     $assHelper = new adminsAssociadoHelper();
     $FabricacaoHelper = new imagemFabricacaoHelper();
     $GaleriaHelper = new imagemGaleriaHelper();
+    $produtoHelper = new produtoHelper();
+    $produtoImagemHelper = new imagemProdutoHelper();
+    $categoriaHelper = new categoriaHelper();
+    $subcategoriaHelper = new subcategoriaHelper();
 
     $emprendimiento = $empHelper->obtenerEmprendimientoPorId($idEmprendimiento);
 
@@ -49,8 +57,25 @@ try {
         exit;
     }
 
+    $productos = $produtoHelper->obtenerProductosDelEmprendimiento($idEmprendimiento);
+
+    //obtener solo la primera imagen del producto (solo es necesario mostrar una)
+    if ($productos && count($productos) > 0) {
+        foreach ($productos as &$producto) {
+            $imagenes = $produtoImagemHelper->obterImagemsComIdProduto($producto['idProducto']);
+
+            if ($imagenes && count($imagenes) > 0) {
+                $producto['imagen_principal'] = $imagenes[0]['caminho_imagem']; //acá agregue la imagen como un elemento más en el array de cada producto
+            }
+        }
+        unset($producto);
+    }
+
     $imgemsFabricacao = $FabricacaoHelper->obterImagemsComIdEmprendimento($idEmprendimiento);
     $imgemsGaleria  = $GaleriaHelper->obterImagemsComIdEmprendimento($idEmprendimiento);
+    $categorias = $categoriaHelper->obtenerCategoriasDelEmprendimiento($idEmprendimiento);
+    //las subCategorias las obtengo más abajo recorriendo el array de categorias
+
 } catch (Exception $e) {
     error_log("Error en menuEmprendimiento.php: " . $e->getMessage());
     header("location:../");
@@ -175,7 +200,214 @@ function h($string)
         <?php if ($idUsuario && $idUsuario == $idAssociadoDelEmprendimiento) { ?>
             <!-- Boton Flotante para Ajustes (Solo visible para el dueño) -->
             <a href="AjustesEmprendedor.php?token=<?php echo h($_GET['token']); ?>" title="Ajustes Gerais" class="btn" id="btnFlotante--ajustesGerais"><i
-                    class="fa-solid fa-gear"></i></a>
+                    class="fa-solid fa-gear"></i>Ajustes</a>
+
+            <!-- Para Productos -->
+            <button id="btnAgregarProducto" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProduto">
+                <i class="fa-solid fa-cart-plus"></i> Produto
+            </button>
+            <button id="btnEditarProducto" class="btn btn--amarelo">
+                <i class="fa-solid fa-pen-to-square"></i> Produto
+            </button>
+
+            <!-- Modal de Agregar Produto -->
+            <div class="modal fade modal-produto" id="modalProduto" tabindex="-1" aria-hidden="true">
+                <form id="formProduto" action="../controllers/ProdutoController.php" method="post">
+                    <input type="hidden" name="accion" value="GuardarProduto">
+                    <input type="hidden" name="idEmprendimiento" value="<?php echo $idEmprendimiento ?>">
+                    <div class="modal-dialog modal-dialog-centered modal-lg modal-produto-dialog">
+                        <div class="modal-content modal-produto-content p-4">
+                            <div class="container-fluid">
+                                <!-- Título -->
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <h5 class="modal-title fw-bold">Agregar Producto</h5>
+                                    </div>
+                                </div>
+
+                                <div class="row g-4">
+                                    <!-- Columna izquierda -->
+                                    <div class="col-md-5">
+                                        <div class="card modal-produto-card p-3">
+                                            <div class="mb-3">
+                                                <input class="form-control modal-produto-input" type="file"
+                                                    id="modalProdutoFile" name="images[]" multiple>
+                                            </div>
+                                            <div id="modalProdutoPreview"
+                                                class="modal-produto-preview border bg-light d-flex flex-wrap justify-content-center align-items-center text-muted p-2"
+                                                style="gap: 10px; min-height: 150px; max-height: 280px; overflow-y: auto;">
+                                                Nenhuma imagem selecionada
+                                            </div>
+                                            <div class="d-flex justify-content-center mt-3">
+                                                <button id="modalProdutoRemove"
+                                                    class="btn modal-produto-btn-remove px-4">Remover imagen</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Columna derecha -->
+                                    <div class="col-md-7">
+                                        <div class="card modal-produto-card p-3">
+
+                                            <!-- Botones de acción -->
+                                            <div class="d-flex justify-content-end mb-3 gap-2">
+                                                <button class="btn modal-produto-btn-cancel"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn modal-produto-btn-confirm">Confirmar</button>
+                                            </div>
+
+                                            <!-- Título y categorías -->
+                                            <div class="row g-2 mb-3">
+                                                <div class="col-md-12">
+                                                    <input required type="text" class="form-control modal-produto-input"
+                                                        placeholder="Titulo" name="Titulo">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select name="Categoria" required id="selectCategoria" class="form-select modal-produto-select">
+                                                        <option value="" selected>Categoria:</option>
+                                                        <?php foreach ($categorias as $iCat => $cat): ?>
+                                                            <option value="<?php echo h($cat['idCategoria']) ?>"><?php echo h($cat['nombre']) ?></option>
+                                                        <?php endforeach; ?>
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select name="Subcategoria" required id="selectSubcategoria" class="form-select modal-produto-select">
+                                                        <option>Sub-Categoria</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Descripción -->
+                                            <div class="mb-3">
+                                                <textarea required name="Descripcion" class="form-control modal-produto-textarea" rows="4"
+                                                    placeholder="Descrição"></textarea>
+                                            </div>
+
+                                            <!-- tamaño y color -->
+                                            <div class="row g-2 mb-3">
+                                                <div class="col-md-6">
+                                                    <input name="Tamanho" type="text" class="form-control modal-produto-input"
+                                                        placeholder="Tamanho">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input name="Color" type="text" class="form-control modal-produto-input"
+                                                        placeholder="Cor">
+                                                </div>
+                                            </div>
+
+                                            <!-- Precio -->
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <input name="Precio" required type="text" class="form-control modal-produto-input"
+                                                        placeholder="Preço">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal de Editar Produto -->
+            <div class="modal fade modal-produto" id="modalProdutoEditar" tabindex="-1" aria-hidden="true">
+                <form id="formEditarProduto" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="accion" value="actualizarProducto">
+                    <input type="hidden" name="idProducto" id="modalEditarIdProducto">
+
+                    <div class="modal-dialog modal-dialog-centered modal-lg modal-produto-dialog">
+                        <div class="modal-content modal-produto-content p-4">
+                            <div class="container-fluid">
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <h5 class="modal-title fw-bold">Editar Producto</h5>
+                                    </div>
+                                </div>
+
+                                <div class="row g-4">
+                                    <div class="col-md-5">
+                                        <div class="card modal-produto-card p-3">
+                                            <h6 class="fw-bold small">Imágenes Existentes</h6>
+                                            <div id="modalEditarImagenesExistentes" class="d-flex flex-wrap p-2" style="gap: 10px; min-height: 50px; max-height: 150px; overflow-y: auto;">
+                                            </div>
+
+                                            <hr>
+                                            <h6 class="fw-bold small">Agregar Nuevas Imágenes</h6>
+                                            <div class="mb-3">
+                                                <input name="images[]" class="form-control modal-produto-input" type="file" id="modalEditarProdutoFile" multiple>
+                                            </div>
+                                            <div id="modalEditarProdutoPreview"
+                                                class="modal-produto-preview border bg-light d-flex justify-content-center align-items-center text-muted">
+                                                Ninguna imagen seleccionada
+                                            </div>
+                                            <div class="d-flex justify-content-center mt-3">
+                                                <button type="button" id="modalEditarProdutoRemove" class="btn modal-produto-btn-remove px-4">Remover nuevas</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7">
+                                        <div class="card modal-produto-card p-3">
+
+                                            <div class="d-flex justify-content-end mb-3 gap-2">
+                                                <button type="button" class="btn modal-produto-btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn modal-produto-btn-confirm">Confirmar Cambios</button>
+                                            </div>
+
+                                            <div class="row g-2 mb-3">
+                                                <div class="col-md-12">
+                                                    <input required name="Titulo" id="modalEditarTitulo" type="text" class="form-control modal-produto-input" placeholder="Novo titulo">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select required name="Categoria" id="modalEditarCategoria" class="form-select modal-produto-select">
+                                                        <option value="" selected>Categoria:</option>
+                                                        <?php foreach ($categorias as $iCat => $cat): ?>
+                                                            <option value="<?php echo h($cat['idCategoria']) ?>"><?php echo h($cat['nombre']) ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select required name="Subcategoria" id="modalEditarSubcategoria" class="form-select modal-produto-select">
+                                                        <option>Nova sub-Categoria</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <textarea required name="Descripcion" id="modalEditarDescripcion" class="form-control modal-produto-textarea" rows="4" placeholder="Nova descrição..."></textarea>
+                                            </div>
+
+                                            <div class="row g-2 mb-3">
+                                                <div class="col-md-6">
+                                                    <input name="Tamanho" id="modalEditarTamanho" type="text" class="form-control modal-produto-input" placeholder="Novo tamanho">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input name="Color" id="modalEditarColor" type="text" class="form-control modal-produto-input" placeholder="Nova cor">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <input required name="Precio" id="modalEditarPrecio" type="text" class="form-control modal-produto-input" placeholder="Novo preço">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
         <?php } ?>
 
         <div class="container-fluid">
@@ -267,35 +499,232 @@ function h($string)
                 </div>
             <?php endif; ?>
 
-            <div class="row mt-5" id="Produtos">
-                <div class="col-12 text-center">
-                    <h3 class="subTitulo"> Produtos </h3>
+            <?php if (!empty($productos)): ?>
+                <div class="row mt-5" id="Produtos">
+                    <div class="col-12 text-center">
+                        <h3 class="subTitulo">Produtos</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <h4 class="parrafo"> Geleias </h4>
+
+                <div id="filtroContainer" class="container-fluid sticky-top bg-light shadow-sm py-3 mb-4">
+                    <div class="container">
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-search"></i></span>
+                                    <input type="text" id="filtroBuscaInput" class="form-control" placeholder="Buscar por nome, categoria, cor...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="small fw-bold text-muted">IR PARA:</h6>
+                                <nav id="filtroCategorias" class="nav nav-pills flex-nowrap overflow-auto" style="white-space: nowrap;">
+
+                                    <?php if (!empty($categorias)): ?>
+                                        <?php foreach ($categorias as $cat): ?>
+                                            <?php
+                                            $subcategorias = $subcategoriaHelper->obtenerSubCategoriasDelEmprendimiento($cat['idCategoria']);
+                                            $productosEnCategoria = 0;
+
+                                            foreach ($subcategorias as $subCat) {
+                                                foreach ($productos as $prod) {
+                                                    if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']) {
+                                                        $productosEnCategoria++;
+                                                    }
+                                                }
+                                            }
+
+                                            if ($productosEnCategoria == 0) continue;
+                                            ?>
+
+                                            <a class="nav-link" href="#cat-<?php echo h($cat['idCategoria']); ?>">
+                                                <?php echo h($cat['nombre']); ?>
+                                            </a>
+
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!-- EJEMPLO DE PRODUCTO ESTÁTICO -->
-            <div class="row mt-2 produto">
-                <div class="col-3">
-                    <div class="card">
-                        <img class="card-img-top" height="250px"
-                            src="../assets/img/CasaSolidaria/defaultProduct.png" alt="Producto por defecto" />
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Nome do produto</h4>
-                            <div class="d-flex align-items-center mt-4">
-                                <span><small> <b> R$ 99.99 </b> </small></span>
-                                <a href="#" class="btn btn--vermelho ms-auto">Comprar</a>
+
+
+                <?php foreach ($categorias as $iCat => $cat): ?>
+
+                    <?php
+                    // Obtener las subcategorías de la categoría actual
+                    $subcategorias = $subcategoriaHelper->obtenerSubCategoriasDelEmprendimiento($cat['idCategoria']);
+
+                    // Contador de productos totales dentro de la categoría
+                    $productosEnCategoria = 0;
+
+                    // Precalcular si la categoría tiene productos
+                    foreach ($subcategorias as $subCat) {
+                        foreach ($productos as $prod) {
+                            if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']) {
+                                $productosEnCategoria++;
+                            }
+                        }
+                    }
+
+                    // Si la categoría no tiene productos, saltar (no mostrar)
+                    if ($productosEnCategoria == 0) continue;
+                    ?>
+
+                    <!-- Si tiene productos, mostramos la categoría -->
+                    <div class="row mb-5 category-section">
+                        <div class="col-12 p-2 category-title-wrapper" id="cat-<?php echo h($cat['idCategoria']); ?>">
+                            <h3 class="subTitulo text-uppercase">
+                                <i class="fa-solid fa-folder"></i> <?php echo h($cat['nombre']); ?>
+                            </h3>
+                        </div>
+
+                        <?php foreach ($subcategorias as $iSubCat => $subCat): ?>
+                            <?php
+                            $productosEnSubCategoria = 0;
+                            foreach ($productos as $prod) {
+                                if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']) {
+                                    $productosEnSubCategoria++;
+                                }
+                            }
+
+                            if ($productosEnSubCategoria == 0) continue;
+                            ?>
+
+                            <div class="col-12 ms-4 mt-3 subcategory-section" id="subcat-<?php echo h($subCat['idSubcategoria']); ?>">
+                                <hr>
+                                <h4 class="parrafo">
+                                    <i class="fa-regular fa-folder-open"></i>
+                                    <?php echo h($subCat['nombre']); ?>
+                                </h4>
+                            </div>
+
+                            <div class="row ms-4 product-grid">
+                                <?php foreach ($productos as $iProd => $prod): ?>
+                                    <?php if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']): ?>
+                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 product-item-col"
+                                            data-search-terms="<?php
+                                                                echo h($prod['titulo']) . ' ' .
+                                                                    h($prod['descripcion']) . ' ' .
+                                                                    h($cat['nombre']) . ' ' .
+                                                                    h($subCat['nombre']) . ' ' .
+                                                                    h($prod['color']) . ' ' .
+                                                                    h($prod['tamano']);
+                                                                ?>">
+
+                                            <div class="card h-100" id="product-card-<?php echo h($prod['idProducto']); ?>">
+                                                <img class="card-img-top product-card-image" height="250px"
+                                                    src="<?php echo h($prod['imagen_principal']); ?>"
+                                                    alt="Producto por defecto">
+                                                <div class="card-body">
+                                                    <h4 class="card-title text-center product-card-title">
+                                                        <?php echo h($prod['titulo']); ?>
+                                                    </h4>
+                                                    <div class="d-flex align-items-center mt-4">
+                                                        <span>
+                                                            <small><b>$ <span class="product-card-price"><?php echo h($prod['precio']); ?></span></b></small>
+                                                        </span>
+                                                        <button class="btn btn--vermelho ms-auto btn-comprar-produto"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalDetalheProduto"
+                                                            data-product-id="<?php echo h($prod['idProducto']); ?>">
+                                                            Comprar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+
+                        <?php endforeach; ?>
+
+                        <div class="col-12 text-center no-results-message" style="display: none;">
+                            <p class="text-muted">Nenhum produto encontrado nesta categoria com o termo buscado.</p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
+
+                <div class="row" id="globalNoResults" style="display: none;">
+                    <div class="col-12 text-center py-5">
+                        <h3 class="text-muted">Nenhum produto encontrado</h3>
+                        <p>Tente ajustar seus termos de busca.</p>
+                    </div>
+                </div>
+
+            <?php else: ?>
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <h3 class="subTitulo">Produtos</h3>
+                    </div>
+                    <div class="col-12">
+                        <p>Não tem produtos guardados...</p>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+
+        </div>
+
+        <div class="modal fade" id="modalDetalheProduto" tabindex="-1" aria-labelledby="modalDetalheProdutoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-lg-down">
+                <div class="modal-content modal-detalhe-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-lg-7">
+                                    <div class="mb-3">
+                                        <img src="" id="modalDetalheImagemPrincipal" class="img-fluid w-100" style="border-radius: 15px; max-height: 500px; object-fit: cover;">
+                                    </div>
+                                    <div id="modalDetalheThumbnails" class="d-flex justify-content-center flex-wrap" style="gap: 10px;">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-5">
+                                    <h2 id="modalDetalheTitulo" class="fw-bold mb-3">Cargando...</h2>
+
+                                    <h3 id="modalDetalhePreco" class="h2 text-success fw-light mb-4"></h3>
+
+                                    <p id="modalDetalheDescricao" class="lead fs-6 mb-4"></p>
+
+                                    <ul class="list-group list-group-flush mb-4">
+                                        <li class="list-group-item d-flex justify-content-between px-0">
+                                            <strong class="text-muted">Cor:</strong>
+                                            <span id="modalDetalheCor"></span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between px-0">
+                                            <strong class="text-muted">Tamanho:</strong>
+                                            <span id="modalDetalheTamanho"></span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="d-grid">
+                                        <a href="#" id="modalDetalheBtnWhatsapp" target="_blank" class="btn btn-success btn-lg">
+                                            <i class="fa-brands fa-whatsapp"></i>
+                                            Solicitar por WhatsApp
+                                        </a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
+        <style>
+        </style>
 
     </main>
     <footer class="mt-5 footer">
@@ -363,10 +792,23 @@ function h($string)
 
     <!-- Sweet Alert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.all.min.js"></script>
-                            
+
 
     <!-- My JS  -->
     <script src="../assets/js/MenuEmprendedores.js"></script>
+
+    <script>
+        //Info para la compra de los productos
+        const whatsappEmprendedor = "<?php echo h($emprendimiento['celular'] ?? ''); ?>";
+        const nomeUsuarioLogado = "<?php echo h($nomeUsuairo ?? ''); ?>";
+    </script>
+
+    <?php if ($idUsuario != null && $tipoUsuario == "associado") { ?>
+        <script>
+            const listaDeProductos = <?php echo json_encode($productos ?? []); ?>;
+        </script>
+        <script src="../assets/js/MenuEmprendedoresAdmin.js"></script>
+    <?php } ?>
 
 
     <?php

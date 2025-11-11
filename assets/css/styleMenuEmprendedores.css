@@ -9,34 +9,84 @@
     --cor-secundaria: none;
 }
 
-/* Boton Flotante */
+/* Botones Flotantes */
+
+
+
+#btnAgregarProducto,
+#btnEditarProducto,
 #btnFlotante--ajustesGerais {
     position: fixed;
     z-index: 2;
-    font-size: 32px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    right: 25px;
-    bottom: 125px;
-    background: #006BF6;
-    color: white;
-
+    right: 50px;
+    font-size: 24px;
+    box-shadow: 0 0 3px var(--cor-secundaria);
+    width: 200px;
 }
+
+#btnFlotante--ajustesGerais {
+    bottom: 170px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+}
+
+#btnFlotante--ajustesGerais:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+}
+
+#btnAgregarProducto {
+    bottom: 110px;
+}
+
+#btnEditarProducto {
+    bottom: 50px;
+}
+
+/* Modal mas detalles de los productos */
+
+.modal-detalhe-content {
+    border-radius: 20px;
+    border: none;
+    overflow: hidden;
+}
+
+.modal-detalhe-thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.2s ease;
+}
+
+.modal-detalhe-thumbnail:hover,
+.modal-detalhe-thumbnail.active {
+    border-color: var(--cor-primaria, #007bff);
+}
+
+
 /* Menu Inicial -*/
 
 
 
-.subTitulo, .titulo{
+.subTitulo,
+.titulo {
     color: var(--cor-primaria);
 }
-.subTitulo:hover, .titulo:hover{
+
+.subTitulo:hover,
+.titulo:hover {
     color: var(--cor-secundaria);
 }
 
-button{
+button {
     background-color: var(--cor-primaria) !important;
     color: var(--cor-secundaria) !important;
 }
-button:hover{
+
+button:hover {
     background-color: var(--cor-secundaria) !important;
     color: var(--cor-primaria) !important;
 }
@@ -106,7 +156,7 @@ button:hover{
     color: var(--cor-secundaria) !important;
 }
 
-.portada__botao:hover{
+.portada__botao:hover {
     background-color: var(--cor-secundaria) !important;
     color: var(--cor-primaria) !important;
 }
@@ -164,9 +214,10 @@ button:hover{
 /*Produtos*/
 
 /*Footer*/
-.footer__titulo{
+.footer__titulo {
     color: var(--cor-primaria);
 }
-.footer__subTitulo{
+
+.footer__subTitulo {
     color: var(--cor-secundaria);
 }

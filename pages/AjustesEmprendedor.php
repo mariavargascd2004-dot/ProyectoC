@@ -321,6 +321,55 @@ function h($string)
                 </div>
             </form>
 
+            <!-- Para categorias y Subcategorias -->
+            <div id="gerenciadorCategorias" class="row contornoGris p-4 mb-4 shadow-sm">
+                <h2 class="subTitulo h5 mb-4"><i class="fa-solid fa-tags me-2"></i>Gerenciar Categorias e Subcategorias</h2>
+                <input type="hidden" id="idEmprendimentoAtual" value="<?php echo $idEmprendimiento; ?>">
+
+                <div class="col-md-6">
+                    <h5 class="fw-bold">Categorias</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="formNovaCategoria" class="d-flex gap-2 mb-3">
+                                <input type="text" id="inputNomeCategoria" class="form-control" placeholder="Nova Categoria" required>
+                                <button type="submit" class="btn btn--verde flex-shrink-0">
+                                    <i class="fa-solid fa-plus"></i> Adicionar
+                                </button>
+                            </form>
+                            <hr>
+                            <ul id="listaCategorias" class="list-group list-group-flush" style="max-height: 300px; overflow-y: auto;">
+                                <li class="list-group-item text-center p-3">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Carregando...</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h5 class="fw-bold">Subcategorias de: <span id="nomeCategoriaAtiva" class="text-primary">---</span></h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="formNovaSubcategoria" class="d-flex gap-2 mb-3" style="display: none!important;">
+                                <input type="hidden" id="idCategoriaAtiva">
+                                <input type="text" id="inputNomeSubcategoria" class="form-control" placeholder="Nova Subcategoria" required>
+                                <button type="submit" class="btn btn--verde flex-shrink-0">
+                                    <i class="fa-solid fa-plus"></i> Adicionar
+                                </button>
+                            </form>
+                            <div id="msgSelecioneCategoria" class="text-center p-3 text-muted">
+                                <i class="fa-solid fa-arrow-left me-2"></i> Selecione uma categoria para ver suas subcategorias.
+                            </div>
+                            <hr id="hrSubcategorias" style="display: none!important;">
+                            <ul id="listaSubcategorias" class="list-group list-group-flush" style="max-height: 300px; overflow-y: auto;">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ================= INFORMAÇÕES DO ADMINISTRADOR ================= -->
             <form id="formInfoAdmin" action="../controllers/AdminAssociadoController.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="accion" value="actualizarPerfil">
