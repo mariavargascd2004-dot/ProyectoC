@@ -1,11 +1,3 @@
---
--- Base de datos: `lojasolidariabd`
---
-
-CREATE DATABASE lojasolidariabd;
-USE lojasolidariabd;
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `adminassociado`
@@ -16,7 +8,7 @@ CREATE TABLE `adminassociado` (
   `descripcion` varchar(500) DEFAULT NULL,
   `fotoPerfil` varchar(500) DEFAULT NULL,
   `adminAssociado_idUsuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -29,7 +21,7 @@ CREATE TABLE `admingeneral` (
   `usuario` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `password` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `admingeneral`
@@ -48,7 +40,7 @@ CREATE TABLE `categoria` (
   `idCategoria` int(11) NOT NULL,
   `emprendimiento_id` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -74,7 +66,7 @@ CREATE TABLE `emprendimento` (
   `facebook` varchar(255) DEFAULT NULL,
   `aprovado` tinyint(4) DEFAULT 0,
   `dataCriacao` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -91,7 +83,7 @@ CREATE TABLE `evento` (
   `ubicacion` varchar(500) NOT NULL,
   `estado` enum('activo','inactivo') DEFAULT NULL,
   `imagen` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -105,7 +97,7 @@ CREATE TABLE `imagem_fabricacao` (
   `caminho_imagem` varchar(255) DEFAULT NULL,
   `ordem` int(11) DEFAULT 0,
   `data_upload` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -119,7 +111,7 @@ CREATE TABLE `imagem_galeria` (
   `caminho_imagem` varchar(255) DEFAULT NULL,
   `ordem` int(11) DEFAULT 0,
   `data_upload` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -133,7 +125,7 @@ CREATE TABLE `imagem_produto` (
   `caminho_imagem` text NOT NULL,
   `ordem` int(11) NOT NULL,
   `data_upload` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -158,7 +150,7 @@ CREATE TABLE `pagina_principal` (
   `facebook` varchar(255) DEFAULT NULL,
   `instagram` varchar(255) DEFAULT NULL,
   `fecha_actualizacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `pagina_principal`
@@ -184,7 +176,7 @@ CREATE TABLE `productos` (
   `color` varchar(45) DEFAULT NULL,
   `precio` double NOT NULL,
   `fechaAgregado` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -195,8 +187,8 @@ CREATE TABLE `productos` (
 CREATE TABLE `subcategoria` (
   `idSubcategoria` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
-  `categoria_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `categoria_id` int(11)
+);
 
 -- --------------------------------------------------------
 
@@ -209,8 +201,8 @@ CREATE TABLE `usuario` (
   `nombre` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(500) NOT NULL,
-  `tipo` enum('cliente','associado') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `tipo` enum('cliente','associado')
+);
 
 --
 -- Índices para tablas volcadas
@@ -306,67 +298,67 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `admingeneral`
 --
 ALTER TABLE `admingeneral`
-  MODIFY `idAdminGeneral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idAdminGeneral` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `emprendimento`
 --
 ALTER TABLE `emprendimento`
-  MODIFY `idEmprendimento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `idEmprendimento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `idEvento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idEvento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `imagem_fabricacao`
 --
 ALTER TABLE `imagem_fabricacao`
-  MODIFY `idImagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `idImagem` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `imagem_galeria`
 --
 ALTER TABLE `imagem_galeria`
-  MODIFY `idImagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `idImagem` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `imagem_produto`
 --
 ALTER TABLE `imagem_produto`
-  MODIFY `idImagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `idImagem` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pagina_principal`
 --
 ALTER TABLE `pagina_principal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMEN;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategoria`
 --
 ALTER TABLE `subcategoria`
-  MODIFY `idSubcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idSubcategoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -422,7 +414,3 @@ ALTER TABLE `productos`
 ALTER TABLE `subcategoria`
   ADD CONSTRAINT `subcategoria_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`idCategoria`) ON DELETE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
