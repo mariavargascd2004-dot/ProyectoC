@@ -97,8 +97,12 @@ function h($string)
         <nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <div class="navbar-nav d-flex align-items-center">
-                    <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo <?php echo h($emprendimiento['nome']); ?>" width="60" class="me-3">
-                    <a class="nav-item nav-link titulo fs-4" href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>">
+                    
+         <a href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>" class="text-decoration-none">
+                <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo <?php echo h($emprendimiento['nome']); ?>" width="60" class="me-3">
+            </a>
+                   
+                        <a class="nav-item nav-link titulo fs-4" href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>">
                         <i class="fa-solid fa-arrow-left me-2"></i> Voltar para <?php echo h($emprendimiento['nome']); ?>
                     </a>
                 </div>
@@ -113,6 +117,69 @@ function h($string)
                     <h1 class="h3">Ajustes Gerais do Empreendimento</h1>
                 </div>
             </div>
+            
+            <form id="formIdentidadeVisual" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="accion" value="actualizarImagensPrincipais">
+                <input type="hidden" name="idEmprendimento" value="<?php echo $idEmprendimiento; ?>">
+
+                <div class="row contornoGris p-4 mb-4 shadow-sm">
+                    <div class="col-12 mb-4">
+                        <h2 class="subTitulo h5"><i class="fa-solid fa-id-card-clip me-2"></i>Identidade Visual</h2>
+                    </div>
+
+                    <div class="col-md-4 text-center mb-3">
+                        <label class="form-label fw-bold d-block">Logotipo Atual</label>
+                        <div class="mb-2 p-2 border rounded bg-white d-inline-block">
+                            <img id="imgLogoActual" 
+                                 src="../<?php echo h($emprendimiento['logo'] ?? 'assets/img/logos/default.png'); ?>" 
+                                 alt="Logo Atual" 
+                                 class="img-fluid" 
+                                 style="max-height: 150px; object-fit: contain;">
+                        </div>
+                        <div class="mt-2">
+                            <label for="inputLogo" class="btn btn-sm btn-outline-primary w-100">
+                                <i class="fa-solid fa-upload me-1"></i> Alterar Logo
+                            </label>
+                            <input type="file" id="inputLogo" name="logoEmprendimento" class="d-none" accept="image/*">
+                            <div id="previewLogo" class="mt-2 small text-success fst-italic"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 text-center mb-3">
+                        <label class="form-label fw-bold d-block">Pôster (Capa) Atual</label>
+                        <div class="mb-2 p-2 border rounded bg-white d-inline-block w-100">
+                            <img id="imgPoosterActual" 
+                                 src="../<?php echo h($emprendimiento['pooster'] ?? 'assets/img/poosters/default.png'); ?>" 
+                                 alt="Pooster Atual" 
+                                 class="img-fluid" 
+                                 style="max-height: 250px; width: 100%; object-fit: cover;">
+                        </div>
+                        <div class="mt-2">
+                            <label for="inputPooster" class="btn btn-sm btn-outline-primary">
+                                <i class="fa-solid fa-image me-1"></i> Alterar Pôster
+                            </label>
+                            <input type="file" id="inputPooster" name="poosterEmprendimento" class="d-none" accept="image/*">
+                            <div id="previewPooster" class="mt-2 small text-success fst-italic"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-end mt-3 border-top pt-3">
+                        <button type="submit" class="btn btn--amarelo">
+                            <i class="fa-solid fa-floppy-disk me-2"></i> Atualizar Imagens
+                        </button>
+                    </div>
+                </div>
+            </form>            
+            <script>
+                function previewImage(input, targetId) {
+                    const target = document.getElementById(targetId);
+                    if (input.files && input.files[0]) {
+                        target.textContent = "Arquivo selecionado: " + input.files[0].name;
+                    } else {
+                        target.textContent = "";
+                    }
+                }
+            </script>
 
             <!-- ================= HISTÓRIA ================= -->
             <form id="formHistoria" action="../controllers/EmprendimentoController.php" method="POST">
@@ -281,7 +348,7 @@ function h($string)
                         <label class="form-label fw-bold">WhatsApp / Celular *</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-brands fa-whatsapp"></i></span>
-                            <input type="text" class="form-control" name="celular" value="<?php echo h($emprendimiento['celular']); ?>" required placeholder="Ex: (11) 99999-8888">
+                            <input type="number" class="form-control" name="celular" value="<?php echo h($emprendimiento['celular']); ?>" required placeholder="Ex: 551199999999  (BR) / 59899999999 (UY) ">
                         </div>
                     </div>
                     <div class="col-12 mb-3">

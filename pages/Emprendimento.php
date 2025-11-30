@@ -31,6 +31,7 @@ require_once '../helpers/produtoHelper.php';
 require_once '../helpers/imagemProdutoHelper.php';
 require_once '../helpers/categoriaHelper.php';
 require_once '../helpers/subcategoriaHelper.php';
+require_once '../controllers/PaginaPrincipalController.php';
 
 try {
     $empHelper = new EmprendimientosHelper();
@@ -41,6 +42,7 @@ try {
     $produtoImagemHelper = new imagemProdutoHelper();
     $categoriaHelper = new categoriaHelper();
     $subcategoriaHelper = new subcategoriaHelper();
+    $controllerMenuPrincipal = new PaginaPrincipalController();
 
     $emprendimiento = $empHelper->obtenerEmprendimientoPorId($idEmprendimiento);
 
@@ -75,6 +77,8 @@ try {
     $imgemsGaleria  = $GaleriaHelper->obterImagemsComIdEmprendimento($idEmprendimiento);
     $categorias = $categoriaHelper->obtenerCategoriasDelEmprendimiento($idEmprendimiento);
     //las subCategorias las obtengo más abajo recorriendo el array de categorias
+    
+    $datosPaginaP = $controllerMenuPrincipal->obtenerDatos();
 
 } catch (Exception $e) {
     error_log("Error en menuEmprendimiento.php: " . $e->getMessage());
@@ -147,7 +151,7 @@ function h($string)
                 <!-- Logo y enlaces -->
                 <div class="navbar-nav d-flex align-items-center">
                     <a href="../">
-                        <img src="../assets/img/CasaSolidaria/defaultLogo.png" alt="Logo Casa Solidaria" width="80px">
+                        <img src="<?php echo htmlspecialchars($datosPaginaP ? $datosPaginaP->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'); ?>" alt="Logo Casa Solidaria" width="80px">
                     </a>
                     <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo de <?php echo h($emprendimiento['nome']); ?>" width="75">
                     <a class="nav-item nav-link titulo nav__titulo" href="#"><?php echo h($emprendimiento['nome']); ?></a>
@@ -211,7 +215,7 @@ function h($string)
             </button>
 
             <!-- Modal de Agregar Produto -->
-            <div class="modal fade modal-produto" id="modalProduto" tabindex="-1" aria-hidden="true">
+            <div class="modal fade modal-produto" id="modalProduto" tabindex="-1" aria-hidden="true" enctype="multipart/form-data">
                 <form id="formProduto" action="../controllers/ProdutoController.php" method="post">
                     <input type="hidden" name="accion" value="GuardarProduto">
                     <input type="hidden" name="idEmprendimiento" value="<?php echo $idEmprendimiento ?>">
@@ -300,7 +304,7 @@ function h($string)
                                             <!-- Precio -->
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <input name="Precio" required type="text" class="form-control modal-produto-input"
+                                                    <input name="Precio" required type="number" class="form-control modal-produto-input"
                                                         placeholder="Preço">
                                                 </div>
                                             </div>
@@ -418,7 +422,7 @@ function h($string)
                         alt="Foto de portada de <?php echo h($emprendimiento['nome']); ?>">
                     <div class="portada__conteudo-secundario mt-5 transiccionSuave">
                         <h1 class="subTitulo portada__subTitulo transiccionSuave">Historia</h1>
-                        <p class="parrafo portada__parrafo transiccionSuave">
+                        <p class="parrafo portada__parrafo parrafo-truncado transiccionSuave">
                             <?php echo h($emprendimiento['historia']); ?>
                         </p>
                         <button id="portada__botao" type="button" class="btn btn--vermelho portada__botao"> Ver mais
@@ -740,9 +744,9 @@ function h($string)
                 <div class="col-md-2 col-6 mb-3">
                     <h4 class="footer__subTitulo"> Legales </h4>
                     <ul class="footer__texto list-unstyled">
-                        <li> <a href="#" class="text-decoration-none footer__texto--link"> Politica de Qualidade </a> </li>
-                        <li> <a href="#" class="text-decoration-none footer__texto--link"> Politica de Privacidade</a> </li>
-                        <li> <a href="#" class="text-decoration-none footer__texto--link"> Politica de Dados </a> </li>
+                        <li> <a href="politicaQualidade.html" class="text-decoration-none footer__texto--link"> Politica de Qualidade </a> </li>
+                        <li> <a href="politicaPrivacidade.html" class="text-decoration-none footer__texto--link"> Politica de Privacidade</a> </li>
+                        <li> <a href="politicaDados.html" class="text-decoration-none footer__texto--link"> Politica de Dados </a> </li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-6 mb-3">
@@ -772,7 +776,7 @@ function h($string)
                                 <i class="fa-brands fa-square-instagram"></i>
                             </a>
                         <?php endif; ?>
-                        <a href="#" class="fs-2 text-success">
+                        <a href="https://api.whatsapp.com/send?phone=<?php echo h($emprendimiento['celular']); ?>" class="fs-2 text-success">
                             <i class="fa-brands fa-square-whatsapp"></i>
                         </a>
                     </div>

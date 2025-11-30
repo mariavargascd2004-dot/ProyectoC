@@ -204,4 +204,38 @@ class EmprendimentoDAO
             return false;
         }
     }
+    
+    public function atualizarLogo($idEmprendimento, $caminhoLogo)
+    {
+        try {
+            $sql = "UPDATE emprendimento SET logo = ? WHERE idEmprendimento = ?";
+            $stmt = $this->conn->prepare($sql);
+            $resultado = $stmt->execute([$caminhoLogo, $idEmprendimento]);
+            
+            if (!$resultado) {
+                error_log("DAO Error: Falha ao executar UPDATE logo para ID: $idEmprendimento");
+            }
+            return $resultado;
+        } catch (PDOException $e) {
+            error_log("DAO Exception (atualizarLogo): " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function atualizarPooster($idEmprendimento, $caminhoPooster)
+    {
+        try {
+            $sql = "UPDATE emprendimento SET pooster = ? WHERE idEmprendimento = ?";
+            $stmt = $this->conn->prepare($sql);
+            $resultado = $stmt->execute([$caminhoPooster, $idEmprendimento]);
+
+            if (!$resultado) {
+                error_log("DAO Error: Falha ao executar UPDATE pooster para ID: $idEmprendimento");
+            }
+            return $resultado;
+        } catch (PDOException $e) {
+            error_log("DAO Exception (atualizarPooster): " . $e->getMessage());
+            return false;
+        }
+    }
 }

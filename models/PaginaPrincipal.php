@@ -16,8 +16,10 @@ class PaginaPrincipal
     private $celular;
     private $facebook;
     private $instagram;
+    // Nuevo campo
+    private $logo; 
 
-    public function __construct($portada, $historia, $mision, $vision, $primerafotogaleria, $segundafotogaleria, $tercerafotogaleria, $cuartafotogaleria, $telefono, $direccion, $horarios, $celular, $facebook, $instagram)
+    public function __construct($portada, $historia, $mision, $vision, $primerafotogaleria, $segundafotogaleria, $tercerafotogaleria, $cuartafotogaleria, $telefono, $direccion, $horarios, $celular, $facebook, $instagram, $logo)
     {
         $this->portada = $portada;
         $this->historia = $historia;
@@ -33,6 +35,7 @@ class PaginaPrincipal
         $this->celular = $celular;
         $this->facebook = $facebook;
         $this->instagram = $instagram;
+        $this->logo = $logo;
     }
 
     // GETTERS
@@ -106,6 +109,11 @@ class PaginaPrincipal
         return $this->instagram;
     }
 
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
     // SETTERS
     public function setPordata($portata)
     {
@@ -175,5 +183,10 @@ class PaginaPrincipal
     public function setInstagram($instagram)
     {
         $this->instagram = $instagram;
+    }
+
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
     }
 }

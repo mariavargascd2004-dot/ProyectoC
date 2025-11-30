@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Qualidade - Casa da Economia Solidária</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #27ae60;
+            --accent-color: #e67e22;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-top: 30px;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+        }
+
+        li strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #d35400;
+        }
+
+        .footer-note {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+
+     	/* Estilos para el Botón Volver */
+        .back-button {
+            background-color: var(--primary-color); /* #2c3e50 */
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .back-button:hover {
+            background-color: #34495e; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Política de Qualidade</h1>
+            <h3>Sistema Casa da Economia Solidária</h3>
+            <p>Compromisso com a eficiência, acessibilidade e apoio ao empreendedor local.</p>
+        </header>
+
+        <section>
+            <p>O presente documento estabelece os padrões de qualidade e funcionamento garantidos pelo sistema da <strong>Casa da Economia Solidária</strong>. Nosso software foi desenvolvido focando na visibilidade dos empreendimentos, na facilidade de gestão e na segurança dos dados, atendendo aos requisitos funcionais e não funcionais estabelecidos.</p>
+        </section>
+
+        <section>
+            <h2>1. Experiência do Usuário e Acessibilidade</h2>
+            <p>Garantimos um ambiente digital inclusivo e fácil de usar para todos os visitantes e clientes.</p>
+            <ul>
+                <li><strong>Design Responsivo e Intuitivo [RNF01, RNF02]:</strong> O sistema adapta-se perfeitamente a celulares, tablets e computadores, oferecendo uma navegação clara com menus intuitivos.</li>
+                <li><strong>Identidade Visual Consistente [RNF03]:</strong> Respeitamos a identidade da Casa da Economia Solidária e de seus associados, utilizando logotipos e cores oficiais.</li>
+                <li><strong>Facilidade de Busca [RF18, RF19]:</strong> O cliente pode localizar produtos facilmente através de filtros por categoria, nome, preço ou associado, além de navegar diretamente pela página de cada empreendimento.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Gestão e Autonomia</h2>
+            <p>O sistema empodera os administradores e associados, reduzindo a dependência de suporte técnico externo.</p>
+            <ul>
+                <li><strong>Autonomia Total de Conteúdo [RNF08, RNF09]:</strong> Administradores podem adicionar, editar ou remover notícias, eventos, produtos e informações sem necessidade de intervenção técnica.</li>
+                <li><strong>Gestão Descentralizada [RF06, RF12]:</strong> Cada associado possui controle sobre sua própria aba, podendo gerenciar seus produtos (nome, descrição, preço, fotos) de forma independente.</li>
+                <li><strong>Divulgação de Eventos [RF03, RF05]:</strong> O sistema possui uma área dedicada (Cartelera) para a promoção ágil de cursos, feiras e atividades.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Facilitação de Vendas e Comunicação</h2>
+            <p>Focamos em conectar o cliente diretamente ao produtor, agilizando o processo de negociação.</p>
+            <ul>
+                <li><strong>Integração Direta com WhatsApp [RF15, RF16]:</strong> O processo de compra é simplificado. Ao se interessar por um produto, o cliente é redirecionado para o WhatsApp do associado com uma mensagem automática contendo os detalhes do pedido e seus dados de contato.</li>
+                <li><strong>Pedidos Individualizados [RF17]:</strong> O sistema respeita a individualidade de cada empreendimento, gerando pedidos separados para garantir que cada associado receba apenas as demandas referentes aos seus produtos.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Segurança e Integridade de Dados</h2>
+            <p>Adotamos medidas rigorosas para proteger as informações da instituição e dos usuários.</p>
+            <ul>
+                <li><strong>Controle de Acesso [RF04, RNF05]:</strong> O sistema exige autenticação segura para administradores gerais e associados.</li>
+                <li><strong>Proteção de Dados [RNF07]:</strong> Dados sensíveis de associados e clientes (como telefone e e-mail) são armazenados seguindo boas práticas de privacidade e segurança.</li>
+                <li><strong>Moderação de Cadastro [RF06]:</strong> Novos associados passam por um processo de pré-cadastro que requer a aprovação expressa do Administrador Geral antes de obterem acesso ao sistema.</li>
+            </ul>
+        </section>
+
+		<div style="text-align: left; margin-top: 30px; margin-bottom: 20px;">
+            <button id="backButton" class="back-button">
+                &larr; Volver
+            </button>
+        </div>
+        <div class="footer-note">
+            <p>&copy; 2025 Casa da Economia Solidária. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+		<script>
+        document.getElementById('backButton').onclick = function() {
+            history.back();
+        };
+    </script>
+</body>
+</html>

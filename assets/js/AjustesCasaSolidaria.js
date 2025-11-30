@@ -3,6 +3,7 @@
 //Formularios
 const formHistoria = document.getElementById("formHistoria");
 const formPortada = document.getElementById("formPortada");
+const formLogo = document.getElementById("formLogo"); // Agregado
 const formMision = document.getElementById("formMision");
 const formVision = document.getElementById("formVision");
 const formInformacionEmpresa = document.getElementById("formInformacionEmpresa");
@@ -238,6 +239,20 @@ formHistoria.addEventListener("submit", function (e) {
     }
 });
 
+// Validar formulario LOGO (NUEVO)
+if (formLogo) {
+    formLogo.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const fileInput = formLogo.querySelector("[name='logo']");
+
+        if (fileInput.files.length > 0) {
+            enviarFormulario(formLogo);
+        } else {
+            formularioVacio(fileInput, "Por favor, selecione uma imagem para o logo.");
+        }
+    });
+}
+
 // Validar formulario PORTADA
 formPortada.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -412,4 +427,5 @@ function formularioVacio(elemento, mensajePersonalizado = null) {
         // Enfocar el elemento
         elemento.focus();
     }
-}   
+
+}

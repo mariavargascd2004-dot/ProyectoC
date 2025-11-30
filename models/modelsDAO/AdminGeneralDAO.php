@@ -10,7 +10,7 @@ class AdminGeneralDAO
         $this->conn = $db;
     }
 
-    //Funcion para Login
+    // Funcion para Login
     public function login($usuario, $password)
     {
         $sql = "SELECT * FROM admingeneral WHERE usuario = ?";
@@ -21,6 +21,20 @@ class AdminGeneralDAO
         if ($user && password_verify($password, $user['password'])) {
             return $user;
         } else {
+            return false;
+        }
+    }
+
+    
+    public function actualizarPassword($idAdmin, $password)
+    {
+        try {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE admingeneral SET password = ? WHERE idAdminGeneral = ?";
+            $stmt = $this->conn->prepare($sql);
+            return $stmt->execute([$hash, $idAdmin]);
+        } catch (PDOException $e) {
+            error_log("Erro em AdminGeneralDAO::actualizarPassword: " . $e->getMessage());
             return false;
         }
     }

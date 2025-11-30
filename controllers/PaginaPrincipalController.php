@@ -59,6 +59,35 @@ class PaginaPrincipalController
         return $resultado;
     }
 
+    public function actualizarLogo($archivo)
+    {
+        $datosActuales = $this->obtenerDatos();
+        $rutaAnterior = $datosActuales ? $datosActuales->getLogo() : '';
+        $campo = 'logo';
+
+        // Subir el nuevo archivo.
+        $rutaArchivo = $this->dao->subirArchivo($archivo, $campo);
+        
+        if (!$rutaArchivo) {
+            return false;
+        }
+
+        // Actualizar la base de datos
+        $resultado = $this->dao->actualizarCampo($campo, $rutaArchivo);
+
+        if ($resultado) {
+            // Eliminar el archivo anterior si la actualización fue exitosa
+            if ($rutaAnterior) {
+                $this->eliminarArchivoAnterior($rutaAnterior);
+            }
+        } else {
+            // Si falla la BD, eliminar el archivo recién subido
+            $this->eliminarArchivoAnterior($rutaArchivo);
+        }
+        
+        return $resultado;
+    }
+
     public function actualizarFotoGaleria($archivo, $numeroFoto)
     {
         $datosActuales = $this->obtenerDatos();
@@ -233,6 +262,13 @@ if (isset($_POST['action'])) {
             if (isset($_FILES['portada'])) {
                 $success = $controller->actualizarPortada($_FILES['portada']);
                 $response = ['success' => $success, 'message' => $success ? 'Portada actualizada correctamente' : 'Error al actualizar portada'];
+            }
+            break;
+
+        case 'actualizar_logo':
+            if (isset($_FILES['logo'])) {
+                $success = $controller->actualizarLogo($_FILES['logo']);
+                $response = ['success' => $success, 'message' => $success ? 'Logo actualizado correctamente' : 'Error al actualizar logo'];
             }
             break;
 

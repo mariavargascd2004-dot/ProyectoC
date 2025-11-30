@@ -19,98 +19,45 @@
     box-sizing: border-box;
 }
 
+/* RESPONSIVE: Imágenes fluidas */
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 /*ScrollBar*/
-/* ===== Firefox ===== */
 body {
     scrollbar-width: thin;
-    /* grosor del scroll */
     scrollbar-color: var(--cor-amarela) #fff;
-    /* thumb | track */
-    word-break: break-all;
+    word-break: break-word; 
 }
 
-/* ===== Chrome / Brave / Edge / Safari ===== */
-body::-webkit-scrollbar {
-    width: 8px;
-    /* ancho de la barra */
-}
-
-body::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    /* fondo */
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #4b0101;
-    /* color de la barra */
-    border-radius: 10px;
-    /* bordes redondeados */
-}
-
-body::-webkit-scrollbar-thumb:hover {
-    background: #555;
-    /* al pasar el mouse */
-}
-
+body::-webkit-scrollbar { width: 8px; }
+body::-webkit-scrollbar-track { background: #f1f1f1; }
+body::-webkit-scrollbar-thumb { background: #4b0101; border-radius: 10px; }
+body::-webkit-scrollbar-thumb:hover { background: #555; }
 
 /*Barra de navegacion*/
-nav {
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-}
+nav { box-shadow: 0 0 2px rgba(0, 0, 0, 0.3); }
 
-.nav__registrar {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.nav__registrar--botao {
-    padding-left: 0;
-}
-
-.nav__registrar--opcoes {
-    height: 5px;
-    width: 180px;
-    position: absolute;
-    right: 0;
-    top: -50vh;
-    z-index: 2;
-    list-style: none;
-    padding: 0;
-    padding-left: 12px;
-}
-
-.nav__registrar--opcoes li {
-    margin-bottom: 5px;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-.nav__registrar--opcoes li:hover {
-    background-color: #3ca222;
-    cursor: pointer;
-    color: white;
-}
-
-
-/*Estilos Gerais*/
-
-/*Textos*/
+/* Textos Responsivos */
 .titulo {
     color: var(--cor-amarela);
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.8rem, 5vw, 3rem);
     font-family: var(--fonte-principal);
+    line-height: 1.2;
 }
 
 .subTitulo {
     font-family: var(--fonte-subtitulo);
     color: var(--cor-amarela);
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-size: clamp(1.4rem, 4vw, 2rem);
     font-weight: bold;
 }
 
 .parrafo {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(0.95rem, 2.5vw, 1.25rem);
     font-family: var(--fonte-texto);
 }
 
@@ -123,66 +70,25 @@ nav {
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.btn:hover {
-    scale: 1.1;
-}
+.btn:hover { scale: 1.1; }
 
-.btn--amarelo {
-    background-color: var(--cor-amarelaSuave);
-    color: #2F2F2F;
-}
-
-.btn--amarelo:hover {
-    background-color: var(--cor-vermelho);
-    color: white;
-}
-
-.btn--vermelho {
-    background-color: var(--cor-vermelho);
-    color: white;
-}
-
-.btn--vermelho:hover {
-    background-color: var(--cor-amarelaSuave);
-    color: #2F2F2F;
-}
-
-.btn--cinza {
-    background-color: #F5F5F5;
-    color: #2F2F2F;
-}
-
-.btn--cinza:hover {
-    background-color: #3ca222;
-    color: white;
-}
+/* Estilos de botones (colores) */
+.btn--amarelo { background-color: var(--cor-amarelaSuave); color: #2F2F2F; }
+.btn--amarelo:hover { background-color: var(--cor-vermelho); color: white; }
+.btn--vermelho { background-color: var(--cor-vermelho); color: white; }
+.btn--vermelho:hover { background-color: var(--cor-amarelaSuave); color: #2F2F2F; }
+.btn--cinza { background-color: #F5F5F5; color: #2F2F2F; }
+.btn--cinza:hover { background-color: #3ca222; color: white; }
 
 /*color de fondos*/
-.fundoAmarelo {
-    background-color: var(--cor-amarela);
-}
-
-.fundoAmareloSuave {
-    background-color: var(--cor-amarelaSuavea);
-}
-
-.fundoVermelho {
-    background-color: var(--cor-vermelho);
-}
+.fundoAmarelo { background-color: var(--cor-amarela); }
+.fundoAmareloSuave { background-color: var(--cor-amarelaSuave); }
+.fundoVermelho { background-color: var(--cor-vermelho); }
 
 /*Otros*/
-.contornoGris {
-    border: 1px solid gainsboro;
-    border-radius: 5px;
-}
-
-.transiccionSuave {
-    transition: 1s ease all;
-}
-
-.ocultarElemento {
-    display: none;
-}
+.contornoGris { border: 1px solid #dee2e6; border-radius: 0.375rem; background-color: #fff; }
+.transiccionSuave { transition: 1s ease all; }
+.ocultarElemento { display: none; }
 
 .img-preview-container {
     width: 120px;
@@ -194,95 +100,219 @@ nav {
     background-color: #f8f9fa;
 }
 
-.img-preview-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-}
-
-.contornoGris {
-    border: 1px solid #dee2e6;
-    border-radius: 0.375rem;
-    background-color: #fff;
-}
-
+.img-preview-container img { max-width: 100%; max-height: 100%; object-fit: cover; }
 
 /*Footer*/
-.footer {
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
-    padding-top: 25px;
-}
-
-.footer__titulo {
-    color: var(--cor-amarela);
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
-    font-family: var(--fonte-principal);
-}
-
-.footer__subTitulo {
-    font-family: var(--fonte-texto);
-    font-size: 1.5rem;
-    color: var(--cor-vermelho);
-}
-
-.footer__texto {
-    list-style: none;
-    padding-left: 0;
-}
-
-.footer__texto--link {
-    font-family: var(--fonte-texto);
-    text-decoration: none;
-    font-size: 1rem;
-    color: #2F2F2F;
-}
-
+.footer { box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3); padding-top: 25px; }
+.footer__titulo { color: var(--cor-amarela); font-size: clamp(1.5rem, 3.5vw, 2rem); font-family: var(--fonte-principal); }
+.footer__subTitulo { font-family: var(--fonte-texto); font-size: 1.5rem; color: var(--cor-vermelho); }
+.footer__texto { list-style: none; padding-left: 0; }
+.footer__texto--link { font-family: var(--fonte-texto); text-decoration: none; font-size: 1rem; color: #2F2F2F; }
 
 /* Animaciones */
-
-/* Para notificacion del Admin (menu de aceptar asociados) */
 @keyframes moverCampana {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    15% {
-        transform: rotate(15deg);
-    }
-
-    30% {
-        transform: rotate(-10deg);
-    }
-
-    45% {
-        transform: rotate(15deg);
-    }
-
-    60% {
-        transform: rotate(-10deg);
-    }
-
-    75% {
-        transform: rotate(5deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
+    0% { transform: rotate(0deg); }
+    15% { transform: rotate(15deg); }
+    30% { transform: rotate(-10deg); }
+    45% { transform: rotate(15deg); }
+    60% { transform: rotate(-10deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
 }
 
-/* borde rojo parpadeando */
-
 @keyframes parpadeoBordeRojo {
-    0% {
-        border: 2px solid #86b7fe;
+    0% { border: 2px solid #86b7fe; }
+    50% { border: 2px solid red; }
+    100% { border: 2px solid #86b7fe; }
+}
+
+/* ==========================================================================
+   CORRECCIONES RESPONSIVAS (MÓVIL) - VERSIÓN FINAL DEFINITIVA
+   ========================================================================== */
+
+/* 1. Botones flotantes (Z-INDEX 9999 PARA QUE ESTÉN ENCIMA DE TODO) */
+@media (max-width: 768px) {
+    #btnFlotante--aprovacaoEmprendimentos,
+    #btnFlotante--ajustesGerais,
+    #btnAgregarProducto,
+    #btnEditarProducto {
+        position: fixed;
+        z-index: 9999 !important; /* Clave para que no queden abajo */
+        right: 15px !important;
+        font-size: 20px !important;
+        width: 45px !important;
+        height: 45px !important;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
+    }
+    
+    #btnFlotante--ajustesGerais { bottom: 80px !important; }
+    #btnAgregarProducto { bottom: 80px !important; }
+    #btnEditarProducto { bottom: 20px !important; }
+    #btnFlotante--aprovacaoEmprendimentos { bottom: 20px !important; }
+}
+
+/* 2. ESTRUCTURA Y CONTENIDO (TABLET Y MÓVIL) */
+@media (max-width: 992px) {
+
+    /* --- NAV: FILA ÚNICA HORIZONTAL --- */
+    nav .container-fluid {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 5px 10px !important;
     }
 
-    50% {
-        border: 2px solid red;
+    nav img {
+        width: 40px !important;
+        height: auto;
     }
 
-    100% {
-        border: 2px solid #86b7fe;
+    /* Ocultamos textos grandes para que quepa todo */
+    .titulo, .mensajemBemvindo {
+        display: none !important; 
+    }
+
+    .navbar-nav {
+        flex-direction: row !important;
+        width: auto !important;
+        gap: 5px;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .navbar-nav a.nav-item {
+        font-size: 12px !important;
+        padding: 5px !important;
+        white-space: nowrap;
+        margin: 0 !important;
+    }
+    
+    .navbar-nav .d-flex {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    nav .d-flex.ms-auto {
+        width: auto !important;
+        margin: 0 !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    nav .d-flex.ms-auto .btn {
+        width: auto !important;
+        min-width: auto !important;
+        padding: 5px 10px !important;
+        font-size: 12px !important;
+        display: flex !important;
+        align-items: center;
+        gap: 2px;
+        margin: 0 0 0 5px !important;
+        height: 35px;
+        white-space: nowrap !important;
+    }
+
+    /* --- ARREGLO DE HISTORIA (ESTILO SOMBREADO DE LA FOTO) --- */
+    
+    /* 1. Hacemos la imagen muy alta para que quepa todo el texto */
+    .portada__imagem {
+        height: 100vh !important; /* Altura de toda la pantalla */
+        min-height: 650px !important; /* O al menos 650px */
+        object-fit: cover;
+    }
+
+    /* 2. Contenedor del texto encima de la imagen con fondo oscuro */
+    .portada__conteudo-secundario {
+        position: absolute !important; /* Flota sobre la imagen */
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important; /* Cubre toda la imagen */
+        margin: 0 !important;
+        padding: 20px !important;
+        
+        /* EL EFECTO SOMBREADO DE TU FOTO: */
+        background-color: rgba(0, 0, 0, 0.75) !important; 
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centra el texto verticalmente */
+    }
+
+    .portada__subTitulo {
+        color: var(--cor-amarela);
+        font-size: 1.8rem !important;
+        margin-bottom: 15px;
+    }
+
+    /* 3. Texto blanco y TAMAÑO NORMAL para notar la expansión */
+    .portada__parrafo {
+        color: white !important;
+        font-size: 1rem !important; /* Tamaño legible para ver el efecto */
+        line-height: 1.4 !important;
+        text-align: justify;
+        
+        /* Importante: Dejamos que el JS controle el line-clamp/height */
+        /* No forzamos "unset" aquí para permitir que el botón funcione */
+        max-width: 100%;
+    }
+
+    /* Botón amarillo ajustado */
+    .portada__botao {
+        position: relative !important;
+        width: auto !important;
+        align-self: center; /* Centrar botón */
+        margin-top: 20px;
+        bottom: auto !important;
+        left: auto !important;
+        padding: 5px 20px !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Admin/Responsable: Lo movemos debajo */
+    .portada__conteudo-terceario {
+        position: relative !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+        top: auto;
+        right: auto;
+    }
+
+    /* --- ARREGLOS GENERALES --- */
+    #Emprendimentos .col-3,
+    .emprendimento .col-3,
+    .footer .row > div,
+    .missao .row > div,
+    .missao__conteudo--principal,
+    .contornoGris {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 20px;
+    }
+
+    .footer { text-align: center; }
+    .footer .col-2, .footer .col-3 { width: 100% !important; display: block; }
+    .emprendimento__imagem { height: 250px !important; object-fit: cover; }
+    
+    .missao__imagem {
+        width: 45% !important;
+        height: auto !important;
+        margin: 5px !important;
+    }
+    .missao__circuloBorboleta {
+        display: block !important;
+        width: 60px;
+        height: 60px;
+        top: 0% !important;
+        margin-top: -30px;
     }
 }

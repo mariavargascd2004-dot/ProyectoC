@@ -413,6 +413,81 @@ switch ($accion) {
             echo json_encode(['status' => 'error', 'message' => 'Ocorreu um erro no servidor.']);
         }
         break;
+    case "actualizarImagensPrincipais":
+        header('Content-Type: application/json');
+
+        if (!$idUsuarioLogado || $tipoUsuarioLogado !== 'associado') {
+            echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
+            exit;
+        }
+
+        $idEmprendimento = $_POST['idEmprendimento'] ?? 0;
+
+        try {
+            $emprendimentoAtual = $emprendimentoDAO->obterPorId($idEmprendimento);
+            if (!$emprendimentoAtual || $emprendimentoAtual['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+                echo json_encode(['status' => 'error', 'message' => 'Você não tem permissão.']);
+                exit;
+            }
+        } catch (Exception $e) {
+            echo json_encode(['status' => 'error', 'message' => 'Erro interno.']);
+            exit;
+        }
+
+        $mensagemSucesso = [];
+        $erroOcorrido = false;
+        
+        // Variables para devolver al JS
+        $newLogoPath = null;
+        $newPoosterPath = null;
+
+        // 1. LOGO
+        if (isset($_FILES['logoEmprendimento']) && $_FILES['logoEmprendimento']['error'] === UPLOAD_ERR_OK) {
+            $novoLogo = guardarImagem($_FILES['logoEmprendimento'], 'logos');
+            if ($novoLogo) {
+                if (!empty($emprendimentoAtual['logo']) && file_exists("../" . $emprendimentoAtual['logo'])) {
+                    // Solo borramos si no es una imagen default genérica, opcional
+                    if (strpos($emprendimentoAtual['logo'], 'default') === false) {
+                        unlink("../" . $emprendimentoAtual['logo']);
+                    }
+                }
+                if ($emprendimentoDAO->atualizarLogo($idEmprendimento, $novoLogo)) {
+                    $mensagemSucesso[] = "Logo";
+                    $newLogoPath = $novoLogo;
+                } else { $erroOcorrido = true; }
+            } else { $erroOcorrido = true; }
+        }
+
+        // 2. POOSTER
+        if (isset($_FILES['poosterEmprendimento']) && $_FILES['poosterEmprendimento']['error'] === UPLOAD_ERR_OK) {
+            $novoPooster = guardarImagem($_FILES['poosterEmprendimento'], 'poosters');
+            if ($novoPooster) {
+                if (!empty($emprendimentoAtual['pooster']) && file_exists("../" . $emprendimentoAtual['pooster'])) {
+                     if (strpos($emprendimentoAtual['pooster'], 'default') === false) {
+                        unlink("../" . $emprendimentoAtual['pooster']);
+                    }
+                }
+                if ($emprendimentoDAO->atualizarPooster($idEmprendimento, $novoPooster)) {
+                    $mensagemSucesso[] = "Pôster";
+                    $newPoosterPath = $novoPooster;
+                } else { $erroOcorrido = true; }
+            } else { $erroOcorrido = true; }
+        }
+
+        // 3. RESPUESTA JSON
+        if (!empty($mensagemSucesso)) {
+            echo json_encode([
+                'status' => 'ok', 
+                'message' => implode(' e ', $mensagemSucesso) . ' atualizado(s) com sucesso!',
+                'logoPath' => $newLogoPath,      // Enviamos la ruta nueva
+                'poosterPath' => $newPoosterPath // Enviamos la ruta nueva
+            ]);
+        } else if ($erroOcorrido) {
+            echo json_encode(['status' => 'error', 'message' => 'Erro ao processar imagem.']);
+        } else {
+            echo json_encode(['status' => 'info', 'message' => 'Nenhuma imagem selecionada.']);
+        }
+        break;
     default:
         echo json_encode(['status' => 'error', 'message' => 'accion no valida']);
 }

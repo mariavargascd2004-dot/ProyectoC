@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $db_name = "lojasolidariabd";
-    private $username = "root";
-    private $password = "";
+    private $host = "sql100.byethost18.com";
+    private $db_name = "b18_40433717_casasolidaria";
+    private $username = "b18_40433717";
+    private $password = "CasaSolidaria2025";
     public $conn;
 
     public function getConnection(){

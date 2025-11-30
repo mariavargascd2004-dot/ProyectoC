@@ -105,7 +105,7 @@ if ($tipoUsuario == "adminGeneral") {
             <div class="container-fluid">
                 <!-- Logo y enlaces -->
                 <div class="navbar-nav d-flex align-items-center">
-                    <img src="../assets/img/CasaSolidaria/defaultLogo.png" alt="Logo de la Empresa" width="80px">
+                    <img src="<?php echo htmlspecialchars($datos ? $datos->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'); ?>" alt="Logo de la Empresa" width="80px">
                     <div>
                         <a class="nav-item nav-link titulo" href="#">Loja Solidaria</a>
                         <?php if ($nomeUsuairo != null) { ?>
@@ -383,9 +383,9 @@ if ($tipoUsuario == "adminGeneral") {
                 <div class="col-2">
                     <h4 class="footer__subTitulo"> Legales </h4>
                     <ul class="footer__texto">
-                        <li> <a href="#" class="footer__texto--link"> Politica de Calidade </li> </a>
-                        <li> <a href="#" class="footer__texto--link"> Politica de Privacidade</a> </li>
-                        <li> <a href="#" class="footer__texto--link"> Politica de Dados </a> </li>
+                        <li> <a href="politicaQualidade.html" class="footer__texto--link"> Politica de Qualidade </li> </a>
+                        <li> <a href="politicaPrivacidade.html" class="footer__texto--link"> Politica de Privacidade</a> </li>
+                        <li> <a href="politicaDados.html" class="footer__texto--link"> Politica de Dados </a> </li>
                     </ul>
                 </div>
                 <div class="col-2">

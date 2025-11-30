@@ -21,6 +21,9 @@ class PaginaPrincipalDAO
 
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            // Verifica si existe la clave 'logo' en la base de datos, si no usa default
+            $logoDb = isset($row['logo']) ? $row['logo'] : '../assets/img/CasaSolidaria/defaultLogo.png';
+
             return new PaginaPrincipal(
                 $row['portada'],
                 $row['historia'],
@@ -35,7 +38,8 @@ class PaginaPrincipalDAO
                 $row['horarios'],
                 $row['celular'],
                 $row['facebook'],
-                $row['instagram']
+                $row['instagram'],
+                $logoDb // Pasamos el logo al constructor
             );
         } else {
             $defaultData = [
@@ -52,11 +56,16 @@ class PaginaPrincipalDAO
                 'horarios' => 'Sem horarios',
                 'celular' => '000-000-0000',
                 'facebook' => '#',
-                'instagram' => '#'
+                'instagram' => '#',
+                'logo' => '../assets/img/CasaSolidaria/defaultLogo.png' // Agregado
             ];
 
-            $insertQuery = "INSERT INTO pagina_principal (portada, historia, mision, vision, primerafotogaleria, segundafotogaleria, tercerafotogaleria, cuartafotogaleria, telefono, direccion, horarios, celular, facebook, instagram) VALUES (:portada, :historia, :mision, :vision, :primerafotogaleria, :segundafotogaleria, :tercerafotogaleria, :cuartafotogaleria, :telefono, :direccion, :horarios, :celular, :facebook, :instagram)";
-
+            // Construcción dinámica del query incluyendo el logo
+            $columns = implode(", ", array_keys($defaultData));
+            $placeholders = ":" . implode(", :", array_keys($defaultData));
+            
+            $insertQuery = "INSERT INTO pagina_principal ($columns) VALUES ($placeholders)";
+            
             $insertStmt = $this->conn->prepare($insertQuery);
 
             // Vincular parámetros
@@ -79,7 +88,8 @@ class PaginaPrincipalDAO
                     $defaultData['horarios'],
                     $defaultData['celular'],
                     $defaultData['facebook'],
-                    $defaultData['instagram']
+                    $defaultData['instagram'],
+                    $defaultData['logo']
                 );
             } else {
                 error_log("Error al insertar datos por defecto en pagina_principal: " . implode(" ", $insertStmt->errorInfo()));
@@ -88,7 +98,7 @@ class PaginaPrincipalDAO
         }
     }
 
-    // Actualizar datos de la página principal
+    // Actualizar datos de la página principal (General)
     public function actualizarDatos($datos)
     {
         $query = "UPDATE pagina_principal SET 
@@ -105,7 +115,8 @@ class PaginaPrincipalDAO
                   horarios = :horarios,
                   celular = :celular,
                   facebook = :facebook,
-                  instagram = :instagram
+                  instagram = :instagram,
+                  logo = :logo
                   WHERE id = (SELECT id FROM (SELECT id FROM pagina_principal ORDER BY id DESC LIMIT 1) as temp)";
 
         $stmt = $this->conn->prepare($query);
@@ -124,6 +135,7 @@ class PaginaPrincipalDAO
         $stmt->bindParam(':celular', $datos['celular']);
         $stmt->bindParam(':facebook', $datos['facebook']);
         $stmt->bindParam(':instagram', $datos['instagram']);
+        $stmt->bindParam(':logo', $datos['logo']);
 
         return $stmt->execute();
     }
@@ -149,9 +161,7 @@ class PaginaPrincipalDAO
 
 
         $directorio = "../assets/img/CasaSolidaria/";
-        error_log("Directorio destino: " . $directorio);
-
-
+        
         if (!is_dir($directorio)) {
             error_log("Creando directorio...");
             mkdir($directorio, 0777, true);
@@ -176,16 +186,11 @@ class PaginaPrincipalDAO
         $nombreArchivo = $nombreCampo . '_' . time() . '_' . uniqid() . '.' . pathinfo($archivo['name'], PATHINFO_EXTENSION);
         $rutaArchivo = $directorio . $nombreArchivo;
 
-        error_log("Nombre archivo final: " . $nombreArchivo);
-        error_log("Ruta archivo final: " . $rutaArchivo);
-
         if (move_uploaded_file($archivo['tmp_name'], $rutaArchivo)) {
             error_log("✅ Archivo movido exitosamente");
             return $rutaArchivo;
         } else {
             error_log("❌ Error al mover archivo");
-            error_log("tmp_name: " . $archivo['tmp_name']);
-            error_log("destino: " . $rutaArchivo);
             return false;
         }
     }

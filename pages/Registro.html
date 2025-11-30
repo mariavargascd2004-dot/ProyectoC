@@ -89,14 +89,24 @@
 
             <!-- Usuario -->
             <div class="row login__usuario transiccionSuave">
-                <form id="formRegistrar--usuario" action="#" method="post">
+                <form id="formRegistrar--usuario" action="#" method="post" novalidate>
                     <span class="parrafo fs-6 mb-3">Dados do Usuario</span>
-                    <div class="col-12 mb-3"><input type="text" name="nombre" required class="form-control" placeholder="Nome"></div>
-                    <div class="col-12 mb-3"><input type="email" name="email" required class="form-control" placeholder="Email"></div>
-                    <div class="col-12 mb-3"><input type="password" name="password" required class="form-control" placeholder="Senha">
+                    <div class="col-12 mb-3">
+                        <input type="text" name="nombre" required class="form-control" placeholder="Nome" minlength="2" maxlength="50">
+                        <div class="invalid-feedback">Por favor, insira um nome válido (2-50 caracteres)</div>
                     </div>
-                    <div class="col-12 mb-3"><input type="password" name="password2" required class="form-control"
-                            placeholder="Repetir Senha"></div>
+                    <div class="col-12 mb-3">
+                        <input type="email" name="email" required class="form-control" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <div class="invalid-feedback">Por favor, insira um email válido</div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <input type="password" name="password" required class="form-control" placeholder="Senha" minlength="6">
+                        <div class="invalid-feedback">A senha deve ter pelo menos 6 caracteres</div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <input type="password" name="password2" required class="form-control" placeholder="Repetir Senha" minlength="6">
+                        <div class="invalid-feedback">Por favor, repita a senha</div>
+                    </div>
                     <div class="col-12 mb-3">
                         <button type="submit" class="btn btn--amarelo text-uppercase w-100 p-2">Cadastrar</button>
                     </div>
@@ -105,7 +115,7 @@
 
             <!-- Emprendedor -->
             <div class="row login__emprendedor ocultarElemento transiccionSuave">
-                <form id="formRegistrar--emprendedor" action="#" method="post">
+                <form id="formRegistrar--emprendedor" action="#" method="post" novalidate>
 
                     <!-- MINI NAVBAR -->
                     <ul class="nav nav-tabs justify-content-center mb-4" id="stepsNav">
@@ -123,60 +133,82 @@
                     <!-- SECCION 1 -->
                     <div class="step active">
                         <span class="parrafo fs-6 mb-3">Dados Pessoais</span>
-                        <div class="col-12 mb-3"><input type="text" name="nombre" required class="form-control" placeholder="Nome">
+                        <div class="col-12 mb-3">
+                            <input type="text" name="nombre" required class="form-control" placeholder="Nome" minlength="2" maxlength="50">
+                            <div class="invalid-feedback">Por favor, insira um nome válido (2-50 caracteres)</div>
                         </div>
-                        <div class="col-12 mb-3"><input type="text" name="apellido" required class="form-control"
-                                placeholder="Sobrenome"></div>
-                        <div class="col-12 mb-3"><textarea class="form-control" name="descripcion"
-                                placeholder="Descrisão (Opcional)"></textarea></div>
+                        <div class="col-12 mb-3">
+                            <input type="text" name="apellido" required class="form-control" placeholder="Sobrenome" minlength="2" maxlength="50">
+                            <div class="invalid-feedback">Por favor, insira um sobrenome válido (2-50 caracteres)</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <textarea class="form-control" name="descripcion" placeholder="Descrisão (Opcional)" maxlength="500"></textarea>
+                            <div class="form-text">Máximo 500 caracteres</div>
+                        </div>
                         <div class="col-12 mb-5">
                             <label>Foto de Perfil:</label>
                             <input name="fotoPerfil" id="fotoPerfil" accept="image/*" type="file" class="form-control">
+                            <div class="form-text">Formatos aceitos: JPG, PNG, GIF. Tamanho máximo: 2MB</div>
                         </div>
                     </div>
 
                     <!-- SECCION 2 -->
                     <div class="step">
                         <span class="parrafo fs-6 mb-3">Dados da Conta</span>
-                        <div class="col-12 mb-3"><input type="email" name="email" required class="form-control" placeholder="Email"></div>
-                        <div class="col-12 mb-3"><input type="password" name="password" required class="form-control" placeholder="Senha"></div>
-                        <div class="col-12 mb-5"><input type="password" name="password2" required class="form-control"
-                                placeholder="Repetir Senha"></div>
+                        <div class="col-12 mb-3">
+                            <input type="email" name="email" required class="form-control" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                            <div class="invalid-feedback">Por favor, insira um email válido</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="password" name="password" required class="form-control" placeholder="Senha" minlength="6">
+                            <div class="invalid-feedback">A senha deve ter pelo menos 6 caracteres</div>
+                        </div>
+                        <div class="col-12 mb-5">
+                            <input type="password" name="password2" required class="form-control" placeholder="Repetir Senha" minlength="6">
+                            <div class="invalid-feedback">Por favor, repita a senha</div>
+                        </div>
                     </div>
 
                     <!-- SECCION 3 -->
                     <div class="step">
                         <span class="parrafo fs-6 mb-3">Dados do Emprendimento:</span>
                         <div class="col-12 mb-3 mt-3">
-                            <input type="text" name="nombreEmprendimento" class="form-control" required placeholder="Nome do Emprendimento">
+                            <input type="text" name="nombreEmprendimento" class="form-control" required placeholder="Nome do Emprendimento" minlength="2" maxlength="100">
+                            <div class="invalid-feedback">Por favor, insira um nome válido para o empreendimento (2-100 caracteres)</div>
                         </div>
 
                         <div class="col-12 mb-3">
                             <label>Logo:</label>
-                            <input type="file" name="logoEmprendimento" class="form-control">
+                            <input type="file" required name="logoEmprendimento" class="form-control" accept="image/*">
+                            <div class="form-text">Formatos aceitos: JPG, PNG, GIF. Tamanho máximo: 2MB</div>
                         </div>
 
                         <div class="col-12 mb-3">
                             <label>Pooster:</label>
-                            <input type="file" name="poosterEmprendimento" class="form-control">
+                            <input type="file" required name="poosterEmprendimento" class="form-control" accept="image/*">
+                            <div class="form-text">Formatos aceitos: JPG, PNG, GIF. Tamanho máximo: 2MB</div>
                         </div>
 
                         <div class="col-12 mb-3">
                             <label>Cor Principal:</label>
-                            <input type="color" name="corPrincipal" class="form-control">
+                            <input type="color" name="corPrincipal" class="form-control" value="#000000" required>
+                            <div class="invalid-feedback">Por favor, selecione uma cor principal</div>
                         </div>
                         
                         <div class="col-12 mb-3">
                             <label>Cor Secundaria:</label>
-                            <input type="color" name="corSecundaria" class="form-control">
+                            <input type="color" name="corSecundaria" class="form-control" value="#ffffff" required>
+                            <div class="invalid-feedback">Por favor, selecione uma cor secundária</div>
                         </div>
 
                         <div class="col-12 mb-3">
-                            <textarea class="form-control" name="historia" required placeholder="Historia da Empresa"></textarea>
+                            <textarea class="form-control" name="historia" required placeholder="Historia da Empresa" minlength="10" maxlength="1000"></textarea>
+                            <div class="invalid-feedback">Por favor, insira a história da empresa (10-1000 caracteres)</div>
                         </div>
 
                         <div class="col-12 mb-3">
-                            <textarea class="form-control" name="processoFabricacao" required placeholder="Processo de fabricação"></textarea>
+                            <textarea class="form-control" name="processoFabricacao" required placeholder="Processo de fabricação" minlength="10" maxlength="1000"></textarea>
+                            <div class="invalid-feedback">Por favor, descreva o processo de fabricação (10-1000 caracteres)</div>
                         </div>
 
                         <!-- Imagens de fabricação -->
@@ -184,6 +216,7 @@
                             <label>Imagens da fabricação (4 imagems)</label>
                             <input type="file" name="imagemsFabricacao" class="form-control" id="fabricacaoInput" multiple accept="image/*">
                             <div id="fabricacaoPreview" class="image-preview-container mt-2 p-2 contornoGris"></div>
+                            <div class="invalid-feedback">São necessárias exatamente 4 imagens do processo de fabricação</div>
                         </div>
 
                         <!-- Imagens da galeria -->
@@ -191,25 +224,32 @@
                             <label>Imagens da Galeria (máximo 10 imágems)</label>
                             <input type="file" name="imagemsGaleria" class="form-control" id="galeriaInput" multiple accept="image/*">
                             <div id="galeriaPreview" class="image-preview-container mt-2 p-2 contornoGris"></div>
+                            <div class="form-text">Mínimo 1 imagem, máximo 10 imagens</div>
                         </div>
 
                         <div class="col-12 mb-3">
-                            <input type="number" name="telefone" class="form-control" placeholder="Telefone (Opcional)">
+                            <input type="tel" name="telefone" class="form-control" placeholder="Telefone (Opcional)" pattern="[0-9+\-\s()]{8,15}">
+                            <div class="invalid-feedback">Formato de telefone inválido</div>
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="number" name="celular" class="form-control" required placeholder="Celular/WhatsApp">
+                            <input type="number" name="celular" class="form-control" min="11" max="12" required placeholder="Celular/WhatsApp Ex: 551199999999  (BR) / 59899999999 (UY)">
+                            <div class="invalid-feedback">Por favor, insira um número de celular válido</div>
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="text" name="horarios" class="form-control" required placeholder="horários">
+                            <input type="text" name="horarios" class="form-control" required placeholder="horários" minlength="5" maxlength="100">
+                            <div class="invalid-feedback">Por favor, insira os horários de atendimento</div>
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="text" name="ubicacao" class="form-control" required placeholder="Ubicação">
+                            <input type="text" name="ubicacao" class="form-control" required placeholder="Ubicação" minlength="5" maxlength="200">
+                            <div class="invalid-feedback">Por favor, insira a localização</div>
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="text" name="instragram" class="form-control" placeholder="Instagram (Opcional)">
+                            <input type="url" name="instragram" class="form-control" placeholder="Instagram (Link / Opcional) Ex: https://instagram.com/SeuPerfil" pattern="[a-zA-Z0-9._]{1,30}">
+                            <div class="invalid-feedback">Nome de Instagram inválido</div>
                         </div>
                         <div class="col-12 mb-3">
-                            <input type="text" name="facebook" class="form-control" placeholder="Facebook (Opcional)">
+                            <input type="url" name="facebook" class="form-control" placeholder="Facebook (Link / Opcional)  Ex: https://facebook.com/suaPagina" pattern="[a-zA-Z0-9._]{1,50}">
+                            <div class="invalid-feedback">Nome de Facebook inválido</div>
                         </div>
                     </div>
 
@@ -223,7 +263,6 @@
             </div>
         </div>
     </main>
-
 
     <footer class="mt-5 footer">
         <div class="container-fluid">

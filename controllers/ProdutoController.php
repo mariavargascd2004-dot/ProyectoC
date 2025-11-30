@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 require_once "../config/database.php";
 require_once "../models/Produto.php";
@@ -22,14 +24,6 @@ switch ($accion) {
         $idSubcategoria = $_POST["Subcategoria"] ?? '';
         $idEmprendimiento = $_POST["idEmprendimiento"] ?? null;
 
-        $subcat = $subcategoriaDAO->obterPorId($idSubcategoria);
-        if (!$subcat) {
-            echo json_encode(["status" => "error", "message" => "Subcategoria inválida."]);
-            exit;
-        }
-
-        $idCategoriaCorrecto = $subcat['categoria_id'];
-
 
         $produtoId = $produtoDAO->guardarProduto([
             "titulo" => $titulo,
@@ -38,7 +32,7 @@ switch ($accion) {
             "color" => $color,
             "tamano" => $tamanho,
             "producto_idCategoria" => $idCategoria,
-            "producto_idSubcategoria" => $idCategoriaCorrecto,
+            "producto_idSubcategoria" => $idSubcategoria,
             "emprendimiento_id" => $idEmprendimiento
         ]);
 

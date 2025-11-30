@@ -11,6 +11,93 @@ document.addEventListener("DOMContentLoaded", function () {
     const formImgFabricacao = document.getElementById("formImgFabricacao");
     const formImgGaleria = document.getElementById("formImgGaleria");
     const formCores = document.getElementById("formCores");
+    const formIdentidadeVisual = document.getElementById("formIdentidadeVisual");
+    
+    
+    if (formIdentidadeVisual) {
+        // Lógica para previsualizar el nombre del archivo seleccionado (UX)
+        const inputLogo = document.getElementById('inputLogo');
+        const inputPooster = document.getElementById('inputPooster');
+
+        if(inputLogo) {
+            inputLogo.addEventListener('change', function(e) {
+                const target = document.getElementById('previewLogo');
+                if (this.files && this.files[0]) target.textContent = "Arquivo selecionado: " + this.files[0].name;
+            });
+        }
+        if(inputPooster) {
+            inputPooster.addEventListener('change', function(e) {
+                const target = document.getElementById('previewPooster');
+                if (this.files && this.files[0]) target.textContent = "Arquivo selecionado: " + this.files[0].name;
+            });
+        }
+
+        // Lógica del SUBMIT por AJAX
+        formIdentidadeVisual.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-2"></i> Salvando...`;
+
+            fetch("../controllers/EmprendimentoController.php", {
+                method: "POST",
+                body: formData,
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro na rede: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.status === 'ok') {
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: data.message,
+                            icon: "success",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+
+                        if (data.logoPath) {
+                            const imgLogo = document.getElementById('imgLogoActual');
+                            if(imgLogo) imgLogo.src = "../" + data.logoPath + "?t=" + new Date().getTime();
+                            document.getElementById('previewLogo').textContent = ""; // Limpiar texto
+                        }
+                        if (data.poosterPath) {
+                            const imgPooster = document.getElementById('imgPoosterActual');
+                            if(imgPooster) imgPooster.src = "../" + data.poosterPath + "?t=" + new Date().getTime();
+                            document.getElementById('previewPooster').textContent = ""; // Limpiar texto
+                        }
+
+                        // Limpiar los inputs file
+                        this.reset();
+                    } else {
+                        Swal.fire({
+                            title: "Erro!",
+                            text: data.message || "Ocorreu um problema.",
+                            icon: "error"
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro na requisição AJAX:", error);
+                    Swal.fire({
+                        title: "Erro de Conexão",
+                        text: "Não foi possível conectar ao servidor.",
+                        icon: "error"
+                    });
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                });
+        });
+    }
 
     if (formHistoria) {
         formHistoria.addEventListener("submit", function (e) {
@@ -849,4 +936,6 @@ if (document.getElementById('gerenciadorCategorias')) {
     }
 
     carregarDados();
+    
+    
 }

@@ -10,7 +10,7 @@ class UsuarioDAO
         $this->conn = $db;
     }
 
-    //Función para registrar Usuario Cliente
+    // Función para registrar Usuario Cliente
     public function registrar(Usuario $usuario)
     {
         $sql = "INSERT INTO usuario(nombre, email, password, tipo)VALUES(?, ?, ?, ?);";
@@ -25,8 +25,7 @@ class UsuarioDAO
         return $this->conn->lastInsertId();
     }
 
-
-    //Funcion para Login
+    // Funcion para Login
     public function login($email, $password)
     {
         $sql = "SELECT * FROM usuario WHERE email = ?";
@@ -49,7 +48,7 @@ class UsuarioDAO
         return $stmt->fetchColumn();
     }
 
-    //Verificar si existe el Email
+    // Verificar si existe el Email
     public function existeEmail($email)
     {
         $sql = "SELECT idUsuario FROM usuario WHERE email = ?";
@@ -79,6 +78,20 @@ class UsuarioDAO
             return $stmt->execute([$nombre, $idUsuario]);
         } catch (PDOException $e) {
             error_log("Erro em UsuarioDAO::atualizarNome: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    // --- NUEVA FUNCIÓN PARA ACTUALIZAR PASSWORD ---
+    public function actualizarPassword($idUsuario, $password)
+    {
+        try {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE usuario SET password = ? WHERE idUsuario = ?";
+            $stmt = $this->conn->prepare($sql);
+            return $stmt->execute([$hash, $idUsuario]);
+        } catch (PDOException $e) {
+            error_log("Erro em UsuarioDAO::actualizarPassword: " . $e->getMessage());
             return false;
         }
     }
