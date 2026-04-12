@@ -16,6 +16,8 @@ $adminAssociadoDAO = new AdminAssociadoDAO($db);
 $imagemFabricacaoDAO = new ImagemFabricacaoDAO($db);
 $imagemGaleriaDAO = new ImagemGaleriaDAO($db);
 
+header('Content-Type: application/json');
+
 $accion = $_POST['accion'] ?? '';
 
 $idUsuarioLogado = $_SESSION['user']['id'] ?? null;
@@ -133,7 +135,7 @@ switch ($accion) {
     case "actualizarHistoria":
         header('Content-Type: application/json');
 
-        if (!$idUsuarioLogado || $tipoUsuarioLogado !== 'associado') {
+        if (!$idUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
             echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
             exit;
         }
@@ -148,7 +150,12 @@ switch ($accion) {
 
         try {
             $emprendimento = $emprendimentoDAO->obterPorId($idEmprendimento);
-            if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+            if (!$emprendimento) {
+                echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+                exit;
+            }
+            // Associado só edita o próprio; admin geral edita qualquer um
+            if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
                 echo json_encode(['status' => 'error', 'message' => 'Você não tem permissão para editar este empreendimento.']);
                 exit;
             }
@@ -168,7 +175,7 @@ switch ($accion) {
     case "actualizarProcesso":
         header('Content-Type: application/json');
 
-        if (!$idUsuarioLogado || $tipoUsuarioLogado !== 'associado') {
+        if (!$idUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
             echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
             exit;
         }
@@ -183,7 +190,11 @@ switch ($accion) {
 
         try {
             $emprendimento = $emprendimentoDAO->obterPorId($idEmprendimento);
-            if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+            if (!$emprendimento) {
+                echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+                exit;
+            }
+            if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
                 echo json_encode(['status' => 'error', 'message' => 'Você não tem permissão para editar este empreendimento.']);
                 exit;
             }
@@ -203,7 +214,7 @@ switch ($accion) {
     case "actualizarCores":
         header('Content-Type: application/json');
 
-        if (!$idUsuarioLogado || $tipoUsuarioLogado !== 'associado') {
+        if (!$idUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
             echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
             exit;
         }
@@ -219,7 +230,11 @@ switch ($accion) {
 
         try {
             $emprendimento = $emprendimentoDAO->obterPorId($idEmprendimento);
-            if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+            if (!$emprendimento) {
+                echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+                exit;
+            }
+            if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
                 echo json_encode(['status' => 'error', 'message' => 'Você não tem permissão para editar este empreendimento.']);
                 exit;
             }
@@ -239,7 +254,7 @@ switch ($accion) {
     case "actualizarInfoEmprendimento":
         header('Content-Type: application/json');
 
-        if (!$idUsuarioLogado || $tipoUsuarioLogado !== 'associado') {
+        if (!$idUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
             echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
             exit;
         }
@@ -247,11 +262,11 @@ switch ($accion) {
         $idEmprendimento = $_POST['idEmprendimento'] ?? 0;
         $dados = [
             'telefone' => $_POST['telefone'] ?? null,
-            'celular' => $_POST['celular'] ?? '',
+            'celular'  => $_POST['celular'] ?? '',
             'ubicacao' => $_POST['ubicacao'] ?? '',
             'horarios' => $_POST['horarios'] ?? '',
             'facebook' => $_POST['facebook'] ?? null,
-            'instagram' => $_POST['instagram'] ?? null
+            'instagram'=> $_POST['instagram'] ?? null
         ];
 
         if (empty($idEmprendimento) || empty($dados['celular']) || empty($dados['ubicacao']) || empty($dados['horarios'])) {
@@ -261,7 +276,11 @@ switch ($accion) {
 
         try {
             $emprendimento = $emprendimentoDAO->obterPorId($idEmprendimento);
-            if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+            if (!$emprendimento) {
+                echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+                exit;
+            }
+            if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
                 echo json_encode(['status' => 'error', 'message' => 'Você não tem permissão para editar este empreendimento.']);
                 exit;
             }
@@ -283,7 +302,7 @@ switch ($accion) {
     case "subirImagensGaleria":
         header('Content-Type: application/json');
 
-        if (!$idUsuarioLogado || $tipoUsuarioLogado !== 'associado') {
+        if (!$idUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
             echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
             exit;
         }
@@ -302,7 +321,11 @@ switch ($accion) {
 
         try {
             $emprendimento = $emprendimentoDAO->obterPorId($idEmprendimento);
-            if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+            if (!$emprendimento) {
+                echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+                exit;
+            }
+            if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
                 echo json_encode(['status' => 'error', 'message' => 'Você não tem permissão para editar este empreendimento.']);
                 exit;
             }
@@ -354,15 +377,15 @@ switch ($accion) {
     case "eliminarImagem":
         header('Content-Type: application/json');
 
-        if (!$idUsuarioLogado || $tipoUsuarioLogado !== 'associado') {
+        if (!$idUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
             echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
             exit;
         }
 
-        $idImagem = $_POST['id'] ?? 0;
+        $idImagem   = $_POST['id'] ?? 0;
         $tipoImagem = $_POST['tipo'] ?? '';
 
-        if (empty($idImagem) || empty($tipoImagem)) {
+        if ($idImagem <= 0 || empty($tipoImagem)) {
             echo json_encode(['status' => 'error', 'message' => 'Dados incompletos.']);
             exit;
         }
@@ -391,7 +414,8 @@ switch ($accion) {
             $idEmprendimento = $imagem['emprendimento_id'];
             $emprendimento = $emprendimentoDAO->obterPorId($idEmprendimento);
 
-            if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+            // Associado só remove imagens do próprio empreendimento; admin geral remove de qualquer um
+            if ($tipoUsuarioLogado === 'associado' && (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado)) {
                 echo json_encode(['status' => 'error', 'message' => 'Você não tem permissão para eliminar esta imagem.']);
                 exit;
             }
@@ -416,7 +440,7 @@ switch ($accion) {
     case "actualizarImagensPrincipais":
         header('Content-Type: application/json');
 
-        if (!$idUsuarioLogado || $tipoUsuarioLogado !== 'associado') {
+        if (!$idUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
             echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
             exit;
         }
@@ -425,7 +449,11 @@ switch ($accion) {
 
         try {
             $emprendimentoAtual = $emprendimentoDAO->obterPorId($idEmprendimento);
-            if (!$emprendimentoAtual || $emprendimentoAtual['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+            if (!$emprendimentoAtual) {
+                echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+                exit;
+            }
+            if ($tipoUsuarioLogado === 'associado' && $emprendimentoAtual['adminAssociado_idUsuario'] != $idUsuarioLogado) {
                 echo json_encode(['status' => 'error', 'message' => 'Você não tem permissão.']);
                 exit;
             }

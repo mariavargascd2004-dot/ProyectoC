@@ -201,8 +201,12 @@ function h($string)
 
     </header>
     <main>
-        <?php if ($idUsuario && $idUsuario == $idAssociadoDelEmprendimiento) { ?>
-            <!-- Boton Flotante para Ajustes (Solo visible para el dueño) -->
+        <?php
+        $esAdminGeneral = ($tipoUsuario === 'adminGeneral');
+        $esDono = ($idUsuario && $idUsuario == $idAssociadoDelEmprendimiento);
+        if ($esDono || $esAdminGeneral):
+        ?>
+            <!-- Boton Flotante para Ajustes (visible para el dueño y para el adminGeneral) -->
             <a href="AjustesEmprendedor.php?token=<?php echo h($_GET['token']); ?>" title="Ajustes Gerais" class="btn" id="btnFlotante--ajustesGerais"><i
                     class="fa-solid fa-gear"></i>Ajustes</a>
 
@@ -412,7 +416,8 @@ function h($string)
                 </form>
             </div>
 
-        <?php } ?>
+        <?php endif; ?>
+
 
         <div class="container-fluid">
             <!-- Conteudo da Portada Principal -->

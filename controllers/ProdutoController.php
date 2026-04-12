@@ -11,6 +11,12 @@ $db  = (new Database())->getConnection();
 $produtoDAO = new ProdutoDAO($db);
 $imagemDAO = new ImagemProdutoDAO($db);
 
+$tipoUsuarioLogado = $_SESSION['user']['tipo'] ?? null;
+if (!$tipoUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
+    echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
+    exit;
+}
+
 $accion = $_POST["accion"] ?? "";
 
 switch ($accion) {
@@ -193,6 +199,31 @@ switch ($accion) {
             "message" => "Produto atualizado com sucesso!",
             "producto" => $productoActualizado
         ]);
+        break;
+    case "eliminarProducto":
+        $idProducto = $_POST["idProducto"] ?? 0;
+        if (!$idProducto) {
+            echo json_encode(["status" => "error", "message" => "ID de produto não fornecido."]);
+            exit;
+        }
+
+        // Buscar imagens para excluir os arquivos do servidor
+        $imagenes = $imagemDAO->listarPorProduto($idProducto);
+        foreach ($imagenes as $img) {
+            $dbPath = $img['caminho_imagem'];
+            $serverPath = str_replace("../", "", $dbPath);
+            $fullServerPath = "../" . $serverPath;
+            if (file_exists($fullServerPath)) {
+                unlink($fullServerPath);
+            }
+        }
+
+        $deleted = $produtoDAO->eliminarProducto($idProducto);
+        if ($deleted) {
+            echo json_encode(["status" => "ok", "message" => "Produto eliminado com sucesso!"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Erro ao eliminar o produto."]);
+        }
         break;
     default:
         echo json_encode(['status' => 'error', 'message' => 'Acción no válida']);

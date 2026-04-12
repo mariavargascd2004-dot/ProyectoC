@@ -15,6 +15,7 @@ $produtoDAO = new ProdutoDAO($db);
 $emprendimentoDAO = new EmprendimentoDAO($db);
 
 $idUsuarioLogado = $_SESSION["user"]['id'] ?? null;
+$tipoUsuarioLogado = $_SESSION["user"]['tipo'] ?? null;
 if (!$idUsuarioLogado) {
     echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
     exit;
@@ -22,10 +23,13 @@ if (!$idUsuarioLogado) {
 
 $accion = $_POST["accion"] ?? "";
 
-function verificarPermissaoSubcat($categoriaDAO, $emprendimentoDAO, $idUsuarioLogado, $idCategoria) {
+function verificarPermissaoSubcat($categoriaDAO, $emprendimentoDAO, $idUsuarioLogado, $tipoUsuarioLogado, $idCategoria) {
     $categoria = $categoriaDAO->obterPorId($idCategoria);
     if (!$categoria) return false;
-    
+
+    // Admin geral tem permissão em qualquer empreendimento
+    if ($tipoUsuarioLogado === 'adminGeneral') return true;
+
     $emprendimento = $emprendimentoDAO->obterPorId($categoria['emprendimiento_id']);
     if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
         return false;
@@ -53,7 +57,7 @@ switch ($accion) {
             echo json_encode(['status' => 'error', 'message' => 'Nome e ID da Categoria são obrigatórios.']);
             exit;
         }
-        if (!verificarPermissaoSubcat($categoriaDAO, $emprendimentoDAO, $idUsuarioLogado, $idCategoria)) {
+        if (!verificarPermissaoSubcat($categoriaDAO, $emprendimentoDAO, $idUsuarioLogado, $tipoUsuarioLogado, $idCategoria)) {
             echo json_encode(['status' => 'error', 'message' => 'Permissão negada.']);
             exit;
         }
@@ -72,7 +76,7 @@ switch ($accion) {
         $idSubcategoria = $_POST['idSubcategoria'] ?? 0;
 
         $subcat = $subcategoriaDAO->obterPorId($idSubcategoria);
-        if (!$subcat || !verificarPermissaoSubcat($categoriaDAO, $emprendimentoDAO, $idUsuarioLogado, $subcat['categoria_id'])) {
+        if (!$subcat || !verificarPermissaoSubcat($categoriaDAO, $emprendimentoDAO, $idUsuarioLogado, $tipoUsuarioLogado, $subcat['categoria_id'])) {
              echo json_encode(['status' => 'error', 'message' => 'Permissão negada.']);
              exit;
         }
@@ -88,7 +92,7 @@ switch ($accion) {
         $idSubcategoria = $_POST['idSubcategoria'] ?? 0;
         
         $subcat = $subcategoriaDAO->obterPorId($idSubcategoria);
-        if (!$subcat || !verificarPermissaoSubcat($categoriaDAO, $emprendimentoDAO, $idUsuarioLogado, $subcat['categoria_id'])) {
+        if (!$subcat || !verificarPermissaoSubcat($categoriaDAO, $emprendimentoDAO, $idUsuarioLogado, $tipoUsuarioLogado, $subcat['categoria_id'])) {
              echo json_encode(['status' => 'error', 'message' => 'Permissão negada.']);
              exit;
         }

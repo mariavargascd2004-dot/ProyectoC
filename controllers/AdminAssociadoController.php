@@ -77,8 +77,12 @@ switch ($accion) {
         header('Content-Type: application/json');
 
         $idUsuarioForm = $_POST['idUsuario'] ?? 0;
+        $tipoUsuarioLogado = $_SESSION['user']['tipo'] ?? null;
 
-        if (!$idUsuarioLogado || $idUsuarioLogado != $idUsuarioForm) {
+        $isSelf      = ($idUsuarioLogado == $idUsuarioForm);
+        $isAdminGeral = ($tipoUsuarioLogado === 'adminGeneral');
+
+        if (!$idUsuarioLogado || (!$isSelf && !$isAdminGeral)) {
             echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
             exit;
         }
@@ -109,7 +113,7 @@ switch ($accion) {
                 $newFotoPath = '../assets/img/perfil/' . $novoNombre;
                 $dadosAdmin['fotoPerfil'] = $newFotoPath;
 
-                $infoAntiga = $adminDAO->obtenerPorId($idUsuarioLogado);
+                $infoAntiga = $adminDAO->obtenerPorId($idUsuarioForm);
 
                 if ($infoAntiga && !empty($infoAntiga['FotoPerfilAssociado']) && file_exists($infoAntiga['FotoPerfilAssociado'])) {
                     if (basename($infoAntiga['FotoPerfilAssociado']) != 'default.png') {
@@ -124,18 +128,22 @@ switch ($accion) {
 
         $db->beginTransaction();
         try {
-            $successUsuario = $usuarioDAO->atualizarNome($idUsuarioLogado, $nome);
-
-            $successAdmin = $adminDAO->atualizarPerfil($idUsuarioLogado, $dadosAdmin);
+            // Usa $idUsuarioForm: alvo correto (empreendedor ou o próprio usuário)
+            $successUsuario = $usuarioDAO->atualizarNome($idUsuarioForm, $nome);
+            $successAdmin   = $adminDAO->atualizarPerfil($idUsuarioForm, $dadosAdmin);
 
             if ($successUsuario && $successAdmin) {
                 $db->commit();
-                $_SESSION['user']['nome'] = $nome;
+
+                // Só atualiza a sessão se for o próprio usuário editando a si mesmo
+                if ($isSelf) {
+                    $_SESSION['user']['nome'] = $nome;
+                }
 
                 echo json_encode([
-                    'status' => 'ok',
-                    'message' => 'Perfil atualizado com sucesso!',
-                    'newFotoPath' => $newFotoPath
+                    'status'     => 'ok',
+                    'message'    => 'Perfil atualizado com sucesso!',
+                    'newFotoPath'=> $newFotoPath
                 ]);
             } else {
                 $db->rollBack();

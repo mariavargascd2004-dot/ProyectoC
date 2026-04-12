@@ -28,10 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
             data.data.forEach(emprendimento => {
                 const fechaRegistro = emprendimento.dataCriacao ?? "DD-MM-YY";
                 const dataStr = encodeURIComponent(JSON.stringify(emprendimento));
+                const token = btoa(String(emprendimento.idEmprendimento));
 
                 const html = `
                                 <div class="row contornoGris p-3 mb-3">
-                                <div class="col-md-10  p-2 mb-3">
+                                <div class="col-md-9  p-2 mb-3">
                                     <div class="row align-items-center">
                                     <div class="col-2 col-md-1">
                                         <img src="../${emprendimento.logo ?? "assets/img/CasaSolidaria/defaultLogo.png"}" alt="logo" class="img-fluid"> 
@@ -45,9 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                     </div>
                                 </div>
 
-                                <div class="col-md-2 text-center mb-3">
+                                <div class="col-md-3 text-center mb-3 d-flex flex-column gap-2">
+                                    <a href="AjustesEmprendedor.php?token=${token}" class="btn btn--verde w-100">
+                                        <i class="fa-solid fa-store"></i> Gerenciar
+                                    </a>
                                     <button type="button"
-                                    class="btn btn--amarelo w-100 mb-2 ver-detalhes" 
+                                    class="btn btn--amarelo w-100 ver-detalhes" 
                                     data-emprendimento="${dataStr}">
                                     <i class="fa-solid fa-circle-info"></i> Ver Detalhes
                                     </button>

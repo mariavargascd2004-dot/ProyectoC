@@ -92,4 +92,11 @@ class ProdutoDAO
         $stmt->execute([$idSubcategoria]);
         return $stmt->fetchColumn();
     }
+
+    public function eliminarProducto($idProducto)
+    {
+        $sql = "DELETE FROM productos WHERE idProducto = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$idProducto]);
+    }
 }

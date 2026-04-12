@@ -4,7 +4,8 @@ session_start();
 $idUsuario = $_SESSION["user"]['id'] ?? null;
 $tipoUsuario = $_SESSION["user"]['tipo'] ?? null;
 
-if (!$idUsuario || $tipoUsuario !== 'associado') {
+// Permite acesso ao associado dono e ao administrador geral
+if (!$idUsuario || ($tipoUsuario !== 'associado' && $tipoUsuario !== 'adminGeneral')) {
     header("location:../");
     exit;
 }
@@ -22,6 +23,7 @@ if ($idEmprendimientoDecoded === false || !filter_var($idEmprendimientoDecoded, 
 }
 
 $idEmprendimiento = intval($idEmprendimientoDecoded);
+$esAdminGeneral = ($tipoUsuario === 'adminGeneral');
 
 // 2. Carga de Helpers y Datos
 require_once '../helpers/emprendimientosHelper.php';
@@ -37,12 +39,20 @@ try {
 
     $emprendimiento = $empHelper->obtenerEmprendimientoPorId($idEmprendimiento);
 
-    if (!$emprendimiento || $emprendimiento['adminAssociado_idUsuario'] != $idUsuario) {
+    if (!$emprendimiento) {
         header("location:../");
         exit;
     }
 
-    $infoAssociado = $assHelper->obtenerAssociadoPorId($idUsuario);
+    // O associado só pode editar o próprio empreendimento; o adminGeneral pode editar qualquer um
+    if (!$esAdminGeneral && $emprendimiento['adminAssociado_idUsuario'] != $idUsuario) {
+        header("location:../");
+        exit;
+    }
+
+    // Para exibir informações do admin associado dono do empreendimento
+    $idDonoEmprendimiento = $emprendimiento['adminAssociado_idUsuario'];
+    $infoAssociado = $assHelper->obtenerAssociadoPorId($idDonoEmprendimiento);
     $imgemsFabricacao = $FabricacaoHelper->obterImagemsComIdEmprendimento($idEmprendimiento);
     $imgemsGaleria  = $GaleriaHelper->obterImagemsComIdEmprendimento($idEmprendimiento);
 } catch (Exception $e) {
@@ -98,13 +108,19 @@ function h($string)
             <div class="container-fluid">
                 <div class="navbar-nav d-flex align-items-center">
                     
-         <a href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>" class="text-decoration-none">
-                <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo <?php echo h($emprendimiento['nome']); ?>" width="60" class="me-3">
-            </a>
-                   
-                        <a class="nav-item nav-link titulo fs-4" href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>">
-                        <i class="fa-solid fa-arrow-left me-2"></i> Voltar para <?php echo h($emprendimiento['nome']); ?>
+                    <a href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>" class="text-decoration-none">
+                        <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo <?php echo h($emprendimiento['nome']); ?>" width="60" class="me-3">
                     </a>
+                   
+                    <?php if ($esAdminGeneral): ?>
+                        <a class="nav-item nav-link titulo fs-4" href="AjustesCasaSolidaria.php">
+                            <i class="fa-solid fa-arrow-left me-2"></i> Voltar ao Painel Admin
+                        </a>
+                    <?php else: ?>
+                        <a class="nav-item nav-link titulo fs-4" href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>">
+                            <i class="fa-solid fa-arrow-left me-2"></i> Voltar para <?php echo h($emprendimiento['nome']); ?>
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
@@ -440,17 +456,26 @@ function h($string)
             <!-- ================= INFORMAÇÕES DO ADMINISTRADOR ================= -->
             <form id="formInfoAdmin" action="../controllers/AdminAssociadoController.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="accion" value="actualizarPerfil">
-                <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
+                <!-- idUsuario aponta sempre para o DONO do empreendimento -->
+                <input type="hidden" name="idUsuario" value="<?php echo $idDonoEmprendimiento; ?>">
 
                 <div class="row contornoGris p-4 mb-4 shadow-sm">
-                    <h2 class="subTitulo h5 mb-4"><i class="fa-solid fa-user-tie me-2"></i>Informações do Administrador</h2>
+                    <h2 class="subTitulo h5 mb-4">
+                        <i class="fa-solid fa-user-tie me-2"></i>
+                        Informações do Administrador
+                        <?php if ($esAdminGeneral): ?>
+                            <span class="badge bg-warning text-dark ms-2 fs-6">
+                                <i class="fa-solid fa-shield-halved me-1"></i> Editando como Admin Geral
+                            </span>
+                        <?php endif; ?>
+                    </h2>
 
                     <div class="col-md-3 mb-4 text-center">
-                        <!-- Preview de la foto de perfil actual -->
                         <div class="mb-2">
                             <img src="<?php echo h($infoAssociado['FotoPerfilAssociado'] ?? '../assets/img/perfil/default.png'); ?>"
                                 alt="Foto de perfil"
                                 class="rounded-circle img-thumbnail"
+                                id="previewFotoPerfil"
                                 style="width: 150px; height: 150px; object-fit: cover;">
                         </div>
                         <label for="fotoPerfilInput" class="btn btn-sm btn-outline-primary">
@@ -476,14 +501,17 @@ function h($string)
                         </div>
                         <div class="text-end">
                             <button type="submit" class="btn btn--amarelo">
-                                <i class="fa-solid fa-floppy-disk me-2"></i> Salvar Meu Perfil
+                                <i class="fa-solid fa-floppy-disk me-2"></i>
+                                <?php echo $esAdminGeneral ? 'Salvar Perfil do Empreendedor' : 'Salvar Meu Perfil'; ?>
                             </button>
                         </div>
                     </div>
                 </div>
             </form>
 
+
             <!-- ================= ELIMINAR CONTA (ZONA DE PELIGRO) ================= -->
+            <?php if (!$esAdminGeneral): // Somente o próprio associado pode eliminar sua conta ?>
             <div class="row contornoGris p-4 mb-3 border-danger shadow-sm" style="background-color: #fff5f5;">
                 <div class="col-12">
                     <h2 class="subTitulo text-danger h5"><i class="fa-solid fa-triangle-exclamation me-2"></i>Zona de Perigo</h2>
@@ -506,6 +534,7 @@ function h($string)
                     </form>
                 </div>
             </div>
+            <?php endif; ?>
 
         </div>
     </main>

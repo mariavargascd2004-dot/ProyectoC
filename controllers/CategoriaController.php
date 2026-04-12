@@ -15,6 +15,7 @@ $produtoDAO = new ProdutoDAO($db);
 $emprendimentoDAO = new EmprendimentoDAO($db);
 
 $idUsuarioLogado = $_SESSION["user"]['id'] ?? null;
+$tipoUsuarioLogado = $_SESSION["user"]['tipo'] ?? null;
 if (!$idUsuarioLogado) {
     echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
     exit;
@@ -27,7 +28,11 @@ switch ($accion) {
         $idEmprendimento = $_POST['idEmprendimento'] ?? 0;
 
         $emprendimento = $emprendimentoDAO->obterPorId($idEmprendimento);
-        if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+        if (!$emprendimento) {
+            echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+            exit;
+        }
+        if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
             echo json_encode(['status' => 'error', 'message' => 'Permissão negada.']);
             exit;
         }
@@ -53,7 +58,11 @@ switch ($accion) {
         }
 
         $emprendimento = $emprendimentoDAO->obterPorId($idEmprendimento);
-        if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+        if (!$emprendimento) {
+            echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+            exit;
+        }
+        if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
             echo json_encode(['status' => 'error', 'message' => 'Permissão negada.']);
             exit;
         }
@@ -85,7 +94,11 @@ switch ($accion) {
 
         $emprendimento = $emprendimentoDAO->obterPorId($categoria['emprendimiento_id']);
 
-        if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+        if (!$emprendimento) {
+            echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+            exit;
+        }
+        if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
             echo json_encode(['status' => 'error', 'message' => 'Permissão negada.']);
             exit;
         }
@@ -112,7 +125,11 @@ switch ($accion) {
         }
 
         $emprendimento = $emprendimentoDAO->obterPorId($categoria['emprendimiento_id']);
-        if (!$emprendimento || $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
+        if (!$emprendimento) {
+            echo json_encode(['status' => 'error', 'message' => 'Empreendimento não encontrado.']);
+            exit;
+        }
+        if ($tipoUsuarioLogado === 'associado' && $emprendimento['adminAssociado_idUsuario'] != $idUsuarioLogado) {
             echo json_encode(['status' => 'error', 'message' => 'Permissão negada.']);
             exit;
         }
