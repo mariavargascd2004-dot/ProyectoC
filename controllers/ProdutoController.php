@@ -12,12 +12,16 @@ $produtoDAO = new ProdutoDAO($db);
 $imagemDAO = new ImagemProdutoDAO($db);
 
 $tipoUsuarioLogado = $_SESSION['user']['tipo'] ?? null;
-if (!$tipoUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
-    echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
-    exit;
-}
-
 $accion = $_POST["accion"] ?? "";
+
+$accionesProtegidas = ["GuardarProduto", "actualizarProducto", "eliminarProducto"];
+
+if (in_array($accion, $accionesProtegidas)) {
+    if (!$tipoUsuarioLogado || ($tipoUsuarioLogado !== 'associado' && $tipoUsuarioLogado !== 'adminGeneral')) {
+        echo json_encode(['status' => 'error', 'message' => 'Acesso não autorizado.']);
+        exit;
+    }
+}
 
 switch ($accion) {
     case "GuardarProduto":
