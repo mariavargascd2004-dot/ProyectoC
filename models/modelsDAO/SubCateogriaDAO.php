@@ -18,6 +18,14 @@ class SubCateogriaDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function obtenerTodas()
+    {
+        $sql = "SELECT * FROM subcategoria";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function obterPorId($idSubcategoria)
     {
         $sql = "SELECT * FROM subcategoria WHERE idSubcategoria = ?";

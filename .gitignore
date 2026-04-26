@@ -1,0 +1,20 @@
+# Ignorar imagenes de test
+/assets/img/fabricacao/*
+/assets/img/galeria/*
+/assets/img/logos/*
+/assets/img/perfil/*
+/assets/img/poosters/*
+/assets/img/produtos/*
+/assets/img/Eventos/*
+
+# Mantener los directorios pero ignorar su contenido
+!/assets/img/fabricacao/.gitkeep
+!/assets/img/galeria/.gitkeep
+!/assets/img/logos/.gitkeep
+!/assets/img/perfil/.gitkeep
+!/assets/img/poosters/.gitkeep
+!/assets/img/produtos/.gitkeep
+!/assets/img/Eventos/.gitkeep
+
+# NO ignorar los archivos de CasaSolidaria
+!/assets/img/CasaSolidaria/

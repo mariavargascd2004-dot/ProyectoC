@@ -99,4 +99,108 @@ class ProdutoDAO
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([$idProducto]);
     }
+
+    public function obtenerProductosFiltrados($filtros = [])
+    {
+        $sql = "SELECT p.*, e.nome as emprendimiento_nome FROM productos p 
+                LEFT JOIN emprendimento e ON p.emprendimiento_id = e.idEmprendimento 
+                LEFT JOIN categoria c ON p.producto_idCategoria = c.idCategoria
+                LEFT JOIN subcategoria s ON p.producto_idSubcategoria = s.idSubcategoria
+                WHERE 1=1";
+        $params = [];
+
+        if (!empty($filtros['idEmprendimiento'])) {
+            $sql .= " AND p.emprendimiento_id = ?";
+            $params[] = $filtros['idEmprendimiento'];
+        }
+
+        if (!empty($filtros['q'])) {
+            $sql .= " AND (p.titulo LIKE ? OR p.descripcion LIKE ?)";
+            $params[] = "%" . $filtros['q'] . "%";
+            $params[] = "%" . $filtros['q'] . "%";
+        }
+
+        if (!empty($filtros['categorias'])) {
+            $inQuery = implode(',', array_fill(0, count($filtros['categorias']), '?'));
+            $sql .= " AND c.nombre IN ($inQuery)";
+            $params = array_merge($params, $filtros['categorias']);
+        }
+
+        if (!empty($filtros['subcategorias'])) {
+            $inQuery = implode(',', array_fill(0, count($filtros['subcategorias']), '?'));
+            $sql .= " AND s.nombre IN ($inQuery)";
+            $params = array_merge($params, $filtros['subcategorias']);
+        }
+
+        if (!empty($filtros['cor'])) {
+            $inQuery = implode(',', array_fill(0, count($filtros['cor']), '?'));
+            $sql .= " AND p.color IN ($inQuery)";
+            $params = array_merge($params, $filtros['cor']);
+        }
+
+        if (!empty($filtros['tamanho'])) {
+            $inQuery = implode(',', array_fill(0, count($filtros['tamanho']), '?'));
+            $sql .= " AND p.tamano IN ($inQuery)";
+            $params = array_merge($params, $filtros['tamanho']);
+        }
+
+        if (isset($filtros['min_price']) && is_numeric($filtros['min_price'])) {
+            $sql .= " AND p.precio >= ?";
+            $params[] = $filtros['min_price'];
+        }
+
+        if (isset($filtros['max_price']) && is_numeric($filtros['max_price'])) {
+            $sql .= " AND p.precio <= ?";
+            $params[] = $filtros['max_price'];
+        }
+
+        if (!empty($filtros['sort'])) {
+            switch ($filtros['sort']) {
+                case 'price_asc':
+                    $sql .= " ORDER BY p.precio ASC";
+                    break;
+                case 'price_desc':
+                    $sql .= " ORDER BY p.precio DESC";
+                    break;
+                case 'newest':
+                default:
+                    $sql .= " ORDER BY p.fechaAgregado DESC";
+                    break;
+            }
+        } else {
+            $sql .= " ORDER BY p.fechaAgregado DESC";
+        }
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function obtenerColoresDisponibles($idEmprendimiento = null)
+    {
+        $sql = "SELECT DISTINCT color FROM productos WHERE color IS NOT NULL AND color != ''";
+        $params = [];
+        if ($idEmprendimiento) {
+            $sql .= " AND emprendimiento_id = ?";
+            $params[] = $idEmprendimiento;
+        }
+        $sql .= " ORDER BY color ASC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
+    public function obtenerTamanosDisponibles($idEmprendimiento = null)
+    {
+        $sql = "SELECT DISTINCT tamano FROM productos WHERE tamano IS NOT NULL AND tamano != ''";
+        $params = [];
+        if ($idEmprendimiento) {
+            $sql .= " AND emprendimiento_id = ?";
+            $params[] = $idEmprendimiento;
+        }
+        $sql .= " ORDER BY tamano ASC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
 }

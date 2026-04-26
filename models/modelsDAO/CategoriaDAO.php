@@ -18,6 +18,14 @@ class CategoriaDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function obtenerTodas()
+    {
+        $sql = "SELECT * FROM categoria";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function obterPorId($idCategoria)
     {
         $sql = "SELECT * FROM categoria WHERE idCategoria = ?";

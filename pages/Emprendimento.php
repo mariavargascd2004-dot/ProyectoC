@@ -91,6 +91,30 @@ function h($string)
     return htmlspecialchars($string ?? '', ENT_QUOTES, 'UTF-8');
 }
 
+function getContrastColor($hexColor) {
+    $hexColor = str_replace('#', '', $hexColor);
+    if (strlen($hexColor) == 3) {
+        $hexColor = str_repeat(substr($hexColor,0,1), 2) . str_repeat(substr($hexColor,1,1), 2) . str_repeat(substr($hexColor,2,1), 2);
+    }
+    if (strlen($hexColor) != 6) { return '#000000'; }
+    $r = hexdec(substr($hexColor, 0, 2));
+    $g = hexdec(substr($hexColor, 2, 2));
+    $b = hexdec(substr($hexColor, 4, 2));
+    $yiq = (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+    return ($yiq >= 128) ? '#000000' : '#FFFFFF';
+}
+
+function getImageUrl($path) {
+    if (empty($path)) return '';
+    if (strpos($path, 'http') === 0) return h($path);
+    if (strpos($path, '../') === 0) return h($path);
+    return '../' . h($path);
+}
+
+$corTextoPrimaria = getContrastColor(h($emprendimiento['corPrincipal']));
+$corTextoSecundaria = getContrastColor(h($emprendimiento['corSecundaria']));
+
+
 ?>
 <!doctype html>
 <html lang="br">
@@ -142,6 +166,37 @@ function h($string)
             /*Cores*/
             --cor-primaria: <?php echo h($emprendimiento['corPrincipal']) ?>;
             --cor-secundaria: <?php echo h($emprendimiento['corSecundaria']) ?>;
+            --cor-texto-primaria: <?php echo $corTextoPrimaria; ?>;
+            --cor-texto-secundaria: <?php echo $corTextoSecundaria; ?>;
+        }
+        
+        .btn--vermelho {
+            background-color: var(--cor-secundaria) !important;
+            color: var(--cor-texto-secundaria) !important;
+            border: 1px solid var(--cor-secundaria) !important;
+        }
+        .btn--vermelho:hover {
+            background-color: var(--cor-primaria) !important;
+            color: var(--cor-texto-primaria) !important;
+            border-color: var(--cor-primaria) !important;
+        }
+        .btn--amarelo {
+            background-color: var(--cor-primaria) !important;
+            color: var(--cor-texto-primaria) !important;
+            border: 1px solid var(--cor-primaria) !important;
+        }
+        .btn--amarelo:hover {
+            background-color: var(--cor-secundaria) !important;
+            color: var(--cor-texto-secundaria) !important;
+            border-color: var(--cor-secundaria) !important;
+        }
+        .fundoVermelho {
+            background-color: var(--cor-secundaria) !important;
+            color: var(--cor-texto-secundaria) !important;
+        }
+        .titulo {
+            color: var(--cor-primaria);
+            font-family: 'Alegreya SC', serif;
         }
     </style>
 
@@ -153,7 +208,7 @@ function h($string)
                     <a href="../">
                         <img src="<?php echo htmlspecialchars($datosPaginaP ? $datosPaginaP->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'); ?>" alt="Logo Casa Solidaria" width="80px">
                     </a>
-                    <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo de <?php echo h($emprendimiento['nome']); ?>" width="75">
+                    <img src="<?php echo getImageUrl($emprendimiento['logo']); ?>" alt="Logo de <?php echo h($emprendimiento['nome']); ?>" width="75">
                     <a class="nav-item nav-link titulo nav__titulo" href="#"><?php echo h($emprendimiento['nome']); ?></a>
                     <a class="nav-item nav-link" href="#Produtos">Produtos <i class="fa-solid fa-arrow-down"></i></a>
                 </div>
@@ -423,7 +478,7 @@ function h($string)
             <!-- Conteudo da Portada Principal -->
             <div id="portada" class="row portada">
                 <div class="col-12 portada__conteudo-principal">
-                    <img class="portada__imagem transiccionSuave" src="../<?php echo h($emprendimiento['pooster']); ?>"
+                    <img class="portada__imagem transiccionSuave" src="<?php echo getImageUrl($emprendimiento['pooster']); ?>"
                         alt="Foto de portada de <?php echo h($emprendimiento['nome']); ?>">
                     <div class="portada__conteudo-secundario mt-5 transiccionSuave">
                         <h1 class="subTitulo portada__subTitulo transiccionSuave">Historia</h1>
@@ -434,7 +489,7 @@ function h($string)
                         </button>
                     </div>
                     <div class="portada__conteudo-terceario mt-5">
-                        <img src="<?php echo h($infoAssociado['FotoPerfilAssociado']); ?>" width="150" alt="Foto de perfil de <?php echo h($infoAssociado['NombreAssociado']); ?>">
+                        <img src="<?php echo getImageUrl($infoAssociado['FotoPerfilAssociado'] ?? ''); ?>" width="150" alt="Foto de perfil de <?php echo h($infoAssociado['NombreAssociado']); ?>" onerror="this.onerror=null; this.src='../assets/img/CasaSolidaria/defaultLogo.png'">
                         <h3 class="subTitulo portada__subTitulo">
                             <?php echo h($infoAssociado['NombreAssociado']); ?>
                         </h3>
@@ -454,7 +509,7 @@ function h($string)
                         <?php
                         $maxFabImages = min(count($imgemsFabricacao), 4);
                         for ($i = 0; $i < $maxFabImages; $i++): ?>
-                            <img class="fabricacao__imagem" src="../<?php echo h($imgemsFabricacao[$i]["caminho_imagem"]); ?>"
+                            <img class="fabricacao__imagem" src="<?php echo getImageUrl($imgemsFabricacao[$i]["caminho_imagem"]); ?>"
                                 alt="Imagen proceso fabricación <?php echo $i + 1; ?>">
                         <?php endfor; ?>
                     </div>
@@ -517,12 +572,15 @@ function h($string)
 
                 <div id="filtroContainer" class="container-fluid sticky-top bg-light shadow-sm py-3 mb-4">
                     <div class="container">
-                        <div class="row mb-3">
-                            <div class="col-12">
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-12 col-md-8 mb-2 mb-md-0">
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fa-solid fa-search"></i></span>
                                     <input type="text" id="filtroBuscaInput" class="form-control" placeholder="Buscar por nome, categoria, cor...">
                                 </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="Tienda.php?token=<?php echo h($_GET['token']); ?>" class="btn btn--amarelo w-100">Mostrar na Loja <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
 

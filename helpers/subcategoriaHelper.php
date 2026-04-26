@@ -25,4 +25,14 @@ class subcategoriaHelper
             return null;
         }
     }
+
+    public function obtenerTodasLasSubcategorias()
+    {
+        try {
+            return $this->subcategoriaDAO->obtenerTodas();
+        } catch (Exception $e) {
+            error_log("Error: " . $e->getMessage());
+            return [];
+        }
+    }
 }

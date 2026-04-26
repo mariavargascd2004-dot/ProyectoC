@@ -113,6 +113,7 @@ if ($tipoUsuario == "adminGeneral") {
                             <?php } ?>
 
                     </div>
+                    <a class="nav-item nav-link" href="Tienda.php">Loja Global</a>
                     <a class="nav-item nav-link" href="Eventos.php">Eventos</a>
                     <a class="nav-item nav-link" href="#Emprendimentos">Emprendimentos <i
                             class="fa-solid fa-arrow-down"></i></a>

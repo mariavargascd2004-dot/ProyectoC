@@ -25,4 +25,14 @@ class categoriaHelper
             return null;
         }
     }
+
+    public function obtenerTodasLasCategorias()
+    {
+        try {
+            return $this->categoriaDAO->obtenerTodas();
+        } catch (Exception $e) {
+            error_log("Error: " . $e->getMessage());
+            return [];
+        }
+    }
 }

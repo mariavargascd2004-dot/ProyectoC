@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
  	//Variables Globales
 
@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.style.left = "calc(95% - 150px)";
             this.innerHTML = "Ver menos";
             portada__parrafo.classList.remove('parrafo-truncado');
+            portada__parrafo.classList.add('parrafo-expandido');
         }
         else {
             portada__imagem.style.filter = "brightness(1)";
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setTimeout(() => {
                 portada__parrafo.classList.add('parrafo-truncado');
+                portada__parrafo.classList.remove('parrafo-expandido');
             }, 500);
         }
 
