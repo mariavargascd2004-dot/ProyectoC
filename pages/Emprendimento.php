@@ -812,7 +812,7 @@ function h($string)
         const nomeUsuarioLogado = "<?php echo h($nomeUsuairo ?? ''); ?>";
     </script>
 
-    <?php if ($idUsuario != null && $tipoUsuario == "associado") { ?>
+    <?php if (isset($esDono) && isset($esAdminGeneral) && ($esDono || $esAdminGeneral)) { ?>
         <script>
             const listaDeProductos = <?php echo json_encode($productos ?? []); ?>;
         </script>
