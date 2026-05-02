@@ -142,109 +142,620 @@ button:hover {
 
 
 
-/* Portada Inicial */
-
-.portada__conteudo-principal { padding: 0; position: relative; }
-
-
-
-/* Efecto gradiente desktop */
-
-.portada__conteudo-principal::after {
-
-    content: ""; position: absolute; z-index: 1; top: 0; left: 0;
-
-    width: 100%; height: 100%;
-
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(17, 17, 17, 0) 50%, rgba(0, 0, 0, 0.8) 75%);
-
-    transition: 1s ease all;
-
+/* Portada Inicial - Rediseño Institucional */
+.hero-business {
+    background-color: #fcfcfc;
+    padding: 60px 0;
+    border-bottom: 1px solid #eee;
 }
 
-
-
-.portada_descResposavel { max-height: 300px; }
-
-
-
-/* Posiciones absolutas para Desktop */
-
-.portada__conteudo-secundario {
-
-    position: absolute; z-index: 2; top: 0; left: 0;
-
-    width: 22%; min-width: 20rem; margin: 20px;
-
+.hero-business__img-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
+.hero-business__img-wrapper:hover {
+    transform: translateY(-5px);
+}
 
+.hero-business__img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
 
-.portada__imagem { width: 100%; height: 600px; object-fit: cover; }
+.hero-business__content {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
 
-.portada__subTitulo { color: var(--cor-primaria); }
+.hero-business__history-title {
+    font-family: var(--fonte-subtitulo);
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-.portada__parrafo { color: white; }
+.hero-business__history-text {
+    font-family: var(--fonte-texto);
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    text-align: justify;
+}
 
+.hero-business__btn {
+    align-self: flex-start;
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Sección sutil del Responsable */
+.hero-business__vendor {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hero-business__vendor-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cor-primaria);
+}
+
+.hero-business__vendor-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-business__vendor-label {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-business__vendor-name {
+    font-weight: 700;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.hero-business__vendor-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    margin-top: 2px;
+}
 
 
 .parrafo-truncado {
-
-    overflow: hidden; display: -webkit-box;
-
-    -webkit-box-orient: vertical; -webkit-line-clamp: 14;
-
-    line-height: 1.2em; max-height: 16.8em;
-
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    line-height: 1.7em;
+    max-height: 13.6em;
 }
 
 
 
-.portada__botao {
 
-    width: 150px; position: absolute; left: 0px; bottom: -50px;
+/* Processo de Fabricación - Pasos con Pines */
+.manufacturing-section {
+    padding: 120px 60px; 
+    background-color: #f0f0f0;
+    background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+    background-size: 20px 20px;
+    overflow: hidden; 
+}
 
-    background-color: var(--cor-primaria) !important;
+/* Layout Tríptico (Fotos | Texto | Fotos) */
+.m-side-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+}
 
-    color: var(--cor-secundaria) !important;
+/* La Nota Central Clavada */
+.studio-card {
+    background: #fff;
+    padding: 35px 45px;
+    border-radius: 0;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    max-width: 650px; 
+    margin: 0 auto;
+    position: relative;
+    transform: rotate(1deg);
+}
 
+/* Pin para la nota */
+.studio-card::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 3px 3px, #ff5252, #b71c1c);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
 }
 
 
 
-.portada__conteudo-terceario {
+/* Efecto Polaroid con Pin */
+.polaroid-item {
+    background: #fff;
+    padding: 15px 15px 45px 15px;
+    box-shadow: 5px 15px 30px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #ddd;
+    position: relative;
+    z-index: 2;
+}
 
-    position: absolute; text-align: center; z-index: 2; top: 0; right: 0;
+/* El Pin (Chincheta) */
+.polaroid-item::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 4px 4px, #ff5252, #b71c1c); /* Pin rojo metálico */
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
 
-    width: 22%; min-width: 20rem; margin: 20px;
-
+/* Etiqueta de Paso */
+.polaroid-step {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    background: var(--cor-primaria);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
 
 
-/* Fabricacao */
-
-.fabricacao__conteudo--principal { margin-top: 4rem; position: relative; }
-
-.fabricacao__imagem {
-
-    width: 49%; height: 12.188rem; margin: 5px 0;
-
-    border-radius: 15px; box-shadow: 0 4px 4px rgba(0, 0, 0, .25); object-fit: cover;
-
+.polaroid-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
 }
 
-.fabricacao__conteudo--secundario { max-height: 500px; overflow: auto; }
+.polaroid-item:nth-child(1) { transform: rotate(-3deg); }
+.polaroid-item:nth-child(2) { transform: rotate(2deg); margin-top: 20px; }
+.polaroid-item:nth-child(3) { transform: rotate(-2deg); margin-top: -20px; }
+.polaroid-item:nth-child(4) { transform: rotate(4deg); }
+
+.polaroid-item:hover {
+    transform: rotate(0deg) scale(1.1) translateY(-10px);
+    z-index: 10;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+/* Estilo del Texto (Estudio) */
+
+
+.studio-badge {
+    color: var(--cor-primaria);
+    font-weight: 900;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.studio-title {
+    font-family: var(--fonte-principal);
+    font-size: 2.2rem;
+    color: #222;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #eee;
+    padding-bottom: 10px;
+}
+
+.studio-text {
+    font-size: 0.95rem; 
+    line-height: 1.4; 
+    color: #444;
+    max-height: 600px; 
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.studio-text::-webkit-scrollbar {
+    width: 4px;
+}
+
+.studio-text::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.studio-text::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 10px;
+}
 
 
 
-/* Galeria */
 
-#galeriaFotos { height: 600px; box-shadow: 0 0 3px black; border-radius: 5px; }
 
-.galeria__imagem { height: 600px; filter: brightness(0.7); border-radius: 5px; object-fit: cover; }
 
-.carousel-indicators { list-style: none; }
+
+
+/* Galeria Premium */
+#galeriaFotos {
+    height: 500px; 
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+}
+
+.galeria__imagem {
+    height: 500px;
+    filter: brightness(0.95);
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+#galeriaFotos:hover .galeria__imagem {
+    transform: scale(1.02);
+}
+
+
+/* Controles de Navegación */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 50%;
+    margin: 0 20px;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+#galeriaFotos:hover .carousel-control-prev,
+#galeriaFotos:hover .carousel-control-next {
+    opacity: 1;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Indicadores (Barras Modernas sin números) */
+.carousel-indicators {
+    bottom: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    width: 50px;
+    background-color: #fff;
+}
+
+
+.product-card-modern {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0f0f0;
+}
+
+.product-card-modern:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.product-card-img-wrapper {
+    position: relative;
+    height: 250px;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+.product-card-image-modern {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card-modern:hover .product-card-image-modern {
+    transform: scale(1.08);
+}
+
+.product-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card-modern:hover .product-card-overlay {
+    opacity: 1;
+}
+
+.btn-quick-view {
+    background: #fff;
+    color: #222;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-quick-view:hover {
+    background: var(--cor-amarela);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.product-card-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card-title-modern {
+    font-family: var(--fonte-subtitulo);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-card-footer-modern {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-card-price-modern {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--cor-vermelho);
+}
+
+.btn-buy-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    border: none;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-buy-icon:hover {
+    background: var(--cor-vermelho);
+    color: #fff;
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* Filtro Container Moderno */
+.search-box {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+.form-control-modern {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-control-modern:focus {
+    border-color: var(--cor-amarela);
+    box-shadow: 0 0 0 4px rgba(220, 167, 0, 0.1);
+    outline: none;
+}
+
+.form-select-modern {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-select-modern:focus {
+    border-color: var(--cor-amarela);
+    outline: none;
+}
+
+.btn-loja-modern {
+    background: #222;
+    color: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+/* Filtro Alfabético */
+.btn-alphabet {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    background: #fff;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-alphabet:hover {
+    border-color: var(--cor-amarela);
+    color: var(--cor-amarela);
+    background: #fffcf0;
+}
+
+.btn-alphabet.active {
+    background: var(--cor-amarela);
+    color: #fff;
+    border-color: var(--cor-amarela);
+    box-shadow: 0 4px 10px rgba(220, 167, 0, 0.2);
+}
+
+.btn-alphabet[data-letter="all"] {
+    width: auto;
+    padding: 0 15px;
+}
+
+/* Colapsables */
+.collapsible-header {
+    transition: background 0.3s ease;
+}
+
+.collapsible-header:hover {
+    background: #fdfdfd;
+}
+
+.collapsible-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.collapsible-body.show {
+    max-height: 5000px; 
+    opacity: 1;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.collapsible-header .fa-chevron-up {
+    transform: rotate(0deg);
+}
+
+.collapsible-header .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.category-title-wrapper {
+    border-left: 4px solid var(--cor-amarela);
+    background: #fcfcfc;
+}
+
+
+
+.carousel-indicators [data-bs-target] {
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    width: 50px;
+    background-color: #fff;
+}
+
 
 
 
@@ -352,213 +863,39 @@ button:hover {
 
 
 
-    /* 2. PORTADA: FONDO OSCURO UNIFICADO */
-
-    .portada__imagem {
-
-        height: 100vh !important;
-
-        min-height: 550px;
-
+    /* 2. HERO INSTITUCIONAL: AJUSTES MÓVILES */
+    .hero-business {
+        padding: 30px 0;
     }
 
-    
-
-    /* El gradiente oscuro cubre toda el área para unificar historia y perfil */
-
-    .portada__conteudo-principal::after {
-
-        background: rgba(0,0,0,0.85) !important; /* Fondo oscuro sólido semi-transparente */
-
-        width: 100% !important;
-
-        height: 100% !important;
-
+    .hero-business__img {
+        height: 300px;
+        border-radius: 15px;
     }
 
-
-
-    /* === IZQUIERDA: HISTORIA (60% ANCHO) === */
-
-    .portada__conteudo-secundario {
-
-        position: absolute !important;
-
-        z-index: 10 !important;
-
-        top: 0 !important; 
-
-        left: 0 !important;
-
-        
-
-        /* Ocupa el 60% izquierdo */
-
-        width: 60% !important; 
-
-        min-width: 0 !important;
-
-        height: 100% !important;
-
-        margin: 0 !important;
-
-        padding: 15px !important;
-
-        
-
-        /* Centrado vertical */
-
-        display: flex !important;
-
-        flex-direction: column !important;
-
-        justify-content: center !important;
-
-        align-items: flex-start !important;
-
-        
-
-        /* Fondo transparente porque ya lo tiene el padre */
-
-        background: transparent !important; 
-
+    .hero-business__content {
+        padding: 30px 15px;
+        text-align: center;
     }
 
-
-
-    .portada__subTitulo {
-
-        font-size: 1.5rem !important;
-
-        margin-bottom: 10px !important;
-
-        text-align: left !important;
-
-        color: var(--cor-primaria) !important;
-
+    .hero-business__history-title {
+        font-size: 1.2rem;
     }
 
-
-
-    .portada__parrafo {
-
-        font-size: 0.85rem !important;
-
-        line-height: 1.2 !important;
-
-        text-align: left !important;
-
-        color: white !important;
-
-        
-
-        /* Configuración para permitir la expansión JS */
-
-        display: -webkit-box;
-
-        -webkit-line-clamp: 10;
-
-        -webkit-box-orient: vertical;
-
-        overflow: hidden;
-
-        transition: all 0.3s ease;
-
+    .hero-business__history-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
 
-    
-
-    /* Clase que el JS usa para expandir */
-
-    .parrafo-expandido {
-
-        -webkit-line-clamp: unset !important;
-
-        overflow: visible !important;
-
+    .hero-business__btn {
+        align-self: center;
     }
 
-
-
-    .portada__botao {
-
-        position: relative !important;
-
-        width: auto !important;
-
-        bottom: auto !important; left: auto !important;
-
-        margin-top: 15px !important;
-
-        padding: 5px 15px !important;
-
-        font-size: 0.8rem !important;
-
+    .hero-business__vendor {
+        justify-content: center;
+        text-align: left;
     }
 
-
-
-
-
-    /* === DERECHA: EMPRENDEDOR (40% ANCHO) === */
-
-    .portada__conteudo-terceario {
-
-        position: absolute !important;
-
-        z-index: 10 !important;
-
-        
-
-        /* Centrado vertical a la derecha */
-
-        top: 50% !important; 
-
-        transform: translateY(-50%) !important;
-
-        right: 0 !important;
-
-        left: auto !important;
-
-        
-
-        /* Ocupa el 40% derecho */
-
-        width: 40% !important; 
-
-        min-width: 0 !important;
-
-        margin: 0 !important;
-
-        padding: 10px !important;
-
-        text-align: center !important;
-
-        background: transparent !important; /* Fondo transparente */
-
-    }
-
-    
-
-    /* Foto de perfil */
-
-    .portada__conteudo-terceario img {
-
-        width: 75px !important;
-
-        height: 75px !important;
-
-        border: 2px solid var(--cor-primaria);
-
-        margin-bottom: 5px !important;
-
-        background-color: white;
-
-        border-radius: 50%;
-
-        object-fit: cover;
-
-    }
 
     
 
@@ -594,69 +931,42 @@ button:hover {
 
 
 
-    /* 3. IMÁGENES DE FABRICACIÓN (LADO A LADO) */
-
-    .fabricacao {
-
-        display: flex !important;
-
-        flex-direction: column !important;
-
+    /* 3. PROCESO DE FABRICACIÓN: TRÍPTICO MÓVIL */
+    .manufacturing-section {
+        padding: 50px 20px;
     }
 
-
-
-    .fabricacao .col-6 {
-
-        width: 100% !important;
-
-        flex: 0 0 100% !important;
-
-        max-width: 100% !important;
-
+    .m-side-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px 0;
     }
 
-
-
-    .fabricacao__conteudo--principal {
-
-        display: flex !important;
-
-        flex-wrap: wrap !important;
-
-        justify-content: space-between !important;
-
+    .polaroid-item {
+        transform: rotate(0) !important;
         margin-top: 0 !important;
+        max-width: 100%;
+        padding: 10px 10px 30px 10px;
+    }
 
-        margin-bottom: 20px !important;
+    .polaroid-item img {
+        height: 150px;
+    }
 
+    .studio-card {
+        padding: 25px;
+        max-width: 100%;
+        margin-bottom: 30px;
+        box-shadow: 5px 5px 0px var(--cor-primaria);
+    }
+
+    .studio-title {
+        font-size: 1.8rem;
     }
 
 
 
-    /* Imágenes al 48% para quedar 2 por fila */
-
-    .fabricacao__imagem {
-
-        width: 48% !important;
-
-        height: 120px !important;
-
-        margin: 0 0 10px 0 !important;
-
-        object-fit: cover !important;
-
-    }
-
-    
-
-    .fabricacao__conteudo--secundario {
-
-        padding: 15px !important;
-
-        margin-top: 0 !important;
-
-    }
 
     
 

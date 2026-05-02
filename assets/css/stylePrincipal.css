@@ -316,3 +316,194 @@ nav { box-shadow: 0 0 2px rgba(0, 0, 0, 0.3); }
         margin-top: -30px;
     }
 }
+/* ==========================================================================
+   NUEVOS ESTILOS: SECCIÓN EMPRENDIMIENTOS
+   ========================================================================== */
+
+.search-container {
+    max-width: 600px;
+    margin: 20px auto 40px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border-radius: 30px;
+    border: 2px solid #eee;
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--cor-amarelaSuave);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.1rem;
+}
+
+.emp-card {
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.emp-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.emp-card__img-container {
+    width: 100px;
+    height: 100px;
+    margin: 25px auto 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: #f8f9fa;
+}
+
+.emp-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.emp-card__title {
+    font-family: var(--fonte-subtitulo);
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+}
+
+.emp-card__text {
+    font-family: var(--fonte-texto);
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.emp-card .card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Ajuste para que el botón siempre esté abajo */
+.emp-card .btn {
+    margin-top: auto;
+    border-radius: 25px;
+    padding: 8px 25px;
+}
+
+/* Animación para cuando se filtran elementos */
+.emp-item-fade {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.emp-item-hidden {
+    display: none !important;
+}
+
+/* Filtro A-Z */
+.az-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.az-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #666;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.az-btn:hover, .az-btn.active {
+    background-color: var(--cor-vermelho);
+    color: #fff;
+    border-color: var(--cor-vermelho);
+    transform: scale(1.1);
+}
+
+.az-btn--all {
+    width: auto;
+    padding: 0 15px;
+    border-radius: 20px;
+}
+
+#noResultsMsg {
+    display: none;
+    padding: 60px 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    margin: 40px auto;
+    max-width: 500px;
+    animation: fadeIn 0.5s ease;
+}
+
+#noResultsMsg h3 {
+    font-family: var(--fonte-subtitulo);
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#noResultsMsg p {
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.btn-clear-filters {
+    background-color: var(--cor-vermelho);
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-clear-filters:hover {
+    background-color: var(--cor-amarelaSuave);
+    color: #333;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

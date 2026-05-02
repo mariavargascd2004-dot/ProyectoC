@@ -245,26 +245,77 @@ $tokenQS = $esTiendaEspecifica ? '<input type="hidden" name="token" value="'.h($
 
 <body>
     <header>
-        <nav id="navBar" class="navbar navbar-expand navbar-light">
+        <nav class="navbar navbar-expand navbar-light">
             <div class="container-fluid">
                 <!-- Logo y enlaces -->
-                <div class="navbar-nav d-flex align-items-center flex-row flex-wrap">
-                    <a href="../" class="d-none d-sm-block">
-                        <img src="<?php echo $logoCasaSolidaria; ?>" alt="Logo Casa Solidaria" width="60px">
+                <div class="navbar-nav d-flex align-items-center">
+                    <a href="index.php">
+                        <img src="<?php echo htmlspecialchars(isset($datosPaginaP) && $datosPaginaP ? $datosPaginaP->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'); ?>" alt="Logo Casa Solidaria" class="rounded-circle shadow-sm bg-white" style="width: 80px; height: 80px; object-fit: cover;">
                     </a>
-                    <?php if ($esTiendaEspecifica): ?>
-                    <img src="<?php echo $logoTienda; ?>" alt="Logo de la Empresa" width="60px" class="ms-sm-2">
+                    
+                    <?php if ($esTiendaEspecifica && isset($infoEmprendimiento)): ?>
+                        <img src="../<?php echo htmlspecialchars($infoEmprendimiento['logo']); ?>" alt="Logo de <?php echo htmlspecialchars($infoEmprendimiento['nome']); ?>" class="rounded-circle shadow-sm bg-white ms-2" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <a class="nav-item nav-link titulo nav__titulo" href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>"><?php echo htmlspecialchars($infoEmprendimiento['nome']); ?></a>
+                        </div>
+                    <?php else: ?>
+                        <div>
+                            <a class="nav-item nav-link titulo" href="index.php">Loja Solidaria</a>
+                        </div>
                     <?php endif; ?>
-                    <a class="nav-item nav-link titulo nav__titulo ms-2 text-wrap" href="<?php echo $linkHome; ?>" style="font-size: 1.2rem;"><?php echo $tituloTienda; ?></a>
+
+                    <?php if ($esTiendaEspecifica): ?>
+                        <a class="nav-item nav-link fw-bold text-danger" href="Tienda.php"><i class="fa-solid fa-store me-1"></i> Toda a Loja</a>
+                    <?php endif; ?>
+
+                    <a class="nav-item nav-link" href="index.php#Emprendimentos">Emprendimentos <i class="fa-solid fa-arrow-down"></i></a>
                 </div>
-                
-                <div class="d-flex ms-auto gap-2">
-                    <?php if ($idUsuario == null) { ?>
+
+                <!-- Botones alineados a la derecha -->
+                <!-- Sin login -->
+                <?php if (!isset($idUsuario) || $idUsuario == null) { ?>
+                    <div class="d-flex ms-auto gap-2">
+                        <a href="Registro.html" class="btn btn--cinza">Registrarse <i class="fa-solid fa-user-plus"></i></a>
                         <a href="Login.html" class="btn btn--amarelo">Logar <i class="fa-solid fa-right-to-bracket"></i></a>
-                    <?php } else { ?>
-                        <a href="../" class="btn btn--amarelo"> Menu Principal <i class="fa-solid fa-home"></i></a>
-                    <?php } ?>
-                </div>
+                    </div>
+                <?php } else { ?>
+                    <div class="d-flex ms-auto gap-2">
+                        <a href="#" id="cerrarSesion-boton" class="btn btn--amarelo"> Sair <i class="fa-solid fa-right-to-bracket"></i></a>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const botonCerrar = document.getElementById("cerrarSesion-boton");
+                            if (botonCerrar) {
+                                botonCerrar.addEventListener("click", function(e) {
+                                    e.preventDefault();
+                                    if (typeof Swal !== 'undefined') {
+                                        Swal.fire({
+                                            title: 'Confirmar saída',
+                                            text: "Você tem certeza que deseja sair da conta?",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Sim, sair',
+                                            cancelButtonText: 'Cancelar',
+                                            background: '#B2442E',
+                                            color: '#FFFFFF',
+                                            confirmButtonColor: '#FDCB29',
+                                            cancelButtonColor: '#333333',
+                                            iconColor: '#FDCB29'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                window.location.href = "CerrarSesion.php";
+                                            }
+                                        });
+                                    } else {
+                                        if (confirm("Você tem certeza que deseja sair da conta?")) {
+                                            window.location.href = "CerrarSesion.php";
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                <?php } ?>
             </div>
         </nav>
     </header>

@@ -2,8 +2,20 @@
 <html lang="en">
 
 <head>
-    <title>Pagina Inicial</title>
-    <!-- Required meta tags -->
+    <script>
+        // Verificar si el usuario ya está logueado
+        fetch('check_session.php')
+            .then(response => response.text())
+            .then(data => {
+                if (data.trim() === 'true') {
+                    window.location.href = 'index.php';
+                } else {
+                    document.documentElement.style.display = 'block';
+                }
+            });
+    </script>
+    <style>html { display: none; }</style>
+    <title>Registro - Casa Solidaria</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -47,8 +59,14 @@
             <div class="container-fluid">
                 <!-- Logo y enlaces -->
                 <div class="navbar-nav d-flex align-items-center">
-                    <img src="../assets/img/CasaSolidaria/defaultLogo.png" alt="Logo de la Empresa" width="80px">
-                    <a class="nav-item nav-link titulo" href="../">Loja Solidaria</a>
+                    <a href="index.php">
+                        <img src="../assets/img/CasaSolidaria/defaultLogo.png" alt="Logo de la Empresa" class="rounded-circle shadow-sm bg-white" style="width: 80px; height: 80px; object-fit: cover;">
+                    </a>
+                    <div>
+                        <a class="nav-item nav-link titulo" href="index.php">Loja Solidaria</a>
+                    </div>
+                    <a class="nav-item nav-link" href="Tienda.php">Loja</a>
+                    <a class="nav-item nav-link" href="index.php#Emprendimentos">Emprendimentos <i class="fa-solid fa-arrow-down"></i></a>
                 </div>
 
                 <!-- Botones alineados a la derecha -->
@@ -57,7 +75,6 @@
                 </div>
             </div>
         </nav>
-
     </header>
 
     <main>

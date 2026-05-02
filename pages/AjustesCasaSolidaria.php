@@ -70,13 +70,55 @@ $idAdmin = $_SESSION['user']['id'];
     <header>
         <nav class="navbar navbar-expand navbar-light">
             <div class="container-fluid">
+                <!-- Logo y enlaces -->
                 <div class="navbar-nav d-flex align-items-center">
-                    
-                         <a class="nav-link p-0 me-2" href="../">
-                        <img src="<?php echo htmlspecialchars($datos ? $datos->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'); ?>" alt="Logo de la Empresa" width="80px">
+                    <a href="index.php">
+                        <img src="<?php echo htmlspecialchars(isset($datos) && $datos ? $datos->getLogo() : (isset($datosPaginaP) && $datosPaginaP ? $datosPaginaP->getLogo() : (isset($datosPagina) && $datosPagina ? $datosPagina->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'))); ?>" alt="Logo de la Empresa" class="rounded-circle shadow-sm bg-white" style="width: 80px; height: 80px; object-fit: cover;">
                     </a>
-                    <a class="nav-item nav-link titulo" href="../">Loja Solidaria</a>
+                    <div>
+                        <a class="nav-item nav-link titulo" href="index.php">Loja Solidaria</a>
+                    </div>
+                    <a class="nav-item nav-link" href="Tienda.php">Loja</a>
+                    <a class="nav-item nav-link" href="index.php#Emprendimentos">Emprendimentos <i class="fa-solid fa-arrow-down"></i></a>
                 </div>
+
+                <!-- Botones alineados a la derecha -->
+                <div class="d-flex ms-auto gap-2">
+                    <a href="#" id="cerrarSesion-boton" class="btn btn--amarelo"> Sair <i class="fa-solid fa-right-to-bracket"></i></a>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const botonCerrar = document.getElementById("cerrarSesion-boton");
+                        if (botonCerrar) {
+                            botonCerrar.addEventListener("click", function(e) {
+                                e.preventDefault();
+                                if (typeof Swal !== 'undefined') {
+                                    Swal.fire({
+                                        title: 'Confirmar saída',
+                                        text: "Você tem certeza que deseja sair da conta?",
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonText: 'Sim, sair',
+                                        cancelButtonText: 'Cancelar',
+                                        background: '#B2442E',
+                                        color: '#FFFFFF',
+                                        confirmButtonColor: '#FDCB29',
+                                        cancelButtonColor: '#333333',
+                                        iconColor: '#FDCB29'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href = "CerrarSesion.php";
+                                        }
+                                    });
+                                } else {
+                                    if (confirm("Você tem certeza que deseja sair da conta?")) {
+                                        window.location.href = "CerrarSesion.php";
+                                    }
+                                }
+                            });
+                        }
+                    });
+                </script>
             </div>
         </nav>
     </header>

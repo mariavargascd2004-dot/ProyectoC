@@ -99,69 +99,69 @@ if ($tipoUsuario == "adminGeneral") {
     <link rel="stylesheet" href="../assets/css/styleMenuCasaSolidaria.css">
 </head>
 
-<body>
-    <header>
+<body>    <header>
         <nav class="navbar navbar-expand navbar-light">
             <div class="container-fluid">
                 <!-- Logo y enlaces -->
                 <div class="navbar-nav d-flex align-items-center">
-                    <img src="<?php echo htmlspecialchars($datos ? $datos->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'); ?>" alt="Logo de la Empresa" width="80px">
+                    <a href="index.php">
+                        <img src="<?php echo htmlspecialchars(isset($datos) && $datos ? $datos->getLogo() : (isset($datosPaginaP) && $datosPaginaP ? $datosPaginaP->getLogo() : (isset($datosPagina) && $datosPagina ? $datosPagina->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'))); ?>" alt="Logo de la Empresa" class="rounded-circle shadow-sm bg-white" style="width: 80px; height: 80px; object-fit: cover;">
+                    </a>
                     <div>
-                        <a class="nav-item nav-link titulo" href="#">Loja Solidaria</a>
-                        <?php if ($nomeUsuairo != null) { ?>
-                            <hp href="#" class="mensajemBemvindo"> Oi, <?php echo $nomeUsuairo ?>! </p>
-                            <?php } ?>
-
+                        <a class="nav-item nav-link titulo" href="index.php">Loja Solidaria</a>
                     </div>
-                    <a class="nav-item nav-link" href="Tienda.php">Loja Global</a>
+                    <a class="nav-item nav-link" href="Tienda.php">Loja</a>
                     <a class="nav-item nav-link" href="Eventos.php">Eventos</a>
-                    <a class="nav-item nav-link" href="#Emprendimentos">Emprendimentos <i
-                            class="fa-solid fa-arrow-down"></i></a>
-
+                    <a class="nav-item nav-link" href="index.php#Emprendimentos">Emprendimentos <i class="fa-solid fa-arrow-down"></i></a>
                 </div>
 
                 <!-- Botones alineados a la derecha -->
                 <!-- Sin login -->
-                <?php if ($idUsuario == null) { ?>
+                <?php if (!isset($idUsuario) || $idUsuario == null) { ?>
                     <div class="d-flex ms-auto gap-2">
-                        <a href="Registro.html" class="btn btn--cinza">Registrarse <i
-                                class="fa-solid fa-user-plus"></i></a href="#">
-                        <a href="Login.html" class="btn btn--amarelo">Logar <i
-                                class="fa-solid fa-right-to-bracket"></i></a>
+                        <a href="Registro.html" class="btn btn--cinza">Registrarse <i class="fa-solid fa-user-plus"></i></a>
+                        <a href="Login.html" class="btn btn--amarelo">Logar <i class="fa-solid fa-right-to-bracket"></i></a>
                     </div>
                 <?php } else { ?>
                     <div class="d-flex ms-auto gap-2">
-                        <a href="#" id="cerrarSesion-boton" class="btn btn--amarelo"> Sair <i
-                                class="fa-solid fa-right-to-bracket"></i></a>
+                        <a href="#" id="cerrarSesion-boton" class="btn btn--amarelo"> Sair <i class="fa-solid fa-right-to-bracket"></i></a>
                     </div>
                     <script>
-                        const botonCerrar = document.getElementById("cerrarSesion-boton");
-
-                        botonCerrar.addEventListener("click", function(e) {
-                            e.preventDefault();
-                            Swal.fire({
-                                title: 'Confirmar saída',
-                                text: "Você tem certeza que deseja sair da conta?",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonText: 'Sim, sair',
-                                cancelButtonText: 'Cancelar',
-                                background: '#B2442E',
-                                color: '#FFFFFF',
-                                confirmButtonColor: '#FDCB29',
-                                cancelButtonColor: '#333333',
-                                iconColor: '#FDCB29'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "CerrarSesion.php";
-                                }
-                            });
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const botonCerrar = document.getElementById("cerrarSesion-boton");
+                            if (botonCerrar) {
+                                botonCerrar.addEventListener("click", function(e) {
+                                    e.preventDefault();
+                                    if (typeof Swal !== 'undefined') {
+                                        Swal.fire({
+                                            title: 'Confirmar saída',
+                                            text: "Você tem certeza que deseja sair da conta?",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Sim, sair',
+                                            cancelButtonText: 'Cancelar',
+                                            background: '#B2442E',
+                                            color: '#FFFFFF',
+                                            confirmButtonColor: '#FDCB29',
+                                            cancelButtonColor: '#333333',
+                                            iconColor: '#FDCB29'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                window.location.href = "CerrarSesion.php";
+                                            }
+                                        });
+                                    } else {
+                                        if (confirm("Você tem certeza que deseja sair da conta?")) {
+                                            window.location.href = "CerrarSesion.php";
+                                        }
+                                    }
+                                });
+                            }
                         });
                     </script>
                 <?php } ?>
             </div>
         </nav>
-
     </header>
     <main>
 
@@ -337,42 +337,142 @@ if ($tipoUsuario == "adminGeneral") {
                     </p>
                 </div>
             </div>
-        </div>
-        <div id="Emprendimentos" class="container mt-5 emprendimento contornoGris">
+            <div id="Emprendimentos" class="container mt-5 emprendimento">
             <!-- conteudo dos Emprendimentos -->
-            <!-- Fila para o titulo -->
-            <div class="row mt-5">
-                <div class="col-12">
-                    <h2 class="subTitulo m-3 text-center"> Emprendimentos </h2>
+            <div class="row pt-5">
+                <div class="col-12 text-center">
+                    <h2 class="subTitulo mb-2"> Emprendimentos </h2>
+                    <p class="parrafo text-muted mb-4">Conheça os talentos da nossa comunidade</p>
                 </div>
             </div>
+
+            <!-- Buscador -->
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="search-container">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="inputBuscaEmprendedores" class="search-input" placeholder="Buscar por nome do emprendedor...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtro A-Z -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="az-filter" id="azFilter">
+                        <button class="az-btn az-btn--all active" data-letter="all">Todos</button>
+                        <?php foreach(range('A', 'Z') as $char): ?>
+                            <button class="az-btn" data-letter="<?php echo $char; ?>"><?php echo $char; ?></button>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
             <!-- Fila para as colunas de emprendimento -->
-            <div class="row mb-5">
+            <div id="listaEmprendedores" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
                 <?php if (!empty($emprendimentosAprobados)): ?>
                     <?php foreach ($emprendimentosAprobados as $emprendimento): ?>
-                        <div class="col-3">
-                            <div class="card">
-                                <img class="card-img-top emprendimento__imagem"
-                                    src="<?php echo !empty($emprendimento['logo']) ? '../' . $emprendimento['logo'] : '../assets/img/CasaSolidaria/defaultProduct.png'; ?>" alt="logo do Emprendimento <?php echo htmlspecialchars($emprendimento['nome']); ?>" />
+                        <div class="col emp-item-fade" data-name="<?php echo htmlspecialchars($emprendimento['nome']); ?>">
+                            <div class="emp-card">
+                                <div class="emp-card__img-container">
+                                    <img class="emp-card__img"
+                                        src="<?php echo !empty($emprendimento['logo']) ? '../' . $emprendimento['logo'] : '../assets/img/CasaSolidaria/defaultProduct.png'; ?>" 
+                                        alt="logo do Emprendimento <?php echo htmlspecialchars($emprendimento['nome']); ?>" />
+                                </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><?php echo htmlspecialchars($emprendimento['nome']); ?></h4>
-                                    <p class="card-text"><?php
-                                                            echo strlen($emprendimento['historia']) > 100
-                                                                ? substr($emprendimento['historia'], 0, 100) . '...'
-                                                                : $emprendimento['historia'];
-                                                            ?></p>
+                                    <h4 class="emp-card__title"><?php echo htmlspecialchars($emprendimento['nome']); ?></h4>
+                                    <p class="emp-card__text">
+                                        <?php
+                                        echo strlen($emprendimento['historia']) > 120
+                                            ? substr($emprendimento['historia'], 0, 120) . '...'
+                                            : $emprendimento['historia'];
+                                        ?>
+                                    </p>
                                     <a href="../pages/Emprendimento.php?token=<?php echo base64_encode($emprendimento['idEmprendimento']); ?>"
-                                        class="btn btn--vermelho mt-auto">Ver Loja</a>
+                                        class="btn btn--vermelho w-100">Ver Loja</a>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
-                <?php else: ?><div class="col-12 text-center">
-                        <p class="parrafo">Nenhum empreendimento disponível no momento.</p>
+                <?php else: ?>
+                    <div class="col-12 text-center">
+                        <p class="parrafo">Nenhum empreendimento disponible no momento.</p>
                     </div>
                 <?php endif; ?>
             </div>
+
+            <!-- Mensaje de no resultados -->
+            <div id="noResultsMsg">
+                <h3>Ops! Nenhum resultado</h3>
+                <p>Não encontramos ningún emprendedor con estos criterios.</p>
+                <button id="btnClearFilters" class="btn-clear-filters">
+                    <i class="fa-solid fa-filter-circle-xmark me-2"></i>Limpar Filtros
+                </button>
+            </div>
         </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputBusca = document.getElementById('inputBuscaEmprendedores');
+            const items = document.querySelectorAll('.emp-item-fade');
+            const noResults = document.getElementById('noResultsMsg');
+            const azBtns = document.querySelectorAll('.az-btn');
+            const btnClear = document.getElementById('btnClearFilters');
+            
+            let currentLetter = 'all';
+            let currentSearch = '';
+
+            const filterItems = () => {
+                let visibleCount = 0;
+                
+                items.forEach(item => {
+                    const nome = item.getAttribute('data-name').toLowerCase();
+                    const startWithLetter = currentLetter === 'all' || nome.startsWith(currentLetter.toLowerCase());
+                    const matchesSearch = nome.includes(currentSearch.toLowerCase());
+
+                    if (startWithLetter && matchesSearch) {
+                        item.classList.remove('emp-item-hidden');
+                        visibleCount++;
+                    } else {
+                        item.classList.add('emp-item-hidden');
+                    }
+                });
+
+                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            };
+
+            const resetFilters = () => {
+                currentLetter = 'all';
+                currentSearch = '';
+                if (inputBusca) inputBusca.value = '';
+                azBtns.forEach(b => {
+                    b.classList.remove('active');
+                    if (b.getAttribute('data-letter') === 'all') b.classList.add('active');
+                });
+                filterItems();
+            };
+
+            if (inputBusca) {
+                inputBusca.addEventListener('input', (e) => {
+                    currentSearch = e.target.value.trim();
+                    filterItems();
+                });
+            }
+
+            if (btnClear) {
+                btnClear.addEventListener('click', resetFilters);
+            }
+
+            azBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    azBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentLetter = btn.getAttribute('data-letter');
+                    filterItems();
+                });
+            });
+        });
+        </script>
     </main>
     <footer class="mt-5 footer">
         <div class="container-fluid">

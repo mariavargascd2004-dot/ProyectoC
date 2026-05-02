@@ -201,59 +201,70 @@ $corTextoSecundaria = getContrastColor(h($emprendimiento['corSecundaria']));
     </style>
 
     <header>
-        <nav id="navBar" class="navbar navbar-expand navbar-light">
+        <nav class="navbar navbar-expand navbar-light">
             <div class="container-fluid">
                 <!-- Logo y enlaces -->
                 <div class="navbar-nav d-flex align-items-center">
-                    <a href="../">
-                        <img src="<?php echo htmlspecialchars($datosPaginaP ? $datosPaginaP->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'); ?>" alt="Logo Casa Solidaria" width="80px">
+                    <a href="index.php">
+                        <img src="<?php echo htmlspecialchars(isset($datosPaginaP) && $datosPaginaP ? $datosPaginaP->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'); ?>" alt="Logo Casa Solidaria" class="rounded-circle shadow-sm bg-white" style="width: 80px; height: 80px; object-fit: cover;">
                     </a>
-                    <img src="<?php echo getImageUrl($emprendimiento['logo']); ?>" alt="Logo de <?php echo h($emprendimiento['nome']); ?>" width="75">
-                    <a class="nav-item nav-link titulo nav__titulo" href="#"><?php echo h($emprendimiento['nome']); ?></a>
+                    
+                    <img src="<?php echo getImageUrl($emprendimiento['logo']); ?>" alt="Logo de <?php echo h($emprendimiento['nome']); ?>" class="rounded-circle shadow-sm bg-white ms-2" style="width: 80px; height: 80px; object-fit: cover;">
+                    
+                    <div>
+                        <a class="nav-item nav-link titulo nav__titulo" href="#"><?php echo h($emprendimiento['nome']); ?></a>
+                    </div>
+                    
                     <a class="nav-item nav-link" href="#Produtos">Produtos <i class="fa-solid fa-arrow-down"></i></a>
                 </div>
+
                 <!-- Botones alineados a la derecha -->
                 <!-- Sin login -->
-                <?php if ($idUsuario == null) { ?>
+                <?php if (!isset($idUsuario) || $idUsuario == null) { ?>
                     <div class="d-flex ms-auto gap-2">
-                        <a href="Registro.html" class="btn btn--cinza">Registrarse <i
-                                class="fa-solid fa-user-plus"></i></a href="#">
-                        <a href="Login.html" class="btn btn--amarelo">Logar <i
-                                class="fa-solid fa-right-to-bracket"></i></a>
+                        <a href="Registro.html" class="btn btn--cinza">Registrarse <i class="fa-solid fa-user-plus"></i></a>
+                        <a href="Login.html" class="btn btn--amarelo">Logar <i class="fa-solid fa-right-to-bracket"></i></a>
                     </div>
                 <?php } else { ?>
                     <div class="d-flex ms-auto gap-2">
-                        <button href="#" id="cerrarSesion-boton" class="btn btn--amarelo"> Sair <i
-                                class="fa-solid fa-right-to-bracket"></i></button>
+                        <a href="#" id="cerrarSesion-boton" class="btn btn--amarelo"> Sair <i class="fa-solid fa-right-to-bracket"></i></a>
                     </div>
                     <script>
-                        const botonCerrar = document.getElementById("cerrarSesion-boton");
-
-                        botonCerrar.addEventListener("click", function(e) {
-                            e.preventDefault();
-                            Swal.fire({
-                                title: 'Confirmar saída',
-                                text: "Você tem certeza que deseja sair da conta?",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonText: 'Sim, sair',
-                                cancelButtonText: 'Cancelar',
-                                background: '#B2442E',
-                                color: '#FFFFFF',
-                                confirmButtonColor: '#FDCB29',
-                                cancelButtonColor: '#333333',
-                                iconColor: '#FDCB29'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "CerrarSesion.php";
-                                }
-                            });
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const botonCerrar = document.getElementById("cerrarSesion-boton");
+                            if (botonCerrar) {
+                                botonCerrar.addEventListener("click", function(e) {
+                                    e.preventDefault();
+                                    if (typeof Swal !== 'undefined') {
+                                        Swal.fire({
+                                            title: 'Confirmar saída',
+                                            text: "Você tem certeza que deseja sair da conta?",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Sim, sair',
+                                            cancelButtonText: 'Cancelar',
+                                            background: '#B2442E',
+                                            color: '#FFFFFF',
+                                            confirmButtonColor: '#FDCB29',
+                                            cancelButtonColor: '#333333',
+                                            iconColor: '#FDCB29'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                window.location.href = "CerrarSesion.php";
+                                            }
+                                        });
+                                    } else {
+                                        if (confirm("Você tem certeza que deseja sair da conta?")) {
+                                            window.location.href = "CerrarSesion.php";
+                                        }
+                                    }
+                                });
+                            }
                         });
                     </script>
                 <?php } ?>
             </div>
         </nav>
-
     </header>
     <main>
         <?php
@@ -474,71 +485,121 @@ $corTextoSecundaria = getContrastColor(h($emprendimiento['corSecundaria']));
         <?php endif; ?>
 
 
-        <div class="container-fluid">
-            <!-- Conteudo da Portada Principal -->
-            <div id="portada" class="row portada">
-                <div class="col-12 portada__conteudo-principal">
-                    <img class="portada__imagem transiccionSuave" src="<?php echo getImageUrl($emprendimiento['pooster']); ?>"
-                        alt="Foto de portada de <?php echo h($emprendimiento['nome']); ?>">
-                    <div class="portada__conteudo-secundario mt-5 transiccionSuave">
-                        <h1 class="subTitulo portada__subTitulo transiccionSuave">Historia</h1>
-                        <p class="parrafo portada__parrafo parrafo-truncado transiccionSuave">
-                            <?php echo h($emprendimiento['historia']); ?>
-                        </p>
-                        <button id="portada__botao" type="button" class="btn btn--vermelho portada__botao"> Ver mais
-                        </button>
+        <section class="hero-business">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Columna Izquierda: Imagen de Portada -->
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="hero-business__img-wrapper">
+                            <img class="hero-business__img" src="<?php echo getImageUrl($emprendimiento['pooster']); ?>"
+                                alt="Foto de portada de <?php echo h($emprendimiento['nome']); ?>">
+                        </div>
                     </div>
-                    <div class="portada__conteudo-terceario mt-5">
-                        <img src="<?php echo getImageUrl($infoAssociado['FotoPerfilAssociado'] ?? ''); ?>" width="150" alt="Foto de perfil de <?php echo h($infoAssociado['NombreAssociado']); ?>" onerror="this.onerror=null; this.src='../assets/img/CasaSolidaria/defaultLogo.png'">
-                        <h3 class="subTitulo portada__subTitulo">
-                            <?php echo h($infoAssociado['NombreAssociado']); ?>
-                        </h3>
-                        <p class="parrafo portada__parrafo portada_descResposavel">
-                            <?php echo h($infoAssociado['DescripcionAssociado']); ?>
-                        </p>
+
+                    <!-- Columna Derecha: Información del Emprendimiento -->
+                    <div class="col-lg-6">
+                        <div class="hero-business__content">
+                            <h2 class="hero-business__history-title">Nossa Historia</h2>
+                            <p class="hero-business__history-text parrafo-truncado">
+                                <?php echo h($emprendimiento['historia']); ?>
+                            </p>
+                            
+                            <button id="portada__botao" type="button" class="btn btn--vermelho hero-business__btn"> 
+                                Ver mais
+                            </button>
+
+                            <!-- Mini Perfil del Responsable (Secundario) -->
+                            <div class="hero-business__vendor">
+                                <img src="<?php echo getImageUrl($infoAssociado['FotoPerfilAssociado'] ?? ''); ?>" 
+                                     class="hero-business__vendor-img" 
+                                     alt="Foto de <?php echo h($infoAssociado['NombreAssociado']); ?>"
+                                     onerror="this.onerror=null; this.src='../assets/img/CasaSolidaria/defaultLogo.png'">
+                                <div class="hero-business__vendor-info">
+                                    <span class="hero-business__vendor-label">Responsável</span>
+                                    <span class="hero-business__vendor-name"><?php echo h($infoAssociado['NombreAssociado']); ?></span>
+                                    <p class="hero-business__vendor-desc mb-0"><?php echo h($infoAssociado['DescripcionAssociado'] ?? ''); ?></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <!-- Conteudo da Processo de fabrição -->
-            <?php if (!empty($imgemsFabricacao)): ?>
-                <div class="row mt-5 fabricacao">
-                    <!-- conteudo onde estam as imagems da Processo de fabrição -->
-                    <div class="col-6 fabricacao__conteudo--principal">
+        </section>
+        </div> <!-- Cierre del container general para permitir ancho completo en la pizarra -->
+
+        <!-- Sección: Processo de Fabricação (Nota del Autor) -->
+        <?php if (!empty($imgemsFabricacao)): ?>
+            <section class="manufacturing-section">
+                <div class="container-fluid px-5"> <!-- px-5 para que el contenido no pegue a los bordes físicos -->
+                    <div class="row align-items-center g-5">
                         <?php
                         $maxFabImages = min(count($imgemsFabricacao), 4);
-                        for ($i = 0; $i < $maxFabImages; $i++): ?>
-                            <img class="fabricacao__imagem" src="<?php echo getImageUrl($imgemsFabricacao[$i]["caminho_imagem"]); ?>"
-                                alt="Imagen proceso fabricación <?php echo $i + 1; ?>">
-                        <?php endfor; ?>
-                    </div>
-                    <!-- conteudo da informação da Processo de fabrição -->
-                    <div class="col-6 fabricacao__conteudo--secundario contornoGris">
-                        <h2 class="subTitulo m-3 text-center"> Processo de fabricação </h2>
-                        <p class="parrafo fabricacao__conteudosecundario--parrafo">
-                            <?php echo h($emprendimiento['processoFabricacao']); ?>
-                        </p>
+                        ?>
+                        
+                        <!-- Columna Izquierda: Pasos 1 y 2 -->
+                        <div class="col-lg-3 order-2 order-lg-1">
+                            <div class="m-side-gallery">
+                                <?php for ($i = 0; $i < min($maxFabImages, 2); $i++): ?>
+                                    <div class="polaroid-item">
+                                        <span class="polaroid-step">Passo <?php echo ($i + 1); ?></span>
+                                        <img src="<?php echo getImageUrl($imgemsFabricacao[$i]["caminho_imagem"]); ?>"
+                                             alt="Processo de fabricação <?php echo $i + 1; ?>">
+                                    </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+
+                        <!-- Columna Central: Información -->
+                        <div class="col-lg-6 order-1 order-lg-2">
+                            <div class="studio-card mx-auto">
+                                <h2 class="studio-title">Processo de Fabricação</h2>
+                                <p class="studio-text">
+                                    <?php echo nl2br(h($emprendimiento['processoFabricacao'])); ?>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Columna Derecha: Pasos 3 y 4 -->
+                        <div class="col-lg-3 order-3 order-lg-3">
+                            <div class="m-side-gallery">
+                                <?php for ($i = 2; $i < $maxFabImages; $i++): ?>
+                                    <div class="polaroid-item">
+                                        <span class="polaroid-step">Passo <?php echo ($i + 1); ?></span>
+                                        <img src="<?php echo getImageUrl($imgemsFabricacao[$i]["caminho_imagem"]); ?>"
+                                             alt="Processo de fabricação <?php echo $i + 1; ?>">
+                                    </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            <?php endif; ?>
+            </section>
+        <?php endif; ?>
 
+        <div class="container"> <!-- Reabrimos el container para el resto del contenido -->
             <hr class="mt-5 mb-5">
 
             <!-- Galeria de fotos -->
             <?php if (!empty($imgemsGaleria)): ?>
+                <div class="row mt-5 mb-4">
+                    <div class="col-12 text-center">
+                        <h3 class="subTitulo">Nossa Galeria</h3>
+                    </div>
+                </div>
+
                 <div id="galeriaFotos" class="carousel slide" data-bs-ride="carousel">
                     <!-- Indicadores -->
-                    <ol class="carousel-indicators">
+                    <div class="carousel-indicators">
                         <?php foreach ($imgemsGaleria as $index => $imagem): ?>
-                            <li data-bs-target="#galeriaFotos"
+                            <button type="button" 
+                                data-bs-target="#galeriaFotos"
                                 data-bs-slide-to="<?php echo $index; ?>"
                                 class="<?php echo $index === 0 ? 'active' : ''; ?>"
                                 aria-current="<?php echo $index === 0 ? 'true' : 'false'; ?>"
                                 aria-label="Slide <?php echo $index + 1; ?>">
-                            </li>
+                            </button>
                         <?php endforeach; ?>
-                    </ol>
+                    </div>
 
                     <!-- Imágenes del Carrusel -->
                     <div class="carousel-inner" role="listbox">
@@ -570,66 +631,29 @@ $corTextoSecundaria = getContrastColor(h($emprendimiento['corSecundaria']));
                     </div>
                 </div>
 
-                <div id="filtroContainer" class="container-fluid sticky-top bg-light shadow-sm py-3 mb-4">
-                    <div class="container">
-                        <div class="row mb-3 align-items-center">
-                            <div class="col-12 col-md-8 mb-2 mb-md-0">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fa-solid fa-search"></i></span>
-                                    <input type="text" id="filtroBuscaInput" class="form-control" placeholder="Buscar por nome, categoria, cor...">
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Tienda.php?token=<?php echo h($_GET['token']); ?>" class="btn btn--amarelo w-100">Mostrar na Loja <i class="fa-solid fa-arrow-right"></i></a>
+                <div id="filtroContainer" class="container sticky-top bg-white border-bottom py-3 mb-5">
+                    <div class="row g-3 align-items-center">
+                        <!-- Búsqueda -->
+                        <div class="col-12 col-lg-8">
+                            <div class="search-box">
+                                <i class="fa-solid fa-search search-icon"></i>
+                                <input type="text" id="filtroBuscaInput" class="form-control-modern" placeholder="O que você está procurando?">
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <h6 class="small fw-bold text-muted">IR PARA:</h6>
-                                <nav id="filtroCategorias" class="nav nav-pills flex-nowrap overflow-auto" style="white-space: nowrap;">
-
-                                    <?php if (!empty($categorias)): ?>
-                                        <?php foreach ($categorias as $cat): ?>
-                                            <?php
-                                            $subcategorias = $subcategoriaHelper->obtenerSubCategoriasDelEmprendimiento($cat['idCategoria']);
-                                            $productosEnCategoria = 0;
-
-                                            foreach ($subcategorias as $subCat) {
-                                                foreach ($productos as $prod) {
-                                                    if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']) {
-                                                        $productosEnCategoria++;
-                                                    }
-                                                }
-                                            }
-
-                                            if ($productosEnCategoria == 0) continue;
-                                            ?>
-
-                                            <a class="nav-link" href="#cat-<?php echo h($cat['idCategoria']); ?>">
-                                                <?php echo h($cat['nombre']); ?>
-                                            </a>
-
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-
-                                </nav>
-                            </div>
+                        
+                        <!-- Botón Tienda -->
+                        <div class="col-12 col-lg-4">
+                            <a href="Tienda.php?token=<?php echo h($_GET['token']); ?>" class="btn btn-loja-modern w-100">
+                                Loja Completa <i class="fa-solid fa-shopping-bag ms-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-
                 <?php foreach ($categorias as $iCat => $cat): ?>
-
                     <?php
-                    // Obtener las subcategorías de la categoría actual
                     $subcategorias = $subcategoriaHelper->obtenerSubCategoriasDelEmprendimiento($cat['idCategoria']);
-
-                    // Contador de productos totales dentro de la categoría
                     $productosEnCategoria = 0;
-
-                    // Precalcular si la categoría tiene productos
                     foreach ($subcategorias as $subCat) {
                         foreach ($productos as $prod) {
                             if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']) {
@@ -637,43 +661,45 @@ $corTextoSecundaria = getContrastColor(h($emprendimiento['corSecundaria']));
                             }
                         }
                     }
-
-                    // Si la categoría no tiene productos, saltar (no mostrar)
                     if ($productosEnCategoria == 0) continue;
                     ?>
 
-                    <!-- Si tiene productos, mostramos la categoría -->
-                    <div class="row mb-5 category-section">
-                        <div class="col-12 p-2 category-title-wrapper" id="cat-<?php echo h($cat['idCategoria']); ?>">
-                            <h3 class="subTitulo text-uppercase">
-                                <i class="fa-solid fa-folder"></i> <?php echo h($cat['nombre']); ?>
+                    <div class="row mb-4 category-section">
+                        <div class="col-12 p-3 category-title-wrapper collapsible-header" 
+                             data-target="#cat-content-<?php echo h($cat['idCategoria']); ?>">
+                            <h3 class="subTitulo text-uppercase d-flex align-items-center justify-content-between mb-0">
+                                <span><i class="fa-solid fa-folder-open me-2"></i> <?php echo h($cat['nombre']); ?></span>
+                                <i class="fa-solid fa-chevron-up toggle-icon"></i>
                             </h3>
                         </div>
 
-                        <?php foreach ($subcategorias as $iSubCat => $subCat): ?>
-                            <?php
-                            $productosEnSubCategoria = 0;
-                            foreach ($productos as $prod) {
-                                if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']) {
-                                    $productosEnSubCategoria++;
+                        <div id="cat-content-<?php echo h($cat['idCategoria']); ?>" class="collapsible-body show">
+                            <?php foreach ($subcategorias as $iSubCat => $subCat): ?>
+                                <?php
+                                $productosEnSubCategoria = 0;
+                                foreach ($productos as $prod) {
+                                    if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']) {
+                                        $productosEnSubCategoria++;
+                                    }
                                 }
-                            }
+                                if ($productosEnSubCategoria == 0) continue;
+                                ?>
 
-                            if ($productosEnSubCategoria == 0) continue;
-                            ?>
+                                <div class="col-12 mt-3 subcategory-section collapsible-header" 
+                                     data-target="#subcat-content-<?php echo h($subCat['idSubcategoria']); ?>">
+                                    <h4 class="parrafo d-flex align-items-center justify-content-between py-2 border-bottom">
+                                        <span><i class="fa-regular fa-folder-open me-2"></i> <?php echo h($subCat['nombre']); ?></span>
+                                        <i class="fa-solid fa-chevron-up toggle-icon ms-auto" style="font-size: 0.8rem;"></i>
+                                    </h4>
+                                </div>
 
-                            <div class="col-12 ms-4 mt-3 subcategory-section" id="subcat-<?php echo h($subCat['idSubcategoria']); ?>">
-                                <hr>
-                                <h4 class="parrafo">
-                                    <i class="fa-regular fa-folder-open"></i>
-                                    <?php echo h($subCat['nombre']); ?>
-                                </h4>
-                            </div>
-
-                            <div class="row ms-4 product-grid">
+                                <div id="subcat-content-<?php echo h($subCat['idSubcategoria']); ?>" class="collapsible-body show">
+                                    <div class="row product-grid pt-3">
                                 <?php foreach ($productos as $iProd => $prod): ?>
                                     <?php if ($prod['producto_idSubcategoria'] == $subCat['idSubcategoria']): ?>
                                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 product-item-col"
+                                            data-titulo="<?php echo h($prod['titulo']); ?>"
+                                            data-precio="<?php echo h($prod['precio']); ?>"
                                             data-search-terms="<?php
                                                                 echo h($prod['titulo']) . ' ' .
                                                                     h($prod['descripcion']) . ' ' .
@@ -683,23 +709,33 @@ $corTextoSecundaria = getContrastColor(h($emprendimiento['corSecundaria']));
                                                                     h($prod['tamano']);
                                                                 ?>">
 
-                                            <div class="card h-100" id="product-card-<?php echo h($prod['idProducto']); ?>">
-                                                <img class="card-img-top product-card-image" height="250px"
-                                                    src="<?php echo h($prod['imagen_principal']); ?>"
-                                                    alt="Producto por defecto">
-                                                <div class="card-body">
-                                                    <h4 class="card-title text-center product-card-title">
+                                            <div class="product-card-modern">
+                                                <div class="product-card-img-wrapper">
+                                                    <img class="product-card-image-modern" 
+                                                         src="<?php echo h($prod['imagen_principal']); ?>"
+                                                         alt="<?php echo h($prod['titulo']); ?>">
+                                                    <div class="product-card-overlay">
+                                                        <button class="btn-quick-view" 
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#modalDetalheProduto"
+                                                                data-product-id="<?php echo h($prod['idProducto']); ?>">
+                                                            <i class="fa-solid fa-eye"></i> Detalhes
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="product-card-info">
+                                                    <h4 class="product-card-title-modern">
                                                         <?php echo h($prod['titulo']); ?>
                                                     </h4>
-                                                    <div class="d-flex align-items-center mt-4">
-                                                        <span>
-                                                            <small><b>$ <span class="product-card-price"><?php echo h($prod['precio']); ?></span></b></small>
+                                                    <div class="product-card-footer-modern">
+                                                        <span class="product-card-price-modern">
+                                                            R$ <?php echo h($prod['precio']); ?>
                                                         </span>
-                                                        <button class="btn btn--vermelho ms-auto btn-comprar-produto"
+                                                        <button class="btn-buy-icon"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#modalDetalheProduto"
                                                             data-product-id="<?php echo h($prod['idProducto']); ?>">
-                                                            Comprar
+                                                            <i class="fa-solid fa-cart-plus"></i>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -707,14 +743,15 @@ $corTextoSecundaria = getContrastColor(h($emprendimiento['corSecundaria']));
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
+                                          </div> <!-- product-grid -->
+                                </div> <!-- collapsible-body subcat -->
+                            <?php endforeach; ?>
+
+                            <div class="col-12 text-center no-results-message" style="display: none;">
+                                <p class="text-muted">Nenhum produto encontrado nesta categoria com o termo buscado.</p>
                             </div>
-
-                        <?php endforeach; ?>
-
-                        <div class="col-12 text-center no-results-message" style="display: none;">
-                            <p class="text-muted">Nenhum produto encontrado nesta categoria com o termo buscado.</p>
-                        </div>
-                    </div>
+                        </div> <!-- collapsible-body cat -->
+                    </div> <!-- category-section -->
                 <?php endforeach; ?>
 
 

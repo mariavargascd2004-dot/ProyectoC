@@ -3,11 +3,7 @@
  	//Variables Globales
 
     let portada__botao = document.getElementById("portada__botao");
-    let portada__imagem = document.querySelector(".portada__imagem");
-    let portada__conteudo_secundario = document.querySelector(".portada__conteudo-secundario");
-    let portada__conteudo_terceario = document.querySelector(".portada__conteudo-terceario");
-    let portada__subTitulo = document.querySelector(".portada__subTitulo");
-    let portada__parrafo = document.querySelector(".portada__parrafo");
+    let portada__parrafo = document.querySelector(".hero-business__history-text");
 
     const navBar = document.getElementById("navBar");
     const modalDetalheProduto = document.getElementById('modalDetalheProduto');
@@ -19,35 +15,28 @@
     ///                    INICIO                  //
     /////////////////////////////////////////////////
 
-    // Cambiar el Pooster Inicial - Mostrar más infomración de la historia
-    portada__botao.addEventListener("click", function () {
-        //Extender o Reducir Historia
-        if (this.style.left == "") {
-            portada__imagem.style.filter = "brightness(0.1)";
-            portada__conteudo_secundario.style.width = "95vw";
-            portada__conteudo_terceario.style["z-index"] = "0";
-            portada__subTitulo.style["text-align"] = "center";
-            portada__subTitulo.style["font-size"] = "3rem";
-            this.style.left = "calc(95% - 150px)";
-            this.innerHTML = "Ver menos";
-            portada__parrafo.classList.remove('parrafo-truncado');
-            portada__parrafo.classList.add('parrafo-expandido');
-        }
-        else {
-            portada__imagem.style.filter = "brightness(1)";
-            portada__conteudo_secundario.style.width = "22vw";
-            portada__conteudo_terceario.style["z-index"] = "2";
-            portada__subTitulo.style["font-size"] = "2rem";
-            this.style.left = "";
-            this.innerHTML = "Ver mais";
-
-            setTimeout(() => {
+    if (portada__botao && portada__parrafo) {
+        portada__botao.addEventListener("click", function () {
+            const isTruncated = portada__parrafo.classList.contains('parrafo-truncado');
+            
+            if (isTruncated) {
+                this.innerHTML = "Ver menos";
+                portada__parrafo.classList.remove('parrafo-truncado');
+                portada__parrafo.classList.add('parrafo-expandido');
+            } else {
+                this.innerHTML = "Ver mais";
                 portada__parrafo.classList.add('parrafo-truncado');
                 portada__parrafo.classList.remove('parrafo-expandido');
-            }, 500);
-        }
+                
+                // Opcional: Scroll suave hacia arriba si el texto era muy largo
+                window.scrollTo({
+                    top: document.querySelector('.hero-business').offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
 
-    });
    
 
     if (navBar) {
@@ -93,15 +82,96 @@
 
     if (searchInput) {
         searchInput.addEventListener('keyup', function () {
-            const searchTerm = searchInput.value.toLowerCase().trim();
+            const searchTerm = this.value.toLowerCase().trim();
             filtrarProductos(searchTerm);
         });
     }
 
+    // Funcionalidad de Colapsables (Acordeón)
+    const collapsibles = document.querySelectorAll('.collapsible-header');
+    collapsibles.forEach(header => {
+        header.style.cursor = 'pointer';
+        header.addEventListener('click', function() {
+            const targetId = this.dataset.target;
+            const target = document.querySelector(targetId);
+            const icon = this.querySelector('.toggle-icon');
+            
+            if (target.classList.contains('show')) {
+                target.classList.remove('show');
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                setTimeout(() => { target.style.display = 'none'; }, 10);
+            } else {
+                target.style.display = 'block';
+                setTimeout(() => { 
+                    target.classList.add('show');
+                    icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                }, 10);
+            }
+        });
+    });
 
 });
 
+function filtrarProductos(searchTerm) {
+    const productItems = document.querySelectorAll('.product-item-col');
+    const categorySections = document.querySelectorAll('.category-section');
+    const globalNoResults = document.getElementById('globalNoResults');
+    let totalProductosVisibles = 0;
+
+    productItems.forEach(item => {
+        const searchTerms = item.dataset.searchTerms.toLowerCase();
+        
+        const matchesSearch = searchTerms.includes(searchTerm);
+
+        if (matchesSearch) {
+            item.style.display = 'block';
+            totalProductosVisibles++;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    categorySections.forEach(catSection => {
+        let productosVisiblesEnCategoria = 0;
+        const subcategorySections = catSection.querySelectorAll('.subcategory-section');
+
+        subcategorySections.forEach(subSection => {
+            const grid = subSection.nextElementSibling; 
+            const visibleProductsInGrid = grid.querySelectorAll('.product-item-col[style*="display: block"]');
+
+            if (visibleProductsInGrid.length > 0) {
+                subSection.style.display = 'block'; 
+                productosVisiblesEnCategoria += visibleProductsInGrid.length;
+            } else {
+                subSection.style.display = 'none'; 
+            }
+        });
+
+        const categoryTitle = catSection.querySelector('.category-title-wrapper');
+        const noResultsMessage = catSection.querySelector('.no-results-message');
+
+        if (productosVisiblesEnCategoria > 0) {
+            categoryTitle.style.display = 'block'; 
+            if (noResultsMessage) noResultsMessage.style.display = 'none';
+        } else {
+            categoryTitle.style.display = 'none';
+            if (searchTerm.length > 0 && noResultsMessage) {
+                noResultsMessage.style.display = 'block';
+            }
+        }
+    });
+
+    if (totalProductosVisibles === 0 && searchTerm.length > 0) {
+        globalNoResults.style.display = 'block';
+    } else {
+        globalNoResults.style.display = 'none';
+    }
+}
+
 function carregarDetalhesProduto(idProducto) {
+
+    const imgPrincipal = document.getElementById('modalDetalheImagemPrincipal');
+    const thumbnailsContainer = document.getElementById('modalDetalheThumbnails');
+
     fetch("../controllers/ProdutoController.php", {
         method: "POST",
         body: new URLSearchParams({

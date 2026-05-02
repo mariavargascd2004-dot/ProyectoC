@@ -104,24 +104,69 @@ function h($string)
         }
     </style>
     <header>
-        <nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand navbar-light">
             <div class="container-fluid">
+                <!-- Logo y enlaces -->
                 <div class="navbar-nav d-flex align-items-center">
-                    
-                    <a href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>" class="text-decoration-none">
-                        <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo <?php echo h($emprendimiento['nome']); ?>" width="60" class="me-3">
+                    <a href="index.php">
+                        <img src="<?php echo htmlspecialchars(isset($datos) && $datos ? $datos->getLogo() : (isset($datosPaginaP) && $datosPaginaP ? $datosPaginaP->getLogo() : (isset($datosPagina) && $datosPagina ? $datosPagina->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'))); ?>" alt="Logo Casa Solidaria" class="rounded-circle shadow-sm bg-white" style="width: 80px; height: 80px; object-fit: cover;">
                     </a>
-                   
+                    
+                    <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo de <?php echo h($emprendimiento['nome']); ?>" class="rounded-circle shadow-sm bg-white ms-2" style="width: 80px; height: 80px; object-fit: cover;">
+                    
+                    <div>
+                        <a class="nav-item nav-link titulo nav__titulo" href="#"><?php echo h($emprendimiento['nome']); ?></a>
+                    </div>
+                    
                     <?php if ($esAdminGeneral): ?>
-                        <a class="nav-item nav-link titulo fs-4" href="AjustesCasaSolidaria.php">
+                        <a class="nav-item nav-link ms-sm-3" href="AjustesCasaSolidaria.php">
                             <i class="fa-solid fa-arrow-left me-2"></i> Voltar ao Painel Admin
                         </a>
                     <?php else: ?>
-                        <a class="nav-item nav-link titulo fs-4" href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>">
+                        <a class="nav-item nav-link ms-sm-3" href="Emprendimento.php?token=<?php echo h($_GET['token']); ?>">
                             <i class="fa-solid fa-arrow-left me-2"></i> Voltar para <?php echo h($emprendimiento['nome']); ?>
                         </a>
                     <?php endif; ?>
                 </div>
+
+                <!-- Botones alineados a la derecha -->
+                <!-- Botones alineados a la derecha -->
+                <div class="d-flex ms-auto gap-2">
+                    <a href="#" id="cerrarSesion-boton" class="btn btn--amarelo"> Sair <i class="fa-solid fa-right-to-bracket"></i></a>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const botonCerrar = document.getElementById("cerrarSesion-boton");
+                        if (botonCerrar) {
+                            botonCerrar.addEventListener("click", function(e) {
+                                e.preventDefault();
+                                if (typeof Swal !== 'undefined') {
+                                    Swal.fire({
+                                        title: 'Confirmar saída',
+                                        text: "Você tem certeza que deseja sair da conta?",
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonText: 'Sim, sair',
+                                        cancelButtonText: 'Cancelar',
+                                        background: '#B2442E',
+                                        color: '#FFFFFF',
+                                        confirmButtonColor: '#FDCB29',
+                                        cancelButtonColor: '#333333',
+                                        iconColor: '#FDCB29'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href = "CerrarSesion.php";
+                                        }
+                                    });
+                                } else {
+                                    if (confirm("Você tem certeza que deseja sair da conta?")) {
+                                        window.location.href = "CerrarSesion.php";
+                                    }
+                                }
+                            });
+                        }
+                    });
+                </script>
             </div>
         </nav>
     </header>
