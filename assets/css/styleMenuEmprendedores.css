@@ -766,7 +766,32 @@ button:hover {
 .footer__subTitulo { color: var(--cor-secundaria); }
 
 
+/* Estilos para menu de paleta de colores predefinidos */
 
+.containerColores{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.containerColores div{
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.2s ease all;
+}
+.containerColores div:hover{
+    scale: 1.1;
+    cursor: pointer;
+    background-color: #DCA700;
+}
+
+.corPrimPredefinida, .corSecPredefinida{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px !important;
+    border: none;
+}
 
 
 /* ==========================================================================

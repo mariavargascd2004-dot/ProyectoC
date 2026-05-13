@@ -111,13 +111,13 @@ function h($string)
                     <a href="index.php">
                         <img src="<?php echo htmlspecialchars(isset($datos) && $datos ? $datos->getLogo() : (isset($datosPaginaP) && $datosPaginaP ? $datosPaginaP->getLogo() : (isset($datosPagina) && $datosPagina ? $datosPagina->getLogo() : '../assets/img/CasaSolidaria/defaultLogo.png'))); ?>" alt="Logo Casa Solidaria" class="rounded-circle shadow-sm bg-white" style="width: 80px; height: 80px; object-fit: cover;">
                     </a>
-                    
+
                     <img src="../<?php echo h($emprendimiento['logo']); ?>" alt="Logo de <?php echo h($emprendimiento['nome']); ?>" class="rounded-circle shadow-sm bg-white ms-2" style="width: 80px; height: 80px; object-fit: cover;">
-                    
+
                     <div>
                         <a class="nav-item nav-link titulo nav__titulo" href="#"><?php echo h($emprendimiento['nome']); ?></a>
                     </div>
-                    
+
                     <?php if ($esAdminGeneral): ?>
                         <a class="nav-item nav-link ms-sm-3" href="AjustesCasaSolidaria.php">
                             <i class="fa-solid fa-arrow-left me-2"></i> Voltar ao Painel Admin
@@ -178,7 +178,7 @@ function h($string)
                     <h1 class="h3">Ajustes Gerais do Empreendimento</h1>
                 </div>
             </div>
-            
+
             <form id="formIdentidadeVisual" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="accion" value="actualizarImagensPrincipais">
                 <input type="hidden" name="idEmprendimento" value="<?php echo $idEmprendimiento; ?>">
@@ -191,11 +191,11 @@ function h($string)
                     <div class="col-md-4 text-center mb-3">
                         <label class="form-label fw-bold d-block">Logotipo Atual</label>
                         <div class="mb-2 p-2 border rounded bg-white d-inline-block">
-                            <img id="imgLogoActual" 
-                                 src="../<?php echo h($emprendimiento['logo'] ?? 'assets/img/logos/default.png'); ?>" 
-                                 alt="Logo Atual" 
-                                 class="img-fluid" 
-                                 style="max-height: 150px; object-fit: contain;">
+                            <img id="imgLogoActual"
+                                src="../<?php echo h($emprendimiento['logo'] ?? 'assets/img/logos/default.png'); ?>"
+                                alt="Logo Atual"
+                                class="img-fluid"
+                                style="max-height: 150px; object-fit: contain;">
                         </div>
                         <div class="mt-2">
                             <label for="inputLogo" class="btn btn-sm btn-outline-primary w-100">
@@ -209,11 +209,11 @@ function h($string)
                     <div class="col-md-8 text-center mb-3">
                         <label class="form-label fw-bold d-block">Pôster (Capa) Atual</label>
                         <div class="mb-2 p-2 border rounded bg-white d-inline-block w-100">
-                            <img id="imgPoosterActual" 
-                                 src="../<?php echo h($emprendimiento['pooster'] ?? 'assets/img/poosters/default.png'); ?>" 
-                                 alt="Pooster Atual" 
-                                 class="img-fluid" 
-                                 style="max-height: 250px; width: 100%; object-fit: cover;">
+                            <img id="imgPoosterActual"
+                                src="../<?php echo h($emprendimiento['pooster'] ?? 'assets/img/poosters/default.png'); ?>"
+                                alt="Pooster Atual"
+                                class="img-fluid"
+                                style="max-height: 250px; width: 100%; object-fit: cover;">
                         </div>
                         <div class="mt-2">
                             <label for="inputPooster" class="btn btn-sm btn-outline-primary">
@@ -230,7 +230,7 @@ function h($string)
                         </button>
                     </div>
                 </div>
-            </form>            
+            </form>
             <script>
                 function previewImage(input, targetId) {
                     const target = document.getElementById(targetId);
@@ -283,10 +283,12 @@ function h($string)
                 <div class="row contornoGris p-4 mb-4 shadow-sm">
                     <div class="col-12 mb-3">
                         <h2 class="subTitulo h5"><i class="fa-solid fa-palette me-2"></i>Cores do Empreendimento</h2>
-                        <p class="text-muted small">Estas cores serão usadas no design da página do seu empreendimento. <b>(recomenda-se usar cores opostas)</b> </p>
+                        <!-- <p class="text-muted small">Estas cores serão usadas no design da página do seu empreendimento. <b>(recomenda-se usar cores opostas)</b> </p> -->
                     </div>
 
-                    <div class="col-md-6 mb-3">
+                    <!-- Version anterior donde se usan inputs colors para el cambio de color -->
+
+                    <!-- <div class="col-md-6 mb-3">
                         <label for="corPrincipal" class="form-label fw-bold">Cor Principal</label>
                         <div class="d-flex align-items-center">
                             <input type="color" class="form-control form-control-color" id="corPrincipal" name="corPrincipal" value="<?php echo h($emprendimiento['corPrincipal']); ?>" title="Escolha a cor principal">
@@ -300,7 +302,97 @@ function h($string)
                             <input type="color" class="form-control form-control-color" id="corSecundaria" name="corSecundaria" value="<?php echo h($emprendimiento['corSecundaria']); ?>" title="Escolha a cor secundária">
                             <span class="ms-3" id="valorCorSecundaria"><?php echo h($emprendimiento['corSecundaria']); ?></span>
                         </div>
+                    </div> -->
+
+                    <!-- Nueva version de plaeta de colores predefinidas -->
+                    <div class="containerColores">
+
+                    <!-- Inputs ocultos para mandar los colores -->
+                    <input type="hidden" name="corPrincipal" id="inpCorPrincipal">
+                    <input type="hidden" name="corSecundaria" id="inpCorSecundaria">
+                        
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Blue & Slate</p>
+                            <div style="background-color: #2563EB;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #64748B;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Emerald & Mint</p>
+                            <div style="background-color: #059669;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #A7F3D0;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Orange & Amber</p>
+                            <div style="background-color: #EA580C;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #FBBF24;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Deep Purple & Indigo</p>
+                            <div style="background-color: #7C3AED;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #6366F1;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Charcoal & Silver</p>
+                            <div style="background-color: #374151;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #D1D5DB;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Rose & Pink</p>
+                            <div style="background-color: #E11D48;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #FDA4AF;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Cyan & Dark Blue</p>
+                            <div style="background-color: #06B6D4;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #1E3A8A;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Terracotta & Sand</p>
+                            <div style="background-color: #9A3412;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #FDE68A;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Gold & Black</p>
+                            <div style="background-color: #D4AF37;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #1A1A1A;" class="corSecPredefinida"></div>
+                        </div>
+                        <div onclick="divPaletaColor(this)" class="paletaColor text-center">
+                            <p>Sky & Navy</p>
+                            <div style="background-color: #0EA5E9;" class="corPrimPredefinida"></div>
+                            <div style="background-color: #1E40AF;" class="corSecPredefinida"></div>
+                        </div>
                     </div>
+
+                    <script>
+                        function divPaletaColor(elemento) {
+
+                        //constantes
+                        const colorPrimario = elemento.querySelector(".corPrimPredefinida").style.backgroundColor;
+                        const colorSecundario = elemento.querySelector(".corSecPredefinida").style.backgroundColor;
+                        const inpCorPrincipal = document.querySelector("#inpCorPrincipal");
+                        const inpCorSecundario = document.querySelector("#inpCorSecundaria");
+
+                        //colocar nuevos colores a los inputs ocultos
+                        inpCorPrincipal.value = colorPrimario;
+                        inpCorSecundario.value = colorSecundario;
+
+                        //prmiero dejar escala y color de fondo predefinido a los demás divs de paletas de colores
+                        var otrosElementos = document.querySelectorAll(".paletaColor");
+                        otrosElementos.forEach(element => {
+                            element.style.scale = "1";
+                            element.style.backgroundColor = "white";
+                        });
+
+                        //luego poner estilos que destaquen el div seleccionado
+                        elemento.style.scale = "1.1";
+                        elemento.style.backgroundColor = "#DCA700";
+
+                        //por ultimo dejar las variables globales de estilos css con los nuevos colores
+                        document.documentElement.style.setProperty('--cor-primaria', colorPrimario);
+                        document.documentElement.style.setProperty('--cor-secundaria', colorSecundario);
+
+                    }
+                    </script>
 
                     <div class="col-12 text-end">
                         <button type="submit" class="btn btn--amarelo">
@@ -556,29 +648,30 @@ function h($string)
 
 
             <!-- ================= ELIMINAR CONTA (ZONA DE PELIGRO) ================= -->
-            <?php if (!$esAdminGeneral): // Somente o próprio associado pode eliminar sua conta ?>
-            <div class="row contornoGris p-4 mb-3 border-danger shadow-sm" style="background-color: #fff5f5;">
-                <div class="col-12">
-                    <h2 class="subTitulo text-danger h5"><i class="fa-solid fa-triangle-exclamation me-2"></i>Zona de Perigo</h2>
-                    <div class="alert alert-danger mt-3">
-                        <strong>Atenção:</strong> Esta ação é irreversível. Ao eliminar sua conta, todos os dados do seu empreendimento, imagens e informações pessoais serão apagados permanentemente do nosso sistema.
-                    </div>
-                    <form id="formEliminarConta" action="../controllers/UsuarioController.php" method="POST">
-                        <input type="hidden" name="accion" value="eliminarConta">
-                        <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
-
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="checkConfirma" required>
-                            <label class="form-check-label fw-bold text-danger" for="checkConfirma">
-                                Estou ciente e confirmo que desejo eliminar minha conta permanentemente.
-                            </label>
+            <?php if (!$esAdminGeneral): // Somente o próprio associado pode eliminar sua conta 
+            ?>
+                <div class="row contornoGris p-4 mb-3 border-danger shadow-sm" style="background-color: #fff5f5;">
+                    <div class="col-12">
+                        <h2 class="subTitulo text-danger h5"><i class="fa-solid fa-triangle-exclamation me-2"></i>Zona de Perigo</h2>
+                        <div class="alert alert-danger mt-3">
+                            <strong>Atenção:</strong> Esta ação é irreversível. Ao eliminar sua conta, todos os dados do seu empreendimento, imagens e informações pessoais serão apagados permanentemente do nosso sistema.
                         </div>
-                        <button type="submit" class="btn btn-danger btn-lg" id="btnEliminarConta" disabled>
-                            <i class="fa-solid fa-trash-can me-2"></i> ELIMINAR CONTA DEFINITIVAMENTE
-                        </button>
-                    </form>
+                        <form id="formEliminarConta" action="../controllers/UsuarioController.php" method="POST">
+                            <input type="hidden" name="accion" value="eliminarConta">
+                            <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
+
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="checkConfirma" required>
+                                <label class="form-check-label fw-bold text-danger" for="checkConfirma">
+                                    Estou ciente e confirmo que desejo eliminar minha conta permanentemente.
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-danger btn-lg" id="btnEliminarConta" disabled>
+                                <i class="fa-solid fa-trash-can me-2"></i> ELIMINAR CONTA DEFINITIVAMENTE
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
             <?php endif; ?>
 
         </div>
